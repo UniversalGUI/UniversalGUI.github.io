@@ -1,2 +1,2 @@
 # UGUI-site
-The public website for the UGUI project. It consists of Templates, Tutorials, and Documentation.
+A Site for UGUI that contains documentation and tutorials.
