@@ -40,7 +40,7 @@
     <link rel="icon"                         href="favicon.ico"           type="image/x-icon"               />
     <link rel="shortcut icon"                href="favicon.ico"           type="image/ico"                  />
     <link rel="stylesheet"                   href="_style/style.css"      type="text/css"                   />
-
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
       <style>#ieWarning{display:block!important;}</style>
@@ -52,60 +52,90 @@
   <body>
 
     <header>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="templates.html">Templates</a>
-        <a href="documentation.html">Documentation</a>
-        <a href="tutorials.html">Tutorials</a>
-        <a href="showcase.html">Showcase</a>
+       <nav class="navbar navbar-default navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">UGUI Logo</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#Templates">Templates</a></li>
+                <li><a href="#Documentation">Documentation</a></li>
+                <li><a href="#Tutorials">Tutorials</a></li>
+                <li><a href="#Showcase">Showcase</a></li>
+                <li><a href="#About">About</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <a href="#GetUgui" class="btn btn-danger">Get UGUI</a>
+                </li>
+                <li><a href="#githubFork">Fork on Github</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
       </nav>
     </header>
 
-<div id="content">
 
-    <section id="feature">
-      <iframe src="https://www.youtube.com/embed/h2uOwtQbEHQ" frameborder="0" allowfullscreen></iframe>
-      <h1>UGUI</h1>
-      <p>tagline</p>
-      <button>Download</button>
-    </section>
+<div class="container">
 
-    <hr />
+  <div id="content">
 
-    <section id="threeIcons">
-      <div>
-        <img>
-        <h3>Free</h3>
-      </div>
-      <div>
-        <img>
-        <h3>Open Source</h3>
-      </div>
-      <div>
-        <img>
-        <h3>Cross-Platform</h3>
-      </div>
-    </section>
+      <section id="feature">
 
-    <hr />
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/h2uOwtQbEHQ"></iframe>
+        </div>
 
-    <section id="screenshots">
-      <nav>
-        <a href="#" class="win"></a>
-        <a href="#" class="mac"></a>
-        <a href="#" class="lin"></a>
-      </nav>
-      <div>
-        <img>
-        <img>
-        <img>
-        <img>
-        <img>
-        <img>
-      </div>
-    </section>
 
-</div>
+        <iframe src="https://www.youtube.com/embed/h2uOwtQbEHQ" frameborder="0" allowfullscreen></iframe>
+        <h1>UGUI</h1>
+        <p>tagline</p>
+        <button>Download</button>
+      </section>
+
+      <hr />
+
+      <section id="threeIcons">
+        <div>
+          <img>
+          <h3>Free</h3>
+        </div>
+        <div>
+          <img>
+          <h3>Open Source</h3>
+        </div>
+        <div>
+          <img>
+          <h3>Cross-Platform</h3>
+        </div>
+      </section>
+
+      <hr />
+
+      <section id="screenshots">
+        <nav>
+          <a href="#" class="win"></a>
+          <a href="#" class="mac"></a>
+          <a href="#" class="lin"></a>
+        </nav>
+        <div>
+          <img>
+          <img>
+          <img>
+          <img>
+          <img>
+          <img>
+        </div>
+      </section>
+  </div>
+
 
     <footer>
       <p>asdf</p>
@@ -119,6 +149,9 @@
       </nav>
     </footer>
 
+</div>
+
     <script src="_scripts/main.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </body>
 </html>
