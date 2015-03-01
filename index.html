@@ -122,9 +122,23 @@
           margin: 14px 0px 0px 0px;
           color: #F9B88F;
       }
+      @-webkit-keyframes dawn {
+        0% {   background-size: 1000px 0px;   }
+        100% { background-size: 1000px 400px; } }
+      @keyframes dawn {
+        0% {   background-size: 1000px 0px;   }
+        100% { background-size: 1000px 400px; } }
+      .dawn {
+        -webkit-animation-duration: 8s;
+                animation-duration: 8s;
+        -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+        -webkit-animation-name: dawn;
+                animation-name: dawn;
+      }
     </style>
   </head>
-  <body>
+  <body class="dawn">
     <table class="tmp">
       <tr>
         <td>
