@@ -1,0 +1,161 @@
+<style>
+  body { font-family: sans-serif; }
+  .hide { display: none; }
+  code {
+    background: #CCC;
+    border: 1px solid #888;
+    border-radius: 4px;
+    padding: 0px 2px; }
+  .text-center { text-align: center; }
+  kbd {
+    background: #EEE;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    padding: 0px 2px; }
+  .filter-exm {
+    background-color: #EEE;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    padding: 6px;
+  }
+</style>
+
+<div class="hide">
+  filter-win  Windows
+  filter-mac  OSX
+  filter-lin  Linux
+
+  filter-32   32-Bit
+  filter-64   64-Bit
+
+  filter-nov  Beginner
+  filter-int  Intermediate
+  filter-adv  Advanced
+
+  filter-exm  Examples
+  filter-img  Images
+
+  All of the above are checkboxes grouped (review dropbox image). Here is the logic for the functionality:
+
+  1. Show all elements on the page by default on page load.
+  2. Loop through all checkboxes on page load and any time a checkbox is toggled
+  3. If a checkbox is unchecked find all matching items on the page with that class and hide them.
+  4. After all items have been hidden that relate to unchecked checkboxes run a different loop.
+  5. Loop through all checkboxes again
+  6. This time i a checkbox is checked find all matching items on the page with that class and show them.
+
+</div>
+
+<h1>UGUI Documentation</h1>
+
+<p>Use the filter system above to only show the content that is relevent to you. This documentation is a work in progress. Areas that need improvement have been marked by four question marks like so: ????</p>
+
+<hr />
+
+<h2>The Basics/Getting Started</h2>
+
+<p>
+  <span class="filter-nov">Before we get started, you'll need to know if your operating system is 32-Bit or 64-Bit to make sure you get the correct version of NW.js.</span>
+  <span class="filter-nov filter-win">On Windows, right-click on "Computer" and go to properties, or just press <kbd>Windows Key + Pause/Break</kbd>.</span>
+  <span class="filter-nov filter-mac">On OSX, click the Apple icon in the top left of the screen and go to "About his Mac". Click on More Information. If you have an Intel Core Solo or Intel Core Duo, it's 32-Bit. Intel Core 2 Duo and all other Intel CPU's will mean you have a 64-Bit OS. For a full listing, see <a href="https://support.apple.com/en-us/HT3696">Apple's website</a>.</span>
+  <span class="filter-nov filter-lin">On Ubuntu Linux, click the top right power icon and go to "About This Computer".</span>
+</p>
+
+<p>
+  <span class="filter-nov">Once you know if your OS is 32-Bit or 64-Bit, download the correct version of <a href="http://nwjs.io" target="_blank">NW.js</a>. </span>
+</p>
+<p>
+  <span class="filter-nov">Then download a copy of <a href="http://ugui.io/#/download">UGUI</a>. After you extract the UGUI project folder from the zipped archive, you should rename the UGUI folder to whatever your project name is.</span>
+  <div class="text-center">
+    <img src="../_img/exm_extract_zip_rename_folder_win.gif" alt="An animation showing UGUI.zip being extracted and the extracted folder being renamed on Windows." class="filter-img filter-nov filter-win" />
+    <img src="../_img/exm_extract_zip_rename_folder_mac.gif" alt="An animation showing UGUI.zip being extracted and the extracted folder being renamed on OSX." class="filter-img filter-nov filter-mac" />
+    <img src="../_img/exm_extract_zip_rename_folder_lin.gif" alt="An animation showing UGUI.zip being extracted and the extracted folder being renamed on Ubuntu." class="filter-img filter-nov filter-lin" />
+  </div>
+</p>
+
+<h3>Setting up your NW.js environment</h3>
+
+<p>
+  <span class="filter-nov">Once you've downloaded NW.js, extract it's contents from the zip archive. Find an appropriate place for it's folder. For the purposes of this documentation, and tutorials, we will presume you've placed the NW.js folder in specific location.</span>
+  <span class="filter-nov filter-win">In Windows we'll assume you've placed it in the root of your C: drive and renamed the folder to <code>nw</code>.</span>
+  <span class="filter-nov filter-mac">In OSX we assume you've placed it in your ???? and renamed the folder to <code>nw</code>.</span>
+  <span class="filter-nov filter-lin">In Ubuntu we assume you've placed it in your ???? and renamed the folder to <code>nw</code>.</span>
+
+  <span class="filter-nov">Now you're ready to run your application for the first time!</span>
+
+  <div>
+    <span class="filter-int filter-win">In Windows press <kbd>Windows Key + R</kbd>, this will bring up the Run dialog. Type in the path to your NW.js folder and include the <code>nw.exe</code> file. Follow this with a <kbd>space</kbd> and the path your project folder where the <code>package.json</code> file is. Like so:</span>
+    <pre class="filter-exm filter-win filter-int">C:\nw\nw.exe C:\Users\YOURNAME\Desktop\YOURPROJECT</pre>
+    <span class="filter-int filter-win">Another way to run your project is to create a shortcut in your project folder that runs that same command. To do this, right-click an empty part of your project folder and select <kbd>New &gt; Shortcut</kbd>. A new window will appear, type in that same command (pointing to nw.exe and your project folder) and press next. Name your shortcut something like "Run NW", then hit <code>Finish</code>. Now you can simply double-click this shortcut any time you want to run your project.</span>
+  </div>
+
+  <div>
+    <span class="filter-int filter-mac">????how to run your nwjs project on mac????</span>
+  </div>
+
+  <div>
+    <span class="filter-int filter-lin">????how to run your nwjs project on unbuntu????</span>
+  </div>
+
+</p>
+
+<h3>Setting up your UGUI Project</h3>
+
+<h4>package.json</h4>
+<p>
+  <span class="filter-nov">In your project folder you'll find a <code>package.json</code> file. This is the configuration file that controls the way your application is displayed and behaves. Open it in any text editing application you're comfortable with (some common ones Sublime Text, Atom, Brackets, <span class="filter-win">Notepad,</span> <span class="filter-mac">TextEdit,</span> <span class="filter-lin">gedit,</span> or Notepad++) Each line is commented to explain the purpose of the line. Some of these are used by NW.js, some are used exclusively by UGUI, and some are used by both. Take a moment go line-by-line to familiarize yourself with the settings you have at your disposal and updating this file for your project. If a setting seems advanced or your not sure what it means, that's fine, just leave it at it's default setting.</span>
+</p>
+<h4>index.htm</h4>
+<p>
+  <span class="filter-nov">There are many aspects to the <code>index.htm</code> file that you should be aware, some parts will be covered in other sections below. Several parts of this file contain dummy data that will automatically be updated to reflect the content in the <code>package.json</code> file. For example the <code>&lt;title class="applicationTitle"&gt;Your Application Name&lt;/title&gt;</code> has the dummy "Your Application Name" text, however it is automatically updated to whatever value you set window.title to in the <code>package.json</code>. So although you can update these parts of the <code>index.htm</code>, you don't have to.</span>
+</p>
+
+<h3>Changing the style theming</h3>
+
+<p>
+  <span class="filter-"></span>
+</p>
+
+<h3>Adding in your arguments</h3>
+
+<p>
+  <span class="filter-"></span>
+</p>
+
+<h3>About your program</h3>
+
+<p>
+  <span class="filter-"></span>
+</p>
+
+<h3>Changing from Development to Production mode</h3>
+
+<p>
+  <span class="filter-"></span>
+</p>
+
+<h3>Distribution</h3>
+
+<p>
+  <span class="filter-"></span>
+</p>
+
+<h4>Single Folder Transfer Method</h4>
+
+<p>
+  <span class="filter-"></span>
+</p>
+
+<h4>Packaging as Your_App.nw</h4>
+
+<p>
+  <span class="filter-"></span>
+</p>
+
+<h4>Package your app with NW.js</h4>
+
+<p>
+  <span class="filter-"></span>
+</p>
+
+<hr />
