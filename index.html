@@ -48,30 +48,8 @@
 
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
     <script>window.jQuery || document.write('<script src="_scripts/jquery-2.1.3.min.js"><\/script>')</script>
-
-    <style>
-      body{background-attachment: fixed;
-          background: -webkit-radial-gradient(center top, farthest-side, #ED8C2B, #911146 40%, #2B2728 95%, #2B2728), #2B2728;
-             background: -moz-radial-gradient(center top, farthest-side, #ED8C2B, #911146 40%, #2B2728 95%, #2B2728), #2B2728;
-              background: -ms-radial-gradient(center top, farthest-side, #ED8C2B, #911146 40%, #2B2728 95%, #2B2728), #2B2728;
-               background: -o-radial-gradient(center top, farthest-side, #ED8C2B, #911146 40%, #2B2728 95%, #2B2728), #2B2728;
-                  background: radial-gradient(center top, farthest-side, #ED8C2B, #911146 40%, #2B2728 95%, #2B2728), #2B2728;
-          position: relative;
-          background-size: 1000px 400px;
-          background-position: center -65px;
-          background-repeat: no-repeat;
-          font-family: sans-serif;
-          overflow: auto;
-          color: #A6A5BA;}
-      .btn.btn-warning{
-        background-color: #911146;
-        border: none;
-        border-radius: 1px;
-      }
-    </style>
   </head>
   <body>
-
     <header>
        <nav class="navbar navbar-default navbar-static-top">
           <div class="container">
@@ -148,32 +126,33 @@
       <div class="row">
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
           <a href="#">
-            <img src="./_img/icon-Fast.png" alt="Fast">
+            <img src="_img/icon_Fast.svg" alt="Fast">
           </a>
         </div>
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
           <a href="#">
-            <img src="./_img/icon-Free.png" alt="Free">
+            <img src="_img/icon_Free.svg" alt="Free">
           </a>
         </div>
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
           <a href="#">
-            <img src="./_img/icon-OpenSource.png" alt="Open Source">
+            <img src="_img/icon_OpenSource.svg" alt="Open Source">
           </a>
         </div>
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
           <a href="#">
-            <img src="./_img/icon-CrossPlatform.png" alt="Cross Platform">
+            <img src="_img/icon-CrossPlatform.svg" alt="Cross Platform">
           </a>
         </div>
       </div>
 <!-- ------------------------ End of Icons --------------------------- -->
       <section id="screenshots">
-        <nav>
-          <a href="#" class="win"></a>
-          <a href="#" class="mac"></a>
-          <a href="#" class="lin"></a>
-        </nav>
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active"><a href="#"><img src="_img/win.svg" alt=""></a></li>
+          <li role="presentation" class=""><a href="#"><img src="_img/mac.svg" alt=""></a></li>
+          <li role="presentation" class=""><a href="#"><img src="_img/lin.svg" alt=""></a></li>
+        </ul>
+
         <div>
           <img>
           <img>
@@ -183,19 +162,20 @@
           <img>
         </div>
       </section>
+
   </div>
 
-
     <footer>
-      <p>asdf</p>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="templates.html">Templates</a>
-        <a href="documentation.html">Documentation</a>
-        <a href="tutorials.html">Tutorials</a>
-        <a href="showcase.html">Showcase</a>
-        <a href="about.html">About</a>
-      </nav>
+      <div class="container">
+        <ul class="nav navbar-nav navbar-static-bottom">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="templates.html">Templates</a></li>
+          <li><a href="documentation.html">Documentation</a></li>
+          <li><a href="tutorials.html">Tutorials</a></li>
+          <li><a href="showcase.html">Showcase</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
     </footer>
 
 </div>
