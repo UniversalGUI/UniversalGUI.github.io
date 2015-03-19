@@ -1,12 +1,15 @@
 <style>
   body { font-family: sans-serif; }
+  #wrapper { margin: 0 auto; max-width: 1400px; }
   .hide { display: none; }
   code {
     background: #CCC;
     border: 1px solid #888;
     border-radius: 4px;
     padding: 0px 2px; }
-  .text-center { text-align: center; }
+  .text-center {
+    display: block;
+    text-align: center; }
   kbd {
     background: #EEE;
     border: 1px solid #CCC;
@@ -21,7 +24,18 @@
     border-radius: 4px;
     overflow: auto;
     padding: 6px; }
+  .filter-img,
+  .filter-exm,
+  .cp_embed_iframe { margin: 1em 0em; }
+
+  .win .filter-mac,
+  .win .filter-lin,
+  .mac .filter-win,
+  .mac .filter-lin
+  .linux .filter-win,
+  .linux .filter-mac { display: none; }
 </style>
+<script type="text/javascript" src="../_scripts/main.min.js"></script>
 
 <div class="hide">
   filter-win  Windows
@@ -49,6 +63,8 @@
 
 </div>
 
+<div id="wrapper">
+
 <h1>UGUI Documentation</h1>
 
 <p>Use the filter system above to only show the content that is relevent to you. This documentation is a work in progress. Areas that need improvement have been marked by four question marks like so: ????</p>
@@ -69,11 +85,11 @@
 </p>
 <p>
   <span class="filter-nov">Then download a copy of <a href="http://ugui.io/#/download">UGUI</a>. After you extract the UGUI project folder from the zipped archive, you should rename the UGUI folder to whatever your project name is.</span>
-  <div class="text-center">
+  <span class="text-center">
     <img src="../_img/docs/extract_zip_rename_folder_win.gif" alt="An animation showing UGUI.zip being extracted and the extracted folder being renamed on Windows." class="filter-img filter-nov filter-win" />
     <img src="../_img/docs/extract_zip_rename_folder_mac.gif" alt="An animation showing UGUI.zip being extracted and the extracted folder being renamed on OSX." class="filter-img filter-nov filter-mac" />
     <img src="../_img/docs/extract_zip_rename_folder_lin.gif" alt="An animation showing UGUI.zip being extracted and the extracted folder being renamed on Ubuntu." class="filter-img filter-nov filter-lin" />
-  </div>
+  </span>
 </p>
 
 <h3>Setting up your NW.js environment</h3>
@@ -116,44 +132,25 @@
 <h3>Changing the style theming</h3>
 
 <p>
-  <span class="filter-"></span>
+  <span class="filter-">????</span>
 </p>
 
 <h3>Adding in your arguments</h3>
 
 <p>
-  <span class="filter-"></span>
+  <span class="filter-">????</span>
 </p>
 
 <h3>About your program</h3>
 
 <p>
   <span class="filter-nov">In the <code>index.htm</code> towards the bottom is a section of HTML for the about modal. The about modal can be viewed when you run the UGUI app by clicking Help > About in the top navigation.</span>
-  <div class="text-center">
+  <span class="text-center">
     <img src="../_img/docs/about-help.png" alt="Screenshot of the UGUI navigation bar highlighting the Help submenu where About is located." class="filter-img filter-nov" />
-  </div>
-  <span class="filter-int">In the <code>#aboutModal</code> section of the <code>index.htm</code> file you'll find this chunk of code:</span>
+  </span>
+  <span class="filter-int">In the <code>#aboutModal</code> section of the <code>index.htm</code> file (towards the bottom) you'll find this chunk of code:</span>
 
-  <pre class="filter-exm filter-int">&lt;div class="panel panel-primary"&gt;
-  &lt;div class="panel-heading"&gt;
-    &lt;span class="pull-right versionApp" title="Version"&gt;V0.1.0&lt;/span&gt;
-    &lt;h3 class="panel-title"&gt;About &lt;span class="applicationName"&gt;Your Application Name&lt;/span&gt;&lt;/h3&gt;
-  &lt;/div&gt;
-  &lt;div class="panel-body"&gt;
-    &lt;p class="well well-sm"&gt;A detailed explanation of what your application does or is used for.&lt;/p&gt;
-    &lt;p&gt;
-      &lt;span class="applicationName"&gt;Your Application Name&lt;/span&gt; created by &lt;span class="authorName"&gt;Your Name&lt;/span&gt;&lt;br /&gt;
-    &lt;!--
-      Be sure to credit whoever made the command line executable.&lt;br /&gt;
-      You should probably &lt;a href="http://theirsite.com" class="external-link"&gt;link to their site&lt;/a&gt; and give a version number for the CLI program.
-    --&gt;
-    &lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
-
-<script src="https://gist.github.com/TheJaredWilcurt/5e4995c936aa062dc3bb.js"></script>
-
-<pre data-height="442" data-theme-id="0" data-slug-hash="xbmxBy" data-default-tab="html" data-user="TheJaredWilcurt" class='codepen filter-exm'>&lt;div class=&quot;panel panel-primary&quot;&gt;
+  <pre class="filter-exm filter-int codepen" data-height="442" data-theme-id="0" data-slug-hash="xbmxBy" data-default-tab="html" data-user="TheJaredWilcurt">&lt;div class=&quot;panel panel-primary&quot;&gt;
   &lt;div class=&quot;panel-heading&quot;&gt;
     &lt;span class=&quot;pull-right versionApp&quot; title=&quot;Version&quot;&gt;V0.1.0&lt;/span&gt;
     &lt;h3 class=&quot;panel-title&quot;&gt;About &lt;span class=&quot;applicationName&quot;&gt;Your Application Name&lt;/span&gt;&lt;/h3&gt;
@@ -169,41 +166,43 @@
     &lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
-<script async src="http://assets.codepen.io/assets/embed/ei.js"></script>
+  <script async src="http://assets.codepen.io/assets/embed/ei.js"></script>
 
-  <span class="filter-int">Some of the content in this code will be overwritten by what you’ve defined in the <code>package.json</code> file. Specifically, the version (V0.1.0), Your Application Name, and Your Name. Although you can change this content here in the <code>index.htm</code> file, they will ultimately be displayed in your app with what was written in the <code>package.json</code>.</span>
+  <span class="filter-int">Some of the content in this code will be overwritten by what you've defined in the <code>package.json</code> file. Specifically, the version (V0.1.0), Your Application Name, and Your Name. Although you can change this content here in the <code>index.htm</code> file, they will ultimately be displayed in your app with what was written in the <code>package.json</code>.</span>
   <span class="filter-nov">The rest of the content in this section of code should be updated by you to reflect your application. You'll need to give a detailed explanation of what your app does or is used for and you should put in the version number for the command line program you're using and credit it's creators as well.</span>
-  <span class="filter-int">The link </span>
+  <span class="filter-int">The link shown in the commented out example has a class of <code>external-link</code>, which means it will launch in the user's default browser rather than in NW.js.</span>
 </p>
 
 <h3>Changing from Development to Production mode</h3>
 
 <p>
-  <span class="filter-"></span>
+  <span class="filter-">????</span>
 </p>
 
 <h3>Distribution</h3>
 
 <p>
-  <span class="filter-"></span>
+  <span class="filter-">????</span>
 </p>
 
 <h4>Single Folder Transfer Method</h4>
 
 <p>
-  <span class="filter-"></span>
+  <span class="filter-">????</span>
 </p>
 
 <h4>Packaging as Your_App.nw</h4>
 
 <p>
-  <span class="filter-"></span>
+  <span class="filter-">????</span>
 </p>
 
 <h4>Package your app with NW.js</h4>
 
 <p>
-  <span class="filter-"></span>
+  <span class="filter-">????</span>
 </p>
 
 <hr />
+
+</div> <!--/wrapper -->
