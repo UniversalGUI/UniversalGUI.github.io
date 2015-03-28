@@ -2,6 +2,10 @@
   body { font-family: sans-serif; }
   #wrapper { margin: 0 auto; max-width: 1400px; }
   .hide { display: none; }
+  .note {
+    font-size: 0.71em;
+    font-style: italic;
+    color: #666; }
   code {
     background: #CCC;
     border: 1px solid #888;
@@ -15,6 +19,9 @@
     border: 1px solid #CCC;
     border-radius: 3px;
     padding: 0px 2px; }
+  ul li { margin-top: 20px; }
+  ul li ul li { margin-top: 3px; }
+  .footerpadding { height: 200px; }
   .filter-img {
     box-shadow: 0px 0px 9px rgba(0,0,0,0.3);
     border: 1px solid rgba(0,0,0,0.15); }
@@ -207,3 +214,54 @@
 <hr />
 
 </div> <!--/wrapper -->
+
+<h2>Code stuff</h2>
+<ul>
+  <li><strong>#argsForm</strong> <span class="note">HTML form ID</span>
+    <ul>
+      <li><pre class="filter-exm filter-int">&lt;form id="argsForm" role="form-inline"&gt;</pre></li>
+      <li class="filter-int"> This ID is used to identify the main form in which all your form elements will be processed.</li>
+      <li class="filter-adv">Since this element is defined by its ID, you can only have one on a page. If your app has multiple sections or modes for interacting with your command line program, then be sure to remove the current <code>#argsForm</code> node from the DOM before swapping in another instance with different form elements.</span></li>
+    </ul>
+  </li>
+  <li><strong>data&#8209;argOrder</strong> <span class="note">Positive whole numbers</span>
+    <ul>
+      <li><pre class="filter-exm filter-int">&lt;input type="checkbox" data-argOrder="1" value="-help" /&gt;
+&lt;input type="checkbox" data-argOrder="2" value="-about" /&gt;</pre></li>
+      <li class="filter-int"><strong>Important:</strong> Every form element whose value you want processed and sent to the command line must both be in the <code>#argsForm</code> and have a <code>data&#8209;argOrder</code>.</li>
+      <li class="filter-nov">The <code>data&#8209;argOrder</code> is mandatory because it is what decides the order in which all your commands will be sent to the command line.</li>
+      <li class="filter-nov">This means that you can design your application knowing that you don't need to put the form elements in the same order that the command line expects them. You can put them in the order that makes the most sense for using your application and then the <code>data&#8209;argOrder</code> sorts them later.</li>
+      <li class="filter-nov">Since this attribute is used to sort the arguments that get sent to the command line you can't have two elements with the same argOrder. If you do, a warning will appear in your app and in the console to warn you, but only when you are in Developer Mode (have <code>dev</code> as a class in the <code>&lt;body&gt;</code>).</li>
+      <li class="filter-nov">The numbers you pick for your argOrders do <strong>not</strong> need to be sequential. They can be in any order, and any value above 0, with missing numbers between them. Just don't have duplicates, negative numbers, non-numbers, numbers with decimal points, or the number zero.</li>
+      <li class="filter-nov">In the above example we see two argOrders, 1 and 2. The sequence for that would be 1, 2. Here are two examples of longer sequences:
+        <ul>
+          <li class="filter-nov">Good sequence: 30, 1, 2, 3, 15, 18, 7, 99, 8</li>
+          <li class="filter-nov">Bad sequence: -18, 0, 3, false, 3, ?, 0.8, cow</li>
+          <li class="filter-nov">You'll never need to write out a sequence like this. This is just am example to simplify what values are and aren't allowed. Although 3 is allowed in the Good example, it's shown in the Bad example because it is duplicated.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>data&#8209;argPrefix</strong> or <strong>data&#8209;argSuffix</strong> <span class="note">String, no quotes</span>
+    <ul>
+      <li><pre class="filter-exm filter-int">&lt;input type="text"   data-argOrder="1" data-argPrefix="-firstname " /&gt;                  &lt;!-- -firstname Kevin --&gt;
+&lt;input type="number" data-argOrder="2" data-argSuffix="px" /&gt;                           &lt;!-- 18px             --&gt;
+&lt;input type="number" data-argOrder="3" data-argPrefix="/speed " data-argSuffix="mph" /&gt; &lt;!-- /speed 60mph     --&gt;</pre></li>
+      <li class="filter-nov">The <code>data&#8209;argPrefix</code> and <code>data&#8209;argSuffix</code> allow you to prepend and append strings of text to the values of form elements. This can be very useful as some form elements, like textareas for example, don't all you to set the value, the user gets to. If your command line application is expecting an argument in a specific format, where it begins or ends with specific characters you can control that easily while still giving your end users control over the value of the content.</li>
+      <li class="filter-nov">As shown in the example above, you can have both a prefix and a suffix on the same element.</li>
+      <li class="filter-nov"><strong>Do not</strong> put single or double quotes in either the <code>data&#8209;argPrefix</code> or the <code>data&#8209;argSuffix</code>. A warning will appear in your app and in the console while in Developer Mode (have <code>dev</code> as a class in the <code>&lt;body&gt;</code>). If you need to wrap your value in quotes, use <code>data&#8209;argWrapQuotes</code>.</li>
+    </ul>
+  </li>
+  <li><strong>data&#8209;argWrapQuotes</strong> <span class="note">Boolean</span>
+    <ul>
+      <li><pre class="filter-exm filter-int">&lt;textarea data-argOrder="6" data-argPrefix="-m " data-argWrapQuotes="true"&gt;&lt;/textarea&gt;  &lt;!-- -m "Some text." --&gt;
+&lt;textarea data-argOrder="7" data-argPrefix="-m " data-argWrapQuotes="false"&gt;&lt;/textarea&gt; &lt;!-- -m Some text.   --&gt;
+&lt;input type="text" data-argOrder="8" data-argPrefix="/speed " data-argSuffix="mph" data-argWrapQuotes="true" /&gt;  &lt;!-- /speed "60"mph --&gt;
+&lt;input type="text" data-argOrder="9" data-argPrefix="/speed " data-argSuffix="mph" data-argWrapQuotes="false" /&gt; &lt;!-- /speed 60mph   --&gt;</pre></li>
+      <li class="filter-nov">Sometimes you need to allow your users to enter some text that should be wrapped in quotes when sent to the command line. In those instances just add <code>data&#8209;argWrapQuotes</code> to the element and set it to true.</li>
+      <li class="filter-nov"><strong>Important!</strong> All textarea elements and input boxes with a type of text are set to true by default, even if there is no <code>data&#8209;argWrapQuotes</code> at all on that element. If you explicitly want to make sure your <code>&lt;input type="text" /&gt;</code> or your <code>&lt;textarea&gt;</code> don't get wrapped in quotes, make sure to add in <code>data&#8209;argWrapQuotes="false"</code></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="footerpadding"></div>
