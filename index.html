@@ -1,171 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />     <!-- Must be first item in <head> -->
-    <title>UGUI: A Universal GUI for CLI Applications</title>
-    <meta charset="UTF-8"                                                                                   />
-    <meta name="description"                     content="UGUI gives a face to the command line, and that face is HTML, CSS, and JavaScript" />
-    <meta name="keywords"                        content="UGUI, Universal GUI, Universal Graphical User Interface, Command Line Interface, CLI, terminal, command prompt, dos prompt, node-webkit, nwjs, desktop application, web technology, easy, fast, development, dev tools, cross-platform" />
-    <meta http-equiv="Expires"                   content="0"                                                />
-    <meta name="viewport"                        content="width=device-width, initial-scale=1.0"            />
-    <meta name="subject"                         content="Software Development"                             />
-    <meta name="copyright"                       content="Jared Wilcurt"                                    />
-    <meta name="language"                        content="EN"                                               />
-    <meta name="robots"                          content="index,follow"                                     />
-    <meta name="rating"                          content="General"                                          />
-    <meta name="google-site-verification"        content="x"                                                />
-    <meta name="HandheldFriendly"                content="True"                                             />
-    <meta http-equiv="cleartype"                 content="on"                                               />
-    <meta name="application-name"                content="UGUI"                                             />
-    <meta name="msapplication-navbutton-color"   content="#FFFFFF"                                          />
-    <meta name="msapplication-TileColor"         content="#FFFFFF"                                          />
-    <meta name="msapplication-square70x70logo"   content="_img/meta/mstile01sm.png"                         />
-    <meta name="msapplication-square150x150logo" content="_img/meta/mstile02md.png"                         />
-    <meta name="msapplication-wide310x150logo"   content="_img/meta/mstile03wd.png"                         />
-    <meta name="msapplication-square310x310logo" content="_img/meta/mstile04lg.png"                         />
-    <meta name="apple-mobile-web-app-title"      content="UGUI"                                             />
-    <meta name="apple-mobile-web-app-capable"    content="no"     /> <!-- "yes" hides Safari navbar in iOS -->
-    <meta name="apple-touch-fullscreen"          content="no"                                               />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black"                                      />
-    <link rel="apple-touch-icon"             href="_img/meta/apl-57.png"  type="image/png" sizes="57x57"    />
-    <link rel="apple-touch-icon-precomposed" href="_img/meta/apl-57.png"  type="image/png" sizes="57x57"    />
-    <link rel="apple-touch-icon"             href="_img/meta/apl-72.png"  type="image/png" sizes="72x72"    />
-    <link rel="apple-touch-icon-precomposed" href="_img/meta/apl-72.png"  type="image/png" sizes="72x72"    />
-    <link rel="apple-touch-icon"             href="_img/meta/apl-114.png" type="image/png" sizes="114x114"  />
-    <link rel="apple-touch-icon-precomposed" href="_img/meta/apl-114.png" type="image/png" sizes="114x114"  />
-    <link rel="apple-touch-icon"             href="_img/meta/apl-144.png" type="image/png" sizes="144x144"  />
-    <link rel="apple-touch-icon-precomposed" href="_img/meta/apl-144.png" type="image/png" sizes="144x144"  />
-    <link rel="apple-touch-startup-image"    href="_img/meta/apl-str.png" type="image/png"                  />
-    <link rel="fluid-icon"                   href="_img/meta/fluid.png"   type="image/png"                  />
-    <link rel="icon"                         href="favicon.ico"           type="image/x-icon"               />
-    <link rel="shortcut icon"                href="favicon.ico"           type="image/ico"                  />
-    <link rel="stylesheet"                   href="_style/style.css"      type="text/css"                   />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-      <style>#ieWarning{display:block!important;}</style>
-    <![endif]-->
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />     <!-- Must be first item in <head> -->
+  <title>UGUI: A Universal GUI for CLI Applications</title>
+  <meta charset="UTF-8"                                                                                   />
+  <meta name="description"                     content="UGUI gives a face to the command line, and that face is HTML, CSS, and JavaScript" />
+  <meta name="keywords"                        content="UGUI, Universal GUI, Universal Graphical User Interface, Command Line Interface, CLI, terminal, command prompt, dos prompt, node-webkit, nwjs, desktop application, web technology, easy, fast, development, dev tools, cross-platform" />
+  <meta http-equiv="Expires"                   content="0"                                                />
+  <meta name="viewport"                        content="width=device-width, initial-scale=1.0"            />
+  <meta name="subject"                         content="Software Development"                             />
+  <meta name="copyright"                       content="Jared Wilcurt"                                    />
+  <meta name="language"                        content="EN"                                               />
+  <meta name="robots"                          content="index,follow"                                     />
+  <meta name="rating"                          content="General"                                          />
+  <meta name="google-site-verification"        content="x"                                                />
+  <meta name="HandheldFriendly"                content="True"                                             />
+  <meta http-equiv="cleartype"                 content="on"                                               />
+  <meta name="application-name"                content="UGUI"                                             />
+  <meta name="msapplication-navbutton-color"   content="#FFFFFF"                                          />
+  <meta name="msapplication-TileColor"         content="#FFFFFF"                                          />
+  <meta name="msapplication-square70x70logo"   content="_img/meta/mstile01sm.png"                         />
+  <meta name="msapplication-square150x150logo" content="_img/meta/mstile02md.png"                         />
+  <meta name="msapplication-wide310x150logo"   content="_img/meta/mstile03wd.png"                         />
+  <meta name="msapplication-square310x310logo" content="_img/meta/mstile04lg.png"                         />
+  <meta name="apple-mobile-web-app-title"      content="UGUI"                                             />
+  <meta name="apple-mobile-web-app-capable"    content="no"     /> <!-- "yes" hides Safari navbar in iOS -->
+  <meta name="apple-touch-fullscreen"          content="no"                                               />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"                                      />
+  <link rel="apple-touch-icon"             href="_img/meta/apl-57.png"  type="image/png" sizes="57x57"    />
+  <link rel="apple-touch-icon-precomposed" href="_img/meta/apl-57.png"  type="image/png" sizes="57x57"    />
+  <link rel="apple-touch-icon"             href="_img/meta/apl-72.png"  type="image/png" sizes="72x72"    />
+  <link rel="apple-touch-icon-precomposed" href="_img/meta/apl-72.png"  type="image/png" sizes="72x72"    />
+  <link rel="apple-touch-icon"             href="_img/meta/apl-114.png" type="image/png" sizes="114x114"  />
+  <link rel="apple-touch-icon-precomposed" href="_img/meta/apl-114.png" type="image/png" sizes="114x114"  />
+  <link rel="apple-touch-icon"             href="_img/meta/apl-144.png" type="image/png" sizes="144x144"  />
+  <link rel="apple-touch-icon-precomposed" href="_img/meta/apl-144.png" type="image/png" sizes="144x144"  />
+  <link rel="apple-touch-startup-image"    href="_img/meta/apl-str.png" type="image/png"                  />
+  <link rel="fluid-icon"                   href="_img/meta/fluid.png"   type="image/png"                  />
+  <link rel="icon"                         href="favicon.ico"           type="image/x-icon"               />
+  <link rel="shortcut icon"                href="favicon.ico"           type="image/ico"                  />
+  <link rel="stylesheet"                   href="_style/style.css"      type="text/css"                   />
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <style>#ieWarning{display:block!important;}</style>
+  <![endif]-->
 
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
-    <script>window.jQuery || document.write('<script src="_scripts/jquery-2.1.3.min.js"><\/script>')</script>
-  </head>
-  <body>
-    <header>
-       <nav class="navbar navbar-default navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">UGUI Logo</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#Templates">Templates</a></li>
-                <li><a href="#Documentation">Documentation</a></li>
-                <li><a href="#Tutorials">Tutorials</a></li>
-                <li><a href="#Showcase">Showcase</a></li>
-                <li><a href="#About">About</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li>
-                  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-warning">Get UGUI</a>
-                </li>
-                <li><a href="#githubFork">Fork on Github</a></li>
-              </ul>
-            </div><!--/.nav-collapse -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
+  <script>window.jQuery || document.write('<script src="_scripts/jquery-2.1.3.min.js"><\/script>')</script>
+</head>
+<body>
+  <header>
+     <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="_img/meta/apl-57.png" alt="UGUI Logo" title="Universal GUI" /></a>
           </div>
-      </nav>
-    </header>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#Templates">Templates</a></li>
+              <li><a href="#Documentation">Documentation</a></li>
+              <li><a href="#Tutorials">Tutorials</a></li>
+              <li><a href="#Showcase">Showcase</a></li>
+              <li><a href="#About">About</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="#" class="btn btn-warning">Get UGUI</a>
+              </li>
+              <li><a href="#githubFork">Fork on Github</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+  </header>
 
-
-<div class="container">
-
-  <div id="content">
-
+  <div class="container">
+    <div id="content">
       <section id="feature">
-
-      <div class="row">
-        <div class="container col-lg-6 col-md-6 col-sm-9">
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/h2uOwtQbEHQ" frameborder="0" allowfullscreen></iframe>
+        <div class="row">
+          <div class="container col-lg-6 col-md-6 col-sm-9">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/h2uOwtQbEHQ" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="container col-lg-6 col-md-6 col-sm-3">
+            <h1>UGUI</h1>
+            <h3 id="subheading">The Universal Graphical User Interface</h3>
+            <p class="text-muted">Give a face to the command line using HTML, CSS, & JavaScript</p>
+            <a class="btn btn-warning text-center">Download</a>
           </div>
         </div>
-
-        <div class="container col-lg-6 col-md-6 col-sm-3">
-          <h1>UGUI</h1>
-          <h3 id="subheading">The Universal Graphical User Interface</h3>
-          <p class="text-muted">Give a face to the command line using HTML, CSS, & JavaScript</p>
-          <a class="btn btn-warning text-center">Download</a>
-        </div>
-      </div>
       </section>
 
-<!-- ---------------------------- icons ------------------------------- -->
-      <div class="row">
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-          <a href="#">
-            <img src="_img/icon_Fast.svg" alt="Fast">
-          </a>
+      <div id="threeIcons" class="row text-center/">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <img src="_img/icon_Fast.svg" alt="Fast" />
+          <h3>Fast</h3>
         </div>
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-          <a href="#">
-            <img src="_img/icon_Free.svg" alt="Free">
-          </a>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <img src="_img/icon_Free.svg" alt="Free" />
+          <h3>Free &amp; Open Source</h3>
         </div>
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-          <a href="#">
-            <img src="_img/icon_OpenSource.svg" alt="Open Source">
-          </a>
-        </div>
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-          <a href="#">
-            <img src="_img/icon-CrossPlatform.svg" alt="Cross Platform">
-          </a>
-        </div>
-      </div>
-<!-- ------------------------ End of Icons --------------------------- -->
-
-      <hr />
-
-      <section id="threeIcons">
-        <div>
-          <img>
-          <h3>Free</h3>
-        </div>
-        <div>
-          <img>
-          <h3>Open Source</h3>
-        </div>
-        <div>
-          <img>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <img src="_img/icon-CrossPlatform.svg" alt="Cross Platform" />
           <h3>Cross-Platform</h3>
         </div>
-      </section>
+      </div> <!-- end threeIcons -->
 
       <hr />
 
       <section id="screenshots">
         <ul class="nav nav-tabs">
-          <li role="presentation" class="active"><a href="#"><img src="_img/win.svg" alt=""></a></li>
-          <li role="presentation" class=""><a href="#"><img src="_img/mac.svg" alt=""></a></li>
-          <li role="presentation" class=""><a href="#"><img src="_img/lin.svg" alt=""></a></li>
+          <li role="presentation" class="active"><a href="#"><img src="_img/win.svg" alt="Windows Logo"></a></li>
+          <li role="presentation"               ><a href="#"><img src="_img/mac.svg" alt="Apple Logo"></a></li>
+          <li role="presentation"               ><a href="#"><img src="_img/lin.svg" alt="Ubuntu Logo"></a></li>
         </ul>
 
         <div>
-          <img>
-          <img>
-          <img>
-          <img>
-          <img>
-          <img>
+          <img src="" alt="" />
+          <img src="" alt="" />
+          <img src="" alt="" />
+          <img src="" alt="" />
+          <img src="" alt="" />
+          <img src="" alt="" />
         </div>
       </section>
-
-  </div>
+    </div> <!-- end content -->
 
     <footer>
       <div class="container">
@@ -180,9 +147,9 @@
       </div>
     </footer>
 
-</div>
+  </div> <!-- end container -->
 
-    <script src="_scripts/main.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  </body>
+  <script src="_scripts/main.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</body>
 </html>
