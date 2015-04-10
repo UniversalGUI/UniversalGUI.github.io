@@ -8,6 +8,21 @@ header
         a
             text-decoration: none
 
+.navbar-default
+    background-color: rgba(248, 248, 248, 0.55)
+    border-color: rgba(231, 231, 231, 0.38)
+    .navbar-nav>.active>a,
+    .navbar-nav>.active>a:focus,
+    .navbar-nav>.active>a:hover
+        background-color: rgba(231, 231, 231, 0.59)
+        color: lighten(saturate($citrus, 15), 30)
+        font-weight: bold
+    .navbar-nav>li>a
+        color: $plum
+    .navbar-nav>li>a:focus,
+    .navbar-nav>li>a:hover
+        color: lighten(desaturate($plum, 7), 53)
+
 .navbar-brand
     padding-top: 3px
     padding-right: 22px

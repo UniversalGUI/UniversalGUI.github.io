@@ -6,23 +6,40 @@
 *:after
     box-sizing: border-box
 
+::-webkit-scrollbar
+    width: 14px
+
+::-webkit-scrollbar-button
+    background: #ED8C2B
+    height: 18px
+
+::-webkit-scrollbar-track-piece:vertical
+    background-color: #2B2728
+
+::-webkit-scrollbar-thumb:vertical
+    background: #911146
+
 html,
 body
     +bmp0
     width: 100%
     height: 100%
 
-body
+html
     background-attachment: fixed
     background: -webkit-radial-gradient(center top, farthest-side, #ED8C2B, #911146 40%, #2B2728 95%, #2B2728), #2B2728
     background: -moz-radial-gradient(center top, farthest-side, #ED8C2B, #911146 40%, #2B2728 95%, #2B2728), #2B2728
     background: -ms-radial-gradient(center top, farthest-side, #ED8C2B, #911146 40%, #2B2728 95%, #2B2728), #2B2728
     background: -o-radial-gradient(center top, farthest-side, #ED8C2B, #911146 40%, #2B2728 95%, #2B2728), #2B2728
     background: radial-gradient(center top, farthest-side, #ED8C2B, #911146 40%, #2B2728 95%, #2B2728), #2B2728
-    position: relative
     background-size: 1000px 400px
     background-position: center -65px
     background-repeat: no-repeat
+
+body
+    background-color: transparent
+    background-image: url('../_img/stars.png')
+    position: relative
     font-family: sans-serif
     overflow: auto
     color: #A6A5BA
