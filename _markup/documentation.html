@@ -152,7 +152,7 @@
 <h3>About your program</h3>
 
 <p>
-  <span class="filter-nov">In the <code>index.htm</code> towards the bottom is a section of HTML for the about modal. The about modal can be viewed when you run the UGUI app by clicking Help > About in the top navigation.</span>
+  <span class="filter-nov">In the <code>index.htm</code> towards the bottom is a section of HTML for the about modal. The about modal can be viewed when you run the UGUI app by clicking <kbd>Help &gt; About</kbd> in the top navigation.</span>
   <span class="text-center">
     <img src="../_img/docs/about-help.png" alt="Screenshot of the UGUI navigation bar highlighting the Help submenu where About is located." class="filter-img filter-nov" />
   </span>
@@ -280,6 +280,25 @@
   </li>
 </ul>
 
+
+<hr />
+
+<h2>Known Issues</h2>
+
+<ul>
+  <li>UGUI does not currently support contentEditable. This is not very common so it isn't a high priority currently. If you'd like to fork the project to add in support for this, your pull request will be reviewed and likely accepted if it functions properly.</li>
+  <li>We believe that UGUI should enable you to work quickly, but not limit what you can do. One of the current limitations is in the way we hand quotes surrounding values. We do not allow quotes in <code>data-argPrefix</code> or <code>data-argSuffix</code>. <code>data-argWrapQuotes</code> will will wrap the value in double quotes (prefix "value" suffix). It doesn't allow you to wrap the prefix and the value together ("prefix value" suffix). It doesn't allow you to wrap the value and suffix together either (prefix "value suffix"). And it doesn't let you choose if the type of quotes sent to the command line are single or double quotes. We've yet to find a use case for some of these, so it's very low on the priorites list. Below is an example of our desired future options. If you can cite an example where these would be required <a href="https://github.com/UniversalGUI/UniversalGUI.github.io/issues">let us know</a>.
+    <ul>
+      <li><code>data-argWrapQuotes="false"</code> (prefix value suffix) <small>currently functional</small></li>
+      <li><code>data-argWrapQuotes="true"</code> (prefix "value" suffix) <small>currently functional</small></li>
+      <li><code>data-argWrapQuotes="single"</code> (prefix 'value' suffix)</li>
+      <li><code>data-argWrapQuotes="double"</code> (prefix "value" suffix)</li>
+      <li><code>data-argWrapQuotes="inlcudeprefix"</code> ("prefix value" suffix)</li>
+      <li><code>data-argWrapQuotes="includesuffix"</code> (prefix "value suffix")</li>
+    </ul>
+  </li>
+  <li></li>
+</ul>
 
 <hr />
 
