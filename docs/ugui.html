@@ -1645,9 +1645,7 @@ object, located here: <code>window.ugui.args</code></p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>    <span class="hljs-built_in">window</span>.ugui.args = {};
-
-    <span class="hljs-keyword">var</span> cmdArgs = $(<span class="hljs-string">"*[data-argName]"</span>);</pre></div>
+              <div class='highlight'><pre>    <span class="hljs-built_in">window</span>.ugui.args = {};</pre></div>
             </td>
           </tr>
         
@@ -1657,11 +1655,11 @@ object, located here: <code>window.ugui.args</code></p>
               <div class="pilwrap">
                 <a class="pilcrow" href="#section-99">&#182;</a>
               </div>
-              <p>Cycle through all elements with a data-argName in <form id="currentexecutable"></p>
+              <p>Make an array containing every element on the page with an attribute of <code>data-argName</code></p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>    <span class="hljs-keyword">for</span> (index = <span class="hljs-number">0</span>; index &lt; cmdArgs.length; index++) {</pre></div>
+              <div class='highlight'><pre>    <span class="hljs-keyword">var</span> cmdArgs = $(<span class="hljs-string">"*[data-argName]"</span>);</pre></div>
             </td>
           </tr>
         
@@ -1670,6 +1668,20 @@ object, located here: <code>window.ugui.args</code></p>
             <td class="docs">
               <div class="pilwrap">
                 <a class="pilcrow" href="#section-100">&#182;</a>
+              </div>
+              <p>Cycle through all elements with a <code>data-argName</code> in <code>&lt;form id=&quot;currentexecutable&quot;&gt;</code></p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>    <span class="hljs-keyword">for</span> (index = <span class="hljs-number">0</span>; index &lt; cmdArgs.length; index++) {</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-101">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-101">&#182;</a>
               </div>
               <p>get “bob” from <code>&lt;input data-argName=&quot;bob&quot; value=&quot;--kitten&quot; /&gt;</code></p>
 
@@ -1683,10 +1695,10 @@ object, located here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-101">
+          <tr id="section-102">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-101">&#182;</a>
+                <a class="pilcrow" href="#section-102">&#182;</a>
               </div>
               <p>See if the current item is a range slider</p>
 
@@ -1697,12 +1709,12 @@ object, located here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-102">
+          <tr id="section-103">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-102">&#182;</a>
+                <a class="pilcrow" href="#section-103">&#182;</a>
               </div>
-              <p>get “6” from <code>&lt;input data-argname=&quot;bob&quot; value=&quot;6&quot; type=&quot;text&quot; class=&quot;slider&quot; /&gt;</code></p>
+              <p>get “6” from <code>&lt;input data-argName=&quot;bob&quot; value=&quot;6&quot; type=&quot;text&quot; class=&quot;slider&quot; /&gt;</code></p>
 
             </td>
             <td class="code">
@@ -1711,25 +1723,67 @@ object, located here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-103">
+          <tr id="section-104">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-103">&#182;</a>
+                <a class="pilcrow" href="#section-104">&#182;</a>
               </div>
-              <p>get checkbox from <code>&lt;input data-argName=&quot;bob&quot; type=&quot;checkbox&quot; /&gt;</code></p>
+              <p>manually set the type to “range” for range slider elements</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>            argType = <span class="hljs-string">"range"</span>;
+              <div class='highlight'><pre>            argType = <span class="hljs-string">"range"</span>;</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-105">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-105">&#182;</a>
+              </div>
+              <p>See if the element is an item in one of Bootstrap’s fake dropdowns</p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( $(cmdArgs[index]).parent().parent().hasClass(<span class="hljs-string">"dropdown-menu"</span>) ) {</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-106">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-106">&#182;</a>
+              </div>
+              <p>get “–carrot” from <code>&lt;input type=&quot;radio&quot; data-argName=&quot;vegCarrot&quot; value=&quot;--carrot&quot; /&gt;</code></p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>            argValue = $(cmdArgs[index]).val();</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-107">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-107">&#182;</a>
+              </div>
+              <p>manually set the type to “range” for range slider elements</p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>            argType = <span class="hljs-string">"dropdown"</span>;
         } <span class="hljs-keyword">else</span> {</pre></div>
             </td>
           </tr>
         
           
-          <tr id="section-104">
+          <tr id="section-108">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-104">&#182;</a>
+                <a class="pilcrow" href="#section-108">&#182;</a>
               </div>
               <p>get “–kitten” from <code>&lt;input data-argName=&quot;bob&quot; value=&quot;--kitten&quot; /&gt;</code></p>
 
@@ -1740,10 +1794,10 @@ object, located here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-105">
+          <tr id="section-109">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-105">&#182;</a>
+                <a class="pilcrow" href="#section-109">&#182;</a>
               </div>
               <p>get checkbox from <code>&lt;input data-argName=&quot;bob&quot; type=&quot;checkbox&quot; /&gt;</code></p>
 
@@ -1755,10 +1809,10 @@ object, located here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-106">
+          <tr id="section-110">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-106">&#182;</a>
+                <a class="pilcrow" href="#section-110">&#182;</a>
               </div>
               <p>get input from <code>&lt;input data-argName=&quot;bob&quot; type=&quot;checkbox&quot; /&gt;</code></p>
 
@@ -1769,10 +1823,10 @@ object, located here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-107">
+          <tr id="section-111">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-107">&#182;</a>
+                <a class="pilcrow" href="#section-111">&#182;</a>
               </div>
               <p>Basic info put on every object</p>
 
@@ -1787,10 +1841,10 @@ object, located here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-108">
+          <tr id="section-112">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-108">&#182;</a>
+                <a class="pilcrow" href="#section-112">&#182;</a>
               </div>
               <p>Special info just for <code>&lt;input type=&quot;file&quot;&gt;</code></p>
 
@@ -1805,10 +1859,10 @@ object, located here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-109">
+          <tr id="section-113">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-109">&#182;</a>
+                <a class="pilcrow" href="#section-113">&#182;</a>
               </div>
               <p>Special info just for <code>&lt;input type=&quot;color&quot;&gt;</code></p>
 
@@ -1823,16 +1877,16 @@ object, located here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-110">
+          <tr id="section-114">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-110">&#182;</a>
+                <a class="pilcrow" href="#section-114">&#182;</a>
               </div>
               <p>For checkboxes and radio dials, add special info</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>        <span class="hljs-keyword">if</span> (argType === <span class="hljs-string">"checkbox"</span> || argType === <span class="hljs-string">"radio"</span>) {
+              <div class='highlight'><pre>        <span class="hljs-keyword">if</span> (argType === <span class="hljs-string">"checkbox"</span> || argType === <span class="hljs-string">"radio"</span> || argType === <span class="hljs-string">"dropdown"</span>) {
             <span class="hljs-keyword">if</span> ( $(cmdArgs[index]).prop(<span class="hljs-string">"checked"</span>) ) {
                 <span class="hljs-built_in">window</span>.ugui.args[argName].htmlticked = <span class="hljs-literal">true</span>;
             } <span class="hljs-keyword">else</span> {
@@ -1855,10 +1909,10 @@ object, located here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-111">
+          <tr id="section-115">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-111">&#182;</a>
+                <a class="pilcrow" href="#section-115">&#182;</a>
               </div>
               <p>Run once on page load</p>
 
@@ -1869,10 +1923,10 @@ object, located here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-112">
+          <tr id="section-116">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-112">&#182;</a>
+                <a class="pilcrow" href="#section-116">&#182;</a>
               </div>
               <hr>
 <h3 id="u11-find-key-value">U11. Find Key Value</h3>
@@ -1901,10 +1955,10 @@ how <code>findKeyValue()</code> works to return data from it:</p>
           </tr>
         
           
-          <tr id="section-113">
+          <tr id="section-117">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-113">&#182;</a>
+                <a class="pilcrow" href="#section-117">&#182;</a>
               </div>
               
             </td>
@@ -1914,10 +1968,10 @@ how <code>findKeyValue()</code> works to return data from it:</p>
           </tr>
         
           
-          <tr id="section-114">
+          <tr id="section-118">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-114">&#182;</a>
+                <a class="pilcrow" href="#section-118">&#182;</a>
               </div>
               <p>Validate that both required arguments are passed</p>
 
@@ -1931,10 +1985,10 @@ how <code>findKeyValue()</code> works to return data from it:</p>
           </tr>
         
           
-          <tr id="section-115">
+          <tr id="section-119">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-115">&#182;</a>
+                <a class="pilcrow" href="#section-119">&#182;</a>
               </div>
               <p>Validate types</p>
 
@@ -1951,10 +2005,10 @@ how <code>findKeyValue()</code> works to return data from it:</p>
           </tr>
         
           
-          <tr id="section-116">
+          <tr id="section-120">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-116">&#182;</a>
+                <a class="pilcrow" href="#section-120">&#182;</a>
               </div>
               <p>Validate that all items of the array are strings</p>
 
@@ -1975,10 +2029,10 @@ how <code>findKeyValue()</code> works to return data from it:</p>
           </tr>
         
           
-          <tr id="section-117">
+          <tr id="section-121">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-117">&#182;</a>
+                <a class="pilcrow" href="#section-121">&#182;</a>
               </div>
               <p>For stuff like ((moo)), assume the user means ((moo.value))</p>
 
@@ -1994,10 +2048,10 @@ how <code>findKeyValue()</code> works to return data from it:</p>
           </tr>
         
           
-          <tr id="section-118">
+          <tr id="section-122">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-118">&#182;</a>
+                <a class="pilcrow" href="#section-122">&#182;</a>
               </div>
               <hr>
 <h3 id="u12-parse-argument">U12. Parse Argument</h3>
@@ -2014,10 +2068,10 @@ the UGUI Args Object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-119">
+          <tr id="section-123">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-119">&#182;</a>
+                <a class="pilcrow" href="#section-123">&#182;</a>
               </div>
               
             </td>
@@ -2027,10 +2081,10 @@ the UGUI Args Object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-120">
+          <tr id="section-124">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-120">&#182;</a>
+                <a class="pilcrow" href="#section-124">&#182;</a>
               </div>
               <p>Validate that required argument is passed</p>
 
@@ -2044,10 +2098,10 @@ the UGUI Args Object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-121">
+          <tr id="section-125">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-121">&#182;</a>
+                <a class="pilcrow" href="#section-125">&#182;</a>
               </div>
               <p>Validate types</p>
 
@@ -2061,10 +2115,10 @@ the UGUI Args Object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-122">
+          <tr id="section-126">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-122">&#182;</a>
+                <a class="pilcrow" href="#section-126">&#182;</a>
               </div>
               <p><code>argumentText = &quot;and ((meow)), with ((oink)) too. &quot;</code></p>
 
@@ -2075,10 +2129,10 @@ the UGUI Args Object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-123">
+          <tr id="section-127">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-123">&#182;</a>
+                <a class="pilcrow" href="#section-127">&#182;</a>
               </div>
               <p>Keep rerunning this until all ((keywords)) in argumentText are replaced with their actual values</p>
 
@@ -2089,10 +2143,10 @@ the UGUI Args Object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-124">
+          <tr id="section-128">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-124">&#182;</a>
+                <a class="pilcrow" href="#section-128">&#182;</a>
               </div>
               <p><code>match = [&quot;((meow))&quot;,&quot;meow&quot;]</code></p>
 
@@ -2106,10 +2160,10 @@ the UGUI Args Object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-125">
+          <tr id="section-129">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-125">&#182;</a>
+                <a class="pilcrow" href="#section-129">&#182;</a>
               </div>
               <p><code>matched = uguiArgObj.meow</code></p>
 
@@ -2128,10 +2182,10 @@ the UGUI Args Object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-126">
+          <tr id="section-130">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-126">&#182;</a>
+                <a class="pilcrow" href="#section-130">&#182;</a>
               </div>
               <p>Skip all unchecked checkboxes and unchecked radio dials.
 Skip everything without a value</p>
@@ -2148,10 +2202,10 @@ Skip everything without a value</p>
           </tr>
         
           
-          <tr id="section-127">
+          <tr id="section-131">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-127">&#182;</a>
+                <a class="pilcrow" href="#section-131">&#182;</a>
               </div>
               <p>Replace the “–quality ((meow))” with “”</p>
 
@@ -2163,10 +2217,10 @@ Skip everything without a value</p>
           </tr>
         
           
-          <tr id="section-128">
+          <tr id="section-132">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-128">&#182;</a>
+                <a class="pilcrow" href="#section-132">&#182;</a>
               </div>
               <p>Run all the non-checkbox/radio/file elements,
 all checked checkboxes and checked radio dials</p>
@@ -2182,10 +2236,10 @@ all checked checkboxes and checked radio dials</p>
           </tr>
         
           
-          <tr id="section-129">
+          <tr id="section-133">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-129">&#182;</a>
+                <a class="pilcrow" href="#section-133">&#182;</a>
               </div>
               <p>Find the correct value from the UGUI Args Object</p>
 
@@ -2196,10 +2250,10 @@ all checked checkboxes and checked radio dials</p>
           </tr>
         
           
-          <tr id="section-130">
+          <tr id="section-134">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-130">&#182;</a>
+                <a class="pilcrow" href="#section-134">&#182;</a>
               </div>
               <p>Replace the “–quality ((meow))” with “–quality 9”</p>
 
@@ -2210,10 +2264,10 @@ all checked checkboxes and checked radio dials</p>
           </tr>
         
           
-          <tr id="section-131">
+          <tr id="section-135">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-131">&#182;</a>
+                <a class="pilcrow" href="#section-135">&#182;</a>
               </div>
               <p>And whatever’s left</p>
 
@@ -2224,10 +2278,10 @@ all checked checkboxes and checked radio dials</p>
           </tr>
         
           
-          <tr id="section-132">
+          <tr id="section-136">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-132">&#182;</a>
+                <a class="pilcrow" href="#section-136">&#182;</a>
               </div>
               <p>Replace the “–quality ((meow))” with “”</p>
 
@@ -2246,10 +2300,10 @@ all checked checkboxes and checked radio dials</p>
           </tr>
         
           
-          <tr id="section-133">
+          <tr id="section-137">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-133">&#182;</a>
+                <a class="pilcrow" href="#section-137">&#182;</a>
               </div>
               <hr>
 <h3 id="u13-process-all-cmd-definitions">U13. Process All CMD Definitions</h3>
@@ -2266,10 +2320,10 @@ object.</p>
           </tr>
         
           
-          <tr id="section-134">
+          <tr id="section-138">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-134">&#182;</a>
+                <a class="pilcrow" href="#section-138">&#182;</a>
               </div>
               
             </td>
@@ -2279,10 +2333,10 @@ object.</p>
           </tr>
         
           
-          <tr id="section-135">
+          <tr id="section-139">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-135">&#182;</a>
+                <a class="pilcrow" href="#section-139">&#182;</a>
               </div>
               <p>A regular expression that matches ((x)) and captures x</p>
 
@@ -2295,10 +2349,10 @@ object.</p>
           </tr>
         
           
-          <tr id="section-136">
+          <tr id="section-140">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-136">&#182;</a>
+                <a class="pilcrow" href="#section-140">&#182;</a>
               </div>
               <p>Assign “value” to def
 <code>def = &lt;def name=&quot;quality&quot;&gt;((min)),((max))&lt;/def&gt;</code></p>
@@ -2310,10 +2364,10 @@ object.</p>
           </tr>
         
           
-          <tr id="section-137">
+          <tr id="section-141">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-137">&#182;</a>
+                <a class="pilcrow" href="#section-141">&#182;</a>
               </div>
               <p>Get the actual definition from the def
 <code>definition = &quot;((min)),((max))&quot;</code></p>
@@ -2325,10 +2379,10 @@ object.</p>
           </tr>
         
           
-          <tr id="section-138">
+          <tr id="section-142">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-138">&#182;</a>
+                <a class="pilcrow" href="#section-142">&#182;</a>
               </div>
               <p>Get the arg associated with this def
 <code>arg = ugui.args.quality</code></p>
@@ -2345,10 +2399,10 @@ object.</p>
           </tr>
         
           
-          <tr id="section-139">
+          <tr id="section-143">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-139">&#182;</a>
+                <a class="pilcrow" href="#section-143">&#182;</a>
               </div>
               <p>Loop through the definition grabbing all the seperators and args</p>
 
@@ -2359,10 +2413,10 @@ object.</p>
           </tr>
         
           
-          <tr id="section-140">
+          <tr id="section-144">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-140">&#182;</a>
+                <a class="pilcrow" href="#section-144">&#182;</a>
               </div>
               <p>Assign the RegEx result to match and check to see if there is a match</p>
 
@@ -2373,10 +2427,10 @@ object.</p>
           </tr>
         
           
-          <tr id="section-141">
+          <tr id="section-145">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-141">&#182;</a>
+                <a class="pilcrow" href="#section-145">&#182;</a>
               </div>
               <p>Grab any text seperating the values and push it to a collector array</p>
 
@@ -2387,10 +2441,10 @@ object.</p>
           </tr>
         
           
-          <tr id="section-142">
+          <tr id="section-146">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-142">&#182;</a>
+                <a class="pilcrow" href="#section-146">&#182;</a>
               </div>
               <p>Update the slice start index for the next iteration</p>
 
@@ -2401,10 +2455,10 @@ object.</p>
           </tr>
         
           
-          <tr id="section-143">
+          <tr id="section-147">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-143">&#182;</a>
+                <a class="pilcrow" href="#section-147">&#182;</a>
               </div>
               <p>Add the arg from the definition to the global UGUI object</p>
 
@@ -2415,10 +2469,10 @@ object.</p>
           </tr>
         
           
-          <tr id="section-144">
+          <tr id="section-148">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-144">&#182;</a>
+                <a class="pilcrow" href="#section-148">&#182;</a>
               </div>
               <p>Add the arg to the args array for value assignment in next loop</p>
 
@@ -2429,10 +2483,10 @@ object.</p>
           </tr>
         
           
-          <tr id="section-145">
+          <tr id="section-149">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-145">&#182;</a>
+                <a class="pilcrow" href="#section-149">&#182;</a>
               </div>
               <p>If there are no more args:</p>
 
@@ -2443,10 +2497,10 @@ object.</p>
           </tr>
         
           
-          <tr id="section-146">
+          <tr id="section-150">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-146">&#182;</a>
+                <a class="pilcrow" href="#section-150">&#182;</a>
               </div>
               <p>Put the last part of the def into the seperator array</p>
 
@@ -2457,10 +2511,10 @@ object.</p>
           </tr>
         
           
-          <tr id="section-147">
+          <tr id="section-151">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-147">&#182;</a>
+                <a class="pilcrow" href="#section-151">&#182;</a>
               </div>
               <p>End the loop. Very important!!!</p>
 
@@ -2473,10 +2527,10 @@ object.</p>
           </tr>
         
           
-          <tr id="section-148">
+          <tr id="section-152">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-148">&#182;</a>
+                <a class="pilcrow" href="#section-152">&#182;</a>
               </div>
               <p>Get the value of the associated arg
 <code>argValue = &quot;0,75&quot;</code></p>
@@ -2488,10 +2542,10 @@ object.</p>
           </tr>
         
           
-          <tr id="section-149">
+          <tr id="section-153">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-149">&#182;</a>
+                <a class="pilcrow" href="#section-153">&#182;</a>
               </div>
               <p>splitIndex is used to keep track of where we are in the value</p>
 
@@ -2502,10 +2556,10 @@ object.</p>
           </tr>
         
           
-          <tr id="section-150">
+          <tr id="section-154">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-150">&#182;</a>
+                <a class="pilcrow" href="#section-154">&#182;</a>
               </div>
               <p>Loop through the args defined by this def, parse the value using the seperators, and assign the correct value</p>
 
@@ -2516,10 +2570,10 @@ object.</p>
           </tr>
         
           
-          <tr id="section-151">
+          <tr id="section-155">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-151">&#182;</a>
+                <a class="pilcrow" href="#section-155">&#182;</a>
               </div>
               <p>The seperators around the current arg
 firstSeperator = “”
@@ -2533,10 +2587,10 @@ secondSeperator = “,”</p>
           </tr>
         
           
-          <tr id="section-152">
+          <tr id="section-156">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-152">&#182;</a>
+                <a class="pilcrow" href="#section-156">&#182;</a>
               </div>
               <p>The first if catches cases where the dev has unnecessarily used a def</p>
 
@@ -2548,10 +2602,10 @@ secondSeperator = “,”</p>
           </tr>
         
           
-          <tr id="section-153">
+          <tr id="section-157">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-153">&#182;</a>
+                <a class="pilcrow" href="#section-157">&#182;</a>
               </div>
               <p>This catches if there is no text before the first value to map</p>
 
@@ -2564,10 +2618,10 @@ secondSeperator = “,”</p>
           </tr>
         
           
-          <tr id="section-154">
+          <tr id="section-158">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-154">&#182;</a>
+                <a class="pilcrow" href="#section-158">&#182;</a>
               </div>
               <p>This catches if there is no text after the last value to map</p>
 
@@ -2579,10 +2633,10 @@ secondSeperator = “,”</p>
           </tr>
         
           
-          <tr id="section-155">
+          <tr id="section-159">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-155">&#182;</a>
+                <a class="pilcrow" href="#section-159">&#182;</a>
               </div>
               <p>This catches in all other cases</p>
 
@@ -2602,10 +2656,10 @@ secondSeperator = “,”</p>
           </tr>
         
           
-          <tr id="section-156">
+          <tr id="section-160">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-156">&#182;</a>
+                <a class="pilcrow" href="#section-160">&#182;</a>
               </div>
               <hr>
 <h3 id="u14-set-input-file-path-file-name-and-extension">U14. Set input file path, file name, and extension</h3>
@@ -2622,10 +2676,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-157">
+          <tr id="section-161">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-157">&#182;</a>
+                <a class="pilcrow" href="#section-161">&#182;</a>
               </div>
               
             </td>
@@ -2635,10 +2689,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-158">
+          <tr id="section-162">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-158">&#182;</a>
+                <a class="pilcrow" href="#section-162">&#182;</a>
               </div>
               <p>Validate that both required arguments are passed</p>
 
@@ -2652,10 +2706,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-159">
+          <tr id="section-163">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-159">&#182;</a>
+                <a class="pilcrow" href="#section-163">&#182;</a>
               </div>
               <p>Validate types</p>
 
@@ -2672,10 +2726,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-160">
+          <tr id="section-164">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-160">&#182;</a>
+                <a class="pilcrow" href="#section-164">&#182;</a>
               </div>
               <p>Create a variable that contains all the file information supplied by webkit</p>
 
@@ -2686,10 +2740,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-161">
+          <tr id="section-165">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-161">&#182;</a>
+                <a class="pilcrow" href="#section-165">&#182;</a>
               </div>
               <p>Before continuing, verify that the user has selected a file</p>
 
@@ -2700,10 +2754,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-162">
+          <tr id="section-166">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-162">&#182;</a>
+                <a class="pilcrow" href="#section-166">&#182;</a>
               </div>
               <p>Detect if in darwin, freebsd, linux, sunos or win32</p>
 
@@ -2714,10 +2768,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-163">
+          <tr id="section-167">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-163">&#182;</a>
+                <a class="pilcrow" href="#section-167">&#182;</a>
               </div>
               <p>Create filename and filepath variables to be used below</p>
 
@@ -2729,10 +2783,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-164">
+          <tr id="section-168">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-164">&#182;</a>
+                <a class="pilcrow" href="#section-168">&#182;</a>
               </div>
               <p>Either C:\users\bob\desktop\cows.new.png or /home/bob/desktop/cows.new.png</p>
 
@@ -2743,10 +2797,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-165">
+          <tr id="section-169">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-165">&#182;</a>
+                <a class="pilcrow" href="#section-169">&#182;</a>
               </div>
               <p>cows.new.png</p>
 
@@ -2757,10 +2811,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-166">
+          <tr id="section-170">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-166">&#182;</a>
+                <a class="pilcrow" href="#section-170">&#182;</a>
               </div>
               <p>If you’re on windows then folders in filepaths are separated with <code>\</code>, otherwise OS’s use <code>/</code></p>
 
@@ -2771,10 +2825,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-167">
+          <tr id="section-171">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-167">&#182;</a>
+                <a class="pilcrow" href="#section-171">&#182;</a>
               </div>
               <p>Get the index of the final backslash so we can split the name from the path</p>
 
@@ -2785,10 +2839,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-168">
+          <tr id="section-172">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-168">&#182;</a>
+                <a class="pilcrow" href="#section-172">&#182;</a>
               </div>
               <p><code>C:\users\bob\desktop\</code></p>
 
@@ -2800,10 +2854,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-169">
+          <tr id="section-173">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-169">&#182;</a>
+                <a class="pilcrow" href="#section-173">&#182;</a>
               </div>
               <p>Get the index of the final backslash so we can split the name from the path</p>
 
@@ -2814,10 +2868,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-170">
+          <tr id="section-174">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-170">&#182;</a>
+                <a class="pilcrow" href="#section-174">&#182;</a>
               </div>
               <p><code>/home/bob/desktop/</code></p>
 
@@ -2829,10 +2883,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-171">
+          <tr id="section-175">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-171">&#182;</a>
+                <a class="pilcrow" href="#section-175">&#182;</a>
               </div>
               <p>Split <code>&quot;cows.new.png&quot;</code> into <code>[&quot;cows&quot;, &quot;new&quot;, &quot;png&quot;]</code></p>
 
@@ -2843,10 +2897,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-172">
+          <tr id="section-176">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-172">&#182;</a>
+                <a class="pilcrow" href="#section-176">&#182;</a>
               </div>
               <p>Remove last item in array, <code>[&quot;cows&quot;, &quot;new&quot;]</code></p>
 
@@ -2857,10 +2911,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-173">
+          <tr id="section-177">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-173">&#182;</a>
+                <a class="pilcrow" href="#section-177">&#182;</a>
               </div>
               <p>Combine them back together as a string putting the . back in, <code>&quot;cows.new&quot;</code></p>
 
@@ -2871,10 +2925,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-174">
+          <tr id="section-178">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-174">&#182;</a>
+                <a class="pilcrow" href="#section-178">&#182;</a>
               </div>
               <p>create the args object parameters on the ugui object</p>
 
@@ -2900,10 +2954,10 @@ for it on the UGUI args object found here: <code>window.ugui.args</code></p>
           </tr>
         
           
-          <tr id="section-175">
+          <tr id="section-179">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-175">&#182;</a>
+                <a class="pilcrow" href="#section-179">&#182;</a>
               </div>
               <hr>
 <h3 id="u15-color-processor">U15. Color Processor</h3>
@@ -2920,10 +2974,10 @@ RGB, Hex, and Decimal values, then place them on the
           </tr>
         
           
-          <tr id="section-176">
+          <tr id="section-180">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-176">&#182;</a>
+                <a class="pilcrow" href="#section-180">&#182;</a>
               </div>
               
             </td>
@@ -2933,10 +2987,10 @@ RGB, Hex, and Decimal values, then place them on the
           </tr>
         
           
-          <tr id="section-177">
+          <tr id="section-181">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-177">&#182;</a>
+                <a class="pilcrow" href="#section-181">&#182;</a>
               </div>
               <p>Validate that both required arguments are passed</p>
 
@@ -2950,10 +3004,10 @@ RGB, Hex, and Decimal values, then place them on the
           </tr>
         
           
-          <tr id="section-178">
+          <tr id="section-182">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-178">&#182;</a>
+                <a class="pilcrow" href="#section-182">&#182;</a>
               </div>
               <p>Validate types</p>
 
@@ -2973,10 +3027,10 @@ RGB, Hex, and Decimal values, then place them on the
           </tr>
         
           
-          <tr id="section-179">
+          <tr id="section-183">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-179">&#182;</a>
+                <a class="pilcrow" href="#section-183">&#182;</a>
               </div>
               <p>setup variables</p>
 
@@ -2994,10 +3048,10 @@ RGB, Hex, and Decimal values, then place them on the
           </tr>
         
           
-          <tr id="section-180">
+          <tr id="section-184">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-180">&#182;</a>
+                <a class="pilcrow" href="#section-184">&#182;</a>
               </div>
               <p>Convert Hex to Dec</p>
 
@@ -3013,10 +3067,10 @@ RGB, Hex, and Decimal values, then place them on the
           </tr>
         
           
-          <tr id="section-181">
+          <tr id="section-185">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-181">&#182;</a>
+                <a class="pilcrow" href="#section-185">&#182;</a>
               </div>
               <p>set RrGgBb to decimal</p>
 
@@ -3033,10 +3087,10 @@ RGB, Hex, and Decimal values, then place them on the
           </tr>
         
           
-          <tr id="section-182">
+          <tr id="section-186">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-182">&#182;</a>
+                <a class="pilcrow" href="#section-186">&#182;</a>
               </div>
               <p>as 0-255</p>
 
@@ -3049,10 +3103,10 @@ RGB, Hex, and Decimal values, then place them on the
           </tr>
         
           
-          <tr id="section-183">
+          <tr id="section-187">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-183">&#182;</a>
+                <a class="pilcrow" href="#section-187">&#182;</a>
               </div>
               <p>as 0-100%</p>
 
@@ -3067,10 +3121,10 @@ RGB, Hex, and Decimal values, then place them on the
           </tr>
         
           
-          <tr id="section-184">
+          <tr id="section-188">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-184">&#182;</a>
+                <a class="pilcrow" href="#section-188">&#182;</a>
               </div>
               <p>create the args object parameters on the ugui object</p>
 
@@ -3093,10 +3147,10 @@ RGB, Hex, and Decimal values, then place them on the
           </tr>
         
           
-          <tr id="section-185">
+          <tr id="section-189">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-185">&#182;</a>
+                <a class="pilcrow" href="#section-189">&#182;</a>
               </div>
               <hr>
 <h3 id="u16-convert-command-array-to-string">U16. Convert Command Array to string</h3>
@@ -3113,10 +3167,10 @@ to the command line.</p>
           </tr>
         
           
-          <tr id="section-186">
+          <tr id="section-190">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-186">&#182;</a>
+                <a class="pilcrow" href="#section-190">&#182;</a>
               </div>
               
             </td>
@@ -3126,10 +3180,10 @@ to the command line.</p>
           </tr>
         
           
-          <tr id="section-187">
+          <tr id="section-191">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-187">&#182;</a>
+                <a class="pilcrow" href="#section-191">&#182;</a>
               </div>
               <p>Validate that the required argument is passed</p>
 
@@ -3147,10 +3201,10 @@ to the command line.</p>
           </tr>
         
           
-          <tr id="section-188">
+          <tr id="section-192">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-188">&#182;</a>
+                <a class="pilcrow" href="#section-192">&#182;</a>
               </div>
               <p>Validate types</p>
 
@@ -3164,10 +3218,10 @@ to the command line.</p>
           </tr>
         
           
-          <tr id="section-189">
+          <tr id="section-193">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-189">&#182;</a>
+                <a class="pilcrow" href="#section-193">&#182;</a>
               </div>
               <p>Validate that all items of the array are strings</p>
 
@@ -3183,10 +3237,10 @@ to the command line.</p>
           </tr>
         
           
-          <tr id="section-190">
+          <tr id="section-194">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-190">&#182;</a>
+                <a class="pilcrow" href="#section-194">&#182;</a>
               </div>
               <p>Create and empty variable</p>
 
@@ -3197,10 +3251,10 @@ to the command line.</p>
           </tr>
         
           
-          <tr id="section-191">
+          <tr id="section-195">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-191">&#182;</a>
+                <a class="pilcrow" href="#section-195">&#182;</a>
               </div>
               <p><code>cmdArray = [&quot;cli_filename&quot;, &quot;&quot;, &quot;&quot;, &quot;-nyan&quot;, &quot;--speed 1mph&quot;, &quot;&quot;, &quot;&quot;, &quot;-pear&quot;, &quot;--potato&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;-m &quot;Text&quot;&quot;, &quot;&quot;C:\Users\jwilcurt\Desktop\IICL Stuff.new.png&quot;&quot;]</code></p>
 
@@ -3211,10 +3265,10 @@ to the command line.</p>
           </tr>
         
           
-          <tr id="section-192">
+          <tr id="section-196">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-192">&#182;</a>
+                <a class="pilcrow" href="#section-196">&#182;</a>
               </div>
               <p>Make sure the executable isn’t preceeded with a space</p>
 
@@ -3226,10 +3280,10 @@ to the command line.</p>
           </tr>
         
           
-          <tr id="section-193">
+          <tr id="section-197">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-193">&#182;</a>
+                <a class="pilcrow" href="#section-197">&#182;</a>
               </div>
               <p>add in the rest of the arguments, skipping blank ones</p>
 
@@ -3243,10 +3297,10 @@ to the command line.</p>
           </tr>
         
           
-          <tr id="section-194">
+          <tr id="section-198">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-194">&#182;</a>
+                <a class="pilcrow" href="#section-198">&#182;</a>
               </div>
               <p>Return the command string that will be ran</p>
 
@@ -3258,10 +3312,10 @@ to the command line.</p>
           </tr>
         
           
-          <tr id="section-195">
+          <tr id="section-199">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-195">&#182;</a>
+                <a class="pilcrow" href="#section-199">&#182;</a>
               </div>
               <hr>
 <h3 id="u17-replace-html-text-with-text-from-package-json">U17. Replace HTML text with text from package.json</h3>
@@ -3277,10 +3331,10 @@ the package.json. This replaces the text on the page.</p>
           </tr>
         
           
-          <tr id="section-196">
+          <tr id="section-200">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-196">&#182;</a>
+                <a class="pilcrow" href="#section-200">&#182;</a>
               </div>
               
             </td>
@@ -3293,10 +3347,10 @@ getAboutModal();</pre></div>
           </tr>
         
           
-          <tr id="section-197">
+          <tr id="section-201">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-197">&#182;</a>
+                <a class="pilcrow" href="#section-201">&#182;</a>
               </div>
               <hr>
 <h3 id="u18-update-about-modal">U18. Update About modal</h3>
@@ -3313,10 +3367,10 @@ pulls in UGUI’s about info from the <code>_markdown</code> folder.</p>
           </tr>
         
           
-          <tr id="section-198">
+          <tr id="section-202">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-198">&#182;</a>
+                <a class="pilcrow" href="#section-202">&#182;</a>
               </div>
               
             </td>
@@ -3327,10 +3381,10 @@ pulls in UGUI’s about info from the <code>_markdown</code> folder.</p>
           </tr>
         
           
-          <tr id="section-199">
+          <tr id="section-203">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-199">&#182;</a>
+                <a class="pilcrow" href="#section-203">&#182;</a>
               </div>
               <p>Put UGUI about info in about modal</p>
 
@@ -3341,10 +3395,10 @@ pulls in UGUI’s about info from the <code>_markdown</code> folder.</p>
           </tr>
         
           
-          <tr id="section-200">
+          <tr id="section-204">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-200">&#182;</a>
+                <a class="pilcrow" href="#section-204">&#182;</a>
               </div>
               <p>Wait for the “UGUI about” info to be loaded before updating the “App about” section
 Load application name, version number, and author from package.json</p>
@@ -3362,10 +3416,10 @@ Load application name, version number, and author from package.json</p>
           </tr>
         
           
-          <tr id="section-201">
+          <tr id="section-205">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-201">&#182;</a>
+                <a class="pilcrow" href="#section-205">&#182;</a>
               </div>
               <p>After all content is loaded, detect all links that should open in the default browser</p>
 
@@ -3376,10 +3430,10 @@ Load application name, version number, and author from package.json</p>
           </tr>
         
           
-          <tr id="section-202">
+          <tr id="section-206">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-202">&#182;</a>
+                <a class="pilcrow" href="#section-206">&#182;</a>
               </div>
               <p>Remove modal, enable scrollbar</p>
 
@@ -3392,10 +3446,10 @@ Load application name, version number, and author from package.json</p>
           </tr>
         
           
-          <tr id="section-203">
+          <tr id="section-207">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-203">&#182;</a>
+                <a class="pilcrow" href="#section-207">&#182;</a>
               </div>
               <p>If the navigation is expanded, then close it after exiting the modal</p>
 
@@ -3410,10 +3464,10 @@ Load application name, version number, and author from package.json</p>
           </tr>
         
           
-          <tr id="section-204">
+          <tr id="section-208">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-204">&#182;</a>
+                <a class="pilcrow" href="#section-208">&#182;</a>
               </div>
               <p>When clicking on background or X, remove modal</p>
 
@@ -3424,10 +3478,10 @@ Load application name, version number, and author from package.json</p>
           </tr>
         
           
-          <tr id="section-205">
+          <tr id="section-209">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-205">&#182;</a>
+                <a class="pilcrow" href="#section-209">&#182;</a>
               </div>
               <p>allow you to click in the modal without triggering the removeModal function called when you click it’s parent element</p>
 
@@ -3444,10 +3498,10 @@ Load application name, version number, and author from package.json</p>
           </tr>
         
           
-          <tr id="section-206">
+          <tr id="section-210">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-206">&#182;</a>
+                <a class="pilcrow" href="#section-210">&#182;</a>
               </div>
               <hr>
 <h3 id="u19-navigation-bar-functionality">U19. Navigation bar functionality</h3>
@@ -3463,10 +3517,10 @@ functionality of the items in the top nav bar.</p>
           </tr>
         
           
-          <tr id="section-207">
+          <tr id="section-211">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-207">&#182;</a>
+                <a class="pilcrow" href="#section-211">&#182;</a>
               </div>
               <p>Clicking View &gt; Command Line Output in the Nav Bar</p>
 
@@ -3479,10 +3533,10 @@ functionality of the items in the top nav bar.</p>
           </tr>
         
           
-          <tr id="section-208">
+          <tr id="section-212">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-208">&#182;</a>
+                <a class="pilcrow" href="#section-212">&#182;</a>
               </div>
               <p>Clicking View &gt; Console in the Nav Bar</p>
 
@@ -3495,10 +3549,10 @@ functionality of the items in the top nav bar.</p>
           </tr>
         
           
-          <tr id="section-209">
+          <tr id="section-213">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-209">&#182;</a>
+                <a class="pilcrow" href="#section-213">&#182;</a>
               </div>
               <p>Clicking View &gt; Fullscreen</p>
 
@@ -3511,10 +3565,10 @@ functionality of the items in the top nav bar.</p>
           </tr>
         
           
-          <tr id="section-210">
+          <tr id="section-214">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-210">&#182;</a>
+                <a class="pilcrow" href="#section-214">&#182;</a>
               </div>
               <p>Clicking “About” in the Nav Bar</p>
 
@@ -3525,10 +3579,10 @@ functionality of the items in the top nav bar.</p>
           </tr>
         
           
-          <tr id="section-211">
+          <tr id="section-215">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-211">&#182;</a>
+                <a class="pilcrow" href="#section-215">&#182;</a>
               </div>
               <p>Get the current Window</p>
 
@@ -3539,10 +3593,10 @@ functionality of the items in the top nav bar.</p>
           </tr>
         
           
-          <tr id="section-212">
+          <tr id="section-216">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-212">&#182;</a>
+                <a class="pilcrow" href="#section-216">&#182;</a>
               </div>
               <p>Show the modal</p>
 
@@ -3562,10 +3616,10 @@ functionality of the items in the top nav bar.</p>
           </tr>
         
           
-          <tr id="section-213">
+          <tr id="section-217">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-213">&#182;</a>
+                <a class="pilcrow" href="#section-217">&#182;</a>
               </div>
               <p>Get the current height of the window and set the modal to 75% of that</p>
 
@@ -3578,10 +3632,10 @@ functionality of the items in the top nav bar.</p>
           </tr>
         
           
-          <tr id="section-214">
+          <tr id="section-218">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-214">&#182;</a>
+                <a class="pilcrow" href="#section-218">&#182;</a>
               </div>
               <p>Make the header of the modal small when app is tiny</p>
 
@@ -3593,10 +3647,10 @@ functionality of the items in the top nav bar.</p>
           </tr>
         
           
-          <tr id="section-215">
+          <tr id="section-219">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-215">&#182;</a>
+                <a class="pilcrow" href="#section-219">&#182;</a>
               </div>
               <p>Remove page scrollbar when modal displays</p>
 
@@ -3609,10 +3663,10 @@ functionality of the items in the top nav bar.</p>
           </tr>
         
           
-          <tr id="section-216">
+          <tr id="section-220">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-216">&#182;</a>
+                <a class="pilcrow" href="#section-220">&#182;</a>
               </div>
               <p>Makes sure that the logo and app name in the nav bar are vertically centered</p>
 
@@ -3628,10 +3682,10 @@ functionality of the items in the top nav bar.</p>
           </tr>
         
           
-          <tr id="section-217">
+          <tr id="section-221">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-217">&#182;</a>
+                <a class="pilcrow" href="#section-221">&#182;</a>
               </div>
               <p>Run once on page load</p>
 
@@ -3642,10 +3696,10 @@ functionality of the items in the top nav bar.</p>
           </tr>
         
           
-          <tr id="section-218">
+          <tr id="section-222">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-218">&#182;</a>
+                <a class="pilcrow" href="#section-222">&#182;</a>
               </div>
               <p>When you click on the X in the top corner, close this instance of Node-Webkit</p>
 
@@ -3658,10 +3712,10 @@ functionality of the items in the top nav bar.</p>
           </tr>
         
           
-          <tr id="section-219">
+          <tr id="section-223">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-219">&#182;</a>
+                <a class="pilcrow" href="#section-223">&#182;</a>
               </div>
               <hr>
 <h3 id="u20-detect-if-in-developer-environment">U20. Detect if in Developer environment</h3>
@@ -3680,10 +3734,10 @@ displays the Command Line output at the bottom of the page.</p>
           </tr>
         
           
-          <tr id="section-220">
+          <tr id="section-224">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-220">&#182;</a>
+                <a class="pilcrow" href="#section-224">&#182;</a>
               </div>
               <p>Check if the body has a class of prod for Production Environment</p>
 
@@ -3696,10 +3750,10 @@ displays the Command Line output at the bottom of the page.</p>
           </tr>
         
           
-          <tr id="section-221">
+          <tr id="section-225">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-221">&#182;</a>
+                <a class="pilcrow" href="#section-225">&#182;</a>
               </div>
               <p>Create UGUI Dev Tools markup</p>
 
@@ -3710,10 +3764,10 @@ displays the Command Line output at the bottom of the page.</p>
           </tr>
         
           
-          <tr id="section-222">
+          <tr id="section-226">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-222">&#182;</a>
+                <a class="pilcrow" href="#section-226">&#182;</a>
               </div>
               <p>Put Dev Tool Markup on the page</p>
 
@@ -3724,10 +3778,10 @@ displays the Command Line output at the bottom of the page.</p>
           </tr>
         
           
-          <tr id="section-223">
+          <tr id="section-227">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-223">&#182;</a>
+                <a class="pilcrow" href="#section-227">&#182;</a>
               </div>
               <p>Update the UGUI version to the correct version</p>
 
@@ -3745,10 +3799,10 @@ displays the Command Line output at the bottom of the page.</p>
           </tr>
         
           
-          <tr id="section-224">
+          <tr id="section-228">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-224">&#182;</a>
+                <a class="pilcrow" href="#section-228">&#182;</a>
               </div>
               <p>Hide/Show based on UGUI Dev Tools navigation</p>
 
@@ -3778,10 +3832,10 @@ displays the Command Line output at the bottom of the page.</p>
           </tr>
         
           
-          <tr id="section-225">
+          <tr id="section-229">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-225">&#182;</a>
+                <a class="pilcrow" href="#section-229">&#182;</a>
               </div>
               <p>When the developer clicks “Keep”</p>
 
@@ -3792,10 +3846,10 @@ displays the Command Line output at the bottom of the page.</p>
           </tr>
         
           
-          <tr id="section-226">
+          <tr id="section-230">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-226">&#182;</a>
+                <a class="pilcrow" href="#section-230">&#182;</a>
               </div>
               <p>The currently selected swatch</p>
 
@@ -3806,10 +3860,10 @@ displays the Command Line output at the bottom of the page.</p>
           </tr>
         
           
-          <tr id="section-227">
+          <tr id="section-231">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-227">&#182;</a>
+                <a class="pilcrow" href="#section-231">&#182;</a>
               </div>
               <p>Update index.htm to use the selected swatch as the new default</p>
 
@@ -3823,10 +3877,10 @@ displays the Command Line output at the bottom of the page.</p>
           </tr>
         
           
-          <tr id="section-228">
+          <tr id="section-232">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-228">&#182;</a>
+                <a class="pilcrow" href="#section-232">&#182;</a>
               </div>
               <p>get node webkit GUI - WIN</p>
 
@@ -3837,10 +3891,10 @@ displays the Command Line output at the bottom of the page.</p>
           </tr>
         
           
-          <tr id="section-229">
+          <tr id="section-233">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-229">&#182;</a>
+                <a class="pilcrow" href="#section-233">&#182;</a>
               </div>
               <p>get the window object</p>
 
@@ -3851,10 +3905,10 @@ displays the Command Line output at the bottom of the page.</p>
           </tr>
         
           
-          <tr id="section-230">
+          <tr id="section-234">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-230">&#182;</a>
+                <a class="pilcrow" href="#section-234">&#182;</a>
               </div>
               <p>Keyboard shortcuts</p>
 
@@ -3865,10 +3919,10 @@ displays the Command Line output at the bottom of the page.</p>
           </tr>
         
           
-          <tr id="section-231">
+          <tr id="section-235">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-231">&#182;</a>
+                <a class="pilcrow" href="#section-235">&#182;</a>
               </div>
               <p>Check for duplicat Arg Names</p>
 
@@ -3890,10 +3944,10 @@ displays the Command Line output at the bottom of the page.</p>
           </tr>
         
           
-          <tr id="section-232">
+          <tr id="section-236">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-232">&#182;</a>
+                <a class="pilcrow" href="#section-236">&#182;</a>
               </div>
               <hr>
 <h3 id="u21-put-all-executables-in-dropdowns">U21. Put all executables in dropdowns</h3>
@@ -3910,10 +3964,10 @@ the executables used in the app.</p>
           </tr>
         
           
-          <tr id="section-233">
+          <tr id="section-237">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-233">&#182;</a>
+                <a class="pilcrow" href="#section-237">&#182;</a>
               </div>
               
             </td>
@@ -3924,10 +3978,10 @@ the executables used in the app.</p>
           </tr>
         
           
-          <tr id="section-234">
+          <tr id="section-238">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-234">&#182;</a>
+                <a class="pilcrow" href="#section-238">&#182;</a>
               </div>
               <p>check each file and put it in the dropdown box</p>
 
@@ -3941,10 +3995,10 @@ the executables used in the app.</p>
           </tr>
         
           
-          <tr id="section-235">
+          <tr id="section-239">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-235">&#182;</a>
+                <a class="pilcrow" href="#section-239">&#182;</a>
               </div>
               <hr>
 <h3 id="u22-warn-if-identical-data-argnames">U22. Warn if identical data-argNames</h3>
@@ -3960,10 +4014,10 @@ for multiple elements, display a warning.</p>
           </tr>
         
           
-          <tr id="section-236">
+          <tr id="section-240">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-236">&#182;</a>
+                <a class="pilcrow" href="#section-240">&#182;</a>
               </div>
               
             </td>
@@ -3976,10 +4030,10 @@ for multiple elements, display a warning.</p>
           </tr>
         
           
-          <tr id="section-237">
+          <tr id="section-241">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-237">&#182;</a>
+                <a class="pilcrow" href="#section-241">&#182;</a>
               </div>
               <p>Cycle through each executable</p>
 
@@ -3990,10 +4044,10 @@ for multiple elements, display a warning.</p>
           </tr>
         
           
-          <tr id="section-238">
+          <tr id="section-242">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-238">&#182;</a>
+                <a class="pilcrow" href="#section-242">&#182;</a>
               </div>
               <p>all elements with a data-argName in a form with a matching executable ID</p>
 
@@ -4006,10 +4060,10 @@ for multiple elements, display a warning.</p>
           </tr>
         
           
-          <tr id="section-239">
+          <tr id="section-243">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-239">&#182;</a>
+                <a class="pilcrow" href="#section-243">&#182;</a>
               </div>
               <p>loop through all form elements for this executable</p>
 
@@ -4020,10 +4074,10 @@ for multiple elements, display a warning.</p>
           </tr>
         
           
-          <tr id="section-240">
+          <tr id="section-244">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-240">&#182;</a>
+                <a class="pilcrow" href="#section-244">&#182;</a>
               </div>
               <p>put each element’s data-argName and into an array</p>
 
@@ -4035,10 +4089,10 @@ for multiple elements, display a warning.</p>
           </tr>
         
           
-          <tr id="section-241">
+          <tr id="section-245">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-241">&#182;</a>
+                <a class="pilcrow" href="#section-245">&#182;</a>
               </div>
               <p>Create a new array with duplicate argOrders removed</p>
 
@@ -4052,10 +4106,10 @@ for multiple elements, display a warning.</p>
           </tr>
         
           
-          <tr id="section-242">
+          <tr id="section-246">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-242">&#182;</a>
+                <a class="pilcrow" href="#section-246">&#182;</a>
               </div>
               <p>If the new array had any duplicates removed display a warning.</p>
 
@@ -4067,10 +4121,10 @@ for multiple elements, display a warning.</p>
           </tr>
         
           
-          <tr id="section-243">
+          <tr id="section-247">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-243">&#182;</a>
+                <a class="pilcrow" href="#section-247">&#182;</a>
               </div>
               <p>Put alert mesage at top of page</p>
 
@@ -4082,10 +4136,10 @@ for multiple elements, display a warning.</p>
           </tr>
         
           
-          <tr id="section-244">
+          <tr id="section-248">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-244">&#182;</a>
+                <a class="pilcrow" href="#section-248">&#182;</a>
               </div>
               <p>Keep the console warning formatted nicely for cli filenames under 16 characters in length</p>
 
@@ -4110,10 +4164,10 @@ for multiple elements, display a warning.</p>
           </tr>
         
           
-          <tr id="section-245">
+          <tr id="section-249">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-245">&#182;</a>
+                <a class="pilcrow" href="#section-249">&#182;</a>
               </div>
               <hr>
 <h3 id="u23-put-cli-help-info-in-ugui-dev-tools">U23. Put CLI help info in UGUI Dev Tools</h3>
@@ -4130,10 +4184,10 @@ from the user’s executable with arguments like <code>--help</code>.</p>
           </tr>
         
           
-          <tr id="section-246">
+          <tr id="section-250">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-246">&#182;</a>
+                <a class="pilcrow" href="#section-250">&#182;</a>
               </div>
               
             </td>
@@ -4143,10 +4197,10 @@ from the user’s executable with arguments like <code>--help</code>.</p>
           </tr>
         
           
-          <tr id="section-247">
+          <tr id="section-251">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-247">&#182;</a>
+                <a class="pilcrow" href="#section-251">&#182;</a>
               </div>
               <p>Everytime the dropdown changes update the <code>&lt;pre&gt;</code></p>
 
@@ -4160,10 +4214,10 @@ from the user’s executable with arguments like <code>--help</code>.</p>
           </tr>
         
           
-          <tr id="section-248">
+          <tr id="section-252">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-248">&#182;</a>
+                <a class="pilcrow" href="#section-252">&#182;</a>
               </div>
               <p>Grab the correct executable from the dropdown</p>
 
@@ -4174,10 +4228,10 @@ from the user’s executable with arguments like <code>--help</code>.</p>
           </tr>
         
           
-          <tr id="section-249">
+          <tr id="section-253">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-249">&#182;</a>
+                <a class="pilcrow" href="#section-253">&#182;</a>
               </div>
               <p>Grab which kind of help argument they chose, like <code>--help</code> or <code>/?</code></p>
 
@@ -4188,10 +4242,10 @@ from the user’s executable with arguments like <code>--help</code>.</p>
           </tr>
         
           
-          <tr id="section-250">
+          <tr id="section-254">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-250">&#182;</a>
+                <a class="pilcrow" href="#section-254">&#182;</a>
               </div>
               <p>Don’t run if there isn’t a help choice</p>
 
@@ -4202,10 +4256,10 @@ from the user’s executable with arguments like <code>--help</code>.</p>
           </tr>
         
           
-          <tr id="section-251">
+          <tr id="section-255">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-251">&#182;</a>
+                <a class="pilcrow" href="#section-255">&#182;</a>
               </div>
               <p>Run the executable using the user’s chosen argument to get it’s help info</p>
 
@@ -4216,10 +4270,10 @@ from the user’s executable with arguments like <code>--help</code>.</p>
           </tr>
         
           
-          <tr id="section-252">
+          <tr id="section-256">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-252">&#182;</a>
+                <a class="pilcrow" href="#section-256">&#182;</a>
               </div>
               <p>Put the help info in a <code>&lt;pre&gt;</code></p>
 
@@ -4234,10 +4288,10 @@ from the user’s executable with arguments like <code>--help</code>.</p>
           </tr>
         
           
-          <tr id="section-253">
+          <tr id="section-257">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-253">&#182;</a>
+                <a class="pilcrow" href="#section-257">&#182;</a>
               </div>
               <hr>
 <h3 id="u24-swap-bootswatches">U24. Swap Bootswatches</h3>
@@ -4255,10 +4309,10 @@ try out different stylesheets.</p>
           </tr>
         
           
-          <tr id="section-254">
+          <tr id="section-258">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-254">&#182;</a>
+                <a class="pilcrow" href="#section-258">&#182;</a>
               </div>
               
             </td>
@@ -4268,10 +4322,10 @@ try out different stylesheets.</p>
           </tr>
         
           
-          <tr id="section-255">
+          <tr id="section-259">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-255">&#182;</a>
+                <a class="pilcrow" href="#section-259">&#182;</a>
               </div>
               <p>Grab all the files in the <code>ven.bootswatch</code> folder and put them in an array</p>
 
@@ -4282,10 +4336,10 @@ try out different stylesheets.</p>
           </tr>
         
           
-          <tr id="section-256">
+          <tr id="section-260">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-256">&#182;</a>
+                <a class="pilcrow" href="#section-260">&#182;</a>
               </div>
               <p>if that works</p>
 
@@ -4296,10 +4350,10 @@ try out different stylesheets.</p>
           </tr>
         
           
-          <tr id="section-257">
+          <tr id="section-261">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-257">&#182;</a>
+                <a class="pilcrow" href="#section-261">&#182;</a>
               </div>
               <p>check each file and put it in the dropdown box</p>
 
@@ -4318,10 +4372,10 @@ try out different stylesheets.</p>
           </tr>
         
           
-          <tr id="section-258">
+          <tr id="section-262">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-258">&#182;</a>
+                <a class="pilcrow" href="#section-262">&#182;</a>
               </div>
               <p>When you change what is selected in the dropdown box, swap out the current swatch for the new one.</p>
 
@@ -4333,10 +4387,10 @@ try out different stylesheets.</p>
           </tr>
         
           
-          <tr id="section-259">
+          <tr id="section-263">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-259">&#182;</a>
+                <a class="pilcrow" href="#section-263">&#182;</a>
               </div>
               <p>Nav logo wasn’t vertically centering after changing a stylesheet because the function was being ran after
 the stylesheet was swapped instead of after the page rendered the styles. Since Webkit does not have a way of
@@ -4354,10 +4408,10 @@ slowest you can go in animation before something looks choppy.</p>
           </tr>
         
           
-          <tr id="section-260">
+          <tr id="section-264">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-260">&#182;</a>
+                <a class="pilcrow" href="#section-264">&#182;</a>
               </div>
               <hr>
 <h3 id="u25-save-chosen-bootswatch">U25. Save chosen Bootswatch</h3>
@@ -4377,10 +4431,10 @@ data so on every load it uses the correct swatch.</p>
           </tr>
         
           
-          <tr id="section-261">
+          <tr id="section-265">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-261">&#182;</a>
+                <a class="pilcrow" href="#section-265">&#182;</a>
               </div>
               
             </td>
@@ -4390,10 +4444,10 @@ data so on every load it uses the correct swatch.</p>
           </tr>
         
           
-          <tr id="section-262">
+          <tr id="section-266">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-262">&#182;</a>
+                <a class="pilcrow" href="#section-266">&#182;</a>
               </div>
               <p>Validate that the required argument is passed and is the correct type</p>
 
@@ -4407,10 +4461,10 @@ data so on every load it uses the correct swatch.</p>
           </tr>
         
           
-          <tr id="section-263">
+          <tr id="section-267">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-263">&#182;</a>
+                <a class="pilcrow" href="#section-267">&#182;</a>
               </div>
               <p>Set the filename to whatever the page is NW.js opens on launch, like index.htm</p>
 
@@ -4421,10 +4475,10 @@ data so on every load it uses the correct swatch.</p>
           </tr>
         
           
-          <tr id="section-264">
+          <tr id="section-268">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-264">&#182;</a>
+                <a class="pilcrow" href="#section-268">&#182;</a>
               </div>
               <p>Read the contents of index.htm like a normal file and put them in the “data” variable</p>
 
@@ -4435,10 +4489,10 @@ data so on every load it uses the correct swatch.</p>
           </tr>
         
           
-          <tr id="section-265">
+          <tr id="section-269">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-265">&#182;</a>
+                <a class="pilcrow" href="#section-269">&#182;</a>
               </div>
               <p>If it can’t read it for some reason, throw an error</p>
 
@@ -4451,10 +4505,10 @@ data so on every load it uses the correct swatch.</p>
           </tr>
         
           
-          <tr id="section-266">
+          <tr id="section-270">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-266">&#182;</a>
+                <a class="pilcrow" href="#section-270">&#182;</a>
               </div>
               <p>Set up for the regex</p>
 
@@ -4467,10 +4521,10 @@ data so on every load it uses the correct swatch.</p>
           </tr>
         
           
-          <tr id="section-267">
+          <tr id="section-271">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-267">&#182;</a>
+                <a class="pilcrow" href="#section-271">&#182;</a>
               </div>
               <p>would match: <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;_style/ven.bootswatch/cerulean.min.css&quot; data-swatch=&quot;swapper&quot;&gt;</code></p>
 
@@ -4482,10 +4536,10 @@ data so on every load it uses the correct swatch.</p>
           </tr>
         
           
-          <tr id="section-268">
+          <tr id="section-272">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-268">&#182;</a>
+                <a class="pilcrow" href="#section-272">&#182;</a>
               </div>
               <p>If we could find the line in the file</p>
 
@@ -4496,10 +4550,10 @@ data so on every load it uses the correct swatch.</p>
           </tr>
         
           
-          <tr id="section-269">
+          <tr id="section-273">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-269">&#182;</a>
+                <a class="pilcrow" href="#section-273">&#182;</a>
               </div>
               <p>Though not currently using this line, it may come in handy some day
 <code>var currentSwatch = findSwatchLine[52];</code></p>
@@ -4511,10 +4565,10 @@ data so on every load it uses the correct swatch.</p>
           </tr>
         
           
-          <tr id="section-270">
+          <tr id="section-274">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-270">&#182;</a>
+                <a class="pilcrow" href="#section-274">&#182;</a>
               </div>
               <p>Take the contents of index.htm, find the correct line, and replace that line with the updated swatch</p>
 
@@ -4526,10 +4580,10 @@ data so on every load it uses the correct swatch.</p>
           </tr>
         
           
-          <tr id="section-271">
+          <tr id="section-275">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-271">&#182;</a>
+                <a class="pilcrow" href="#section-275">&#182;</a>
               </div>
               <p>With the contents of index.htm update, save over the file</p>
 
@@ -4542,10 +4596,10 @@ data so on every load it uses the correct swatch.</p>
           </tr>
         
           
-          <tr id="section-272">
+          <tr id="section-276">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-272">&#182;</a>
+                <a class="pilcrow" href="#section-276">&#182;</a>
               </div>
               <p>Animate the “Saved” text, having it fade in</p>
 
@@ -4556,10 +4610,10 @@ data so on every load it uses the correct swatch.</p>
           </tr>
         
           
-          <tr id="section-273">
+          <tr id="section-277">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-273">&#182;</a>
+                <a class="pilcrow" href="#section-277">&#182;</a>
               </div>
               <p>Wait 2 seconds and then fade the “Saved” text out</p>
 
@@ -4575,10 +4629,10 @@ data so on every load it uses the correct swatch.</p>
           </tr>
         
           
-          <tr id="section-274">
+          <tr id="section-278">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-274">&#182;</a>
+                <a class="pilcrow" href="#section-278">&#182;</a>
               </div>
               <hr>
 <h3 id="u26-custom-keyboard-shortcuts">U26. Custom keyboard shortcuts</h3>
@@ -4594,10 +4648,10 @@ developer access to common/expected keyboard shortcuts.</p>
           </tr>
         
           
-          <tr id="section-275">
+          <tr id="section-279">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-275">&#182;</a>
+                <a class="pilcrow" href="#section-279">&#182;</a>
               </div>
               
             </td>
@@ -4607,10 +4661,10 @@ developer access to common/expected keyboard shortcuts.</p>
           </tr>
         
           
-          <tr id="section-276">
+          <tr id="section-280">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-276">&#182;</a>
+                <a class="pilcrow" href="#section-280">&#182;</a>
               </div>
               <p>Keyboard shortcuts</p>
 
@@ -4621,10 +4675,10 @@ developer access to common/expected keyboard shortcuts.</p>
           </tr>
         
           
-          <tr id="section-277">
+          <tr id="section-281">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-277">&#182;</a>
+                <a class="pilcrow" href="#section-281">&#182;</a>
               </div>
               <p>/Check CTRL + F key and do nothing :(</p>
 
@@ -4638,10 +4692,10 @@ developer access to common/expected keyboard shortcuts.</p>
           </tr>
         
           
-          <tr id="section-278">
+          <tr id="section-282">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-278">&#182;</a>
+                <a class="pilcrow" href="#section-282">&#182;</a>
               </div>
               <p>Check CTRL+F5, CTRL+R, or CMD+R keys and hard refresh the page</p>
 
@@ -4658,10 +4712,10 @@ developer access to common/expected keyboard shortcuts.</p>
           </tr>
         
           
-          <tr id="section-279">
+          <tr id="section-283">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-279">&#182;</a>
+                <a class="pilcrow" href="#section-283">&#182;</a>
               </div>
               <p>Check Shift+F5 and CMD+Shift+R keys and refresh ignoring cache</p>
 
@@ -4677,10 +4731,10 @@ developer access to common/expected keyboard shortcuts.</p>
           </tr>
         
           
-          <tr id="section-280">
+          <tr id="section-284">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-280">&#182;</a>
+                <a class="pilcrow" href="#section-284">&#182;</a>
               </div>
               <p>Check F5 key and soft refresh</p>
 
@@ -4694,10 +4748,10 @@ developer access to common/expected keyboard shortcuts.</p>
           </tr>
         
           
-          <tr id="section-281">
+          <tr id="section-285">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-281">&#182;</a>
+                <a class="pilcrow" href="#section-285">&#182;</a>
               </div>
               <p>Check F12, Ctrl+Shift+I, or Option+Shift+I and display Webkit Dev Tools</p>
 
@@ -4717,10 +4771,10 @@ developer access to common/expected keyboard shortcuts.</p>
           </tr>
         
           
-          <tr id="section-282">
+          <tr id="section-286">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-282">&#182;</a>
+                <a class="pilcrow" href="#section-286">&#182;</a>
               </div>
               <hr>
 <h3 id="u27-launch-links-in-default-browser">U27. Launch links in default browser</h3>
@@ -4737,10 +4791,10 @@ default browser instead of using NW.js as a browser.</p>
           </tr>
         
           
-          <tr id="section-283">
+          <tr id="section-287">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-283">&#182;</a>
+                <a class="pilcrow" href="#section-287">&#182;</a>
               </div>
               
             </td>
@@ -4750,10 +4804,10 @@ default browser instead of using NW.js as a browser.</p>
           </tr>
         
           
-          <tr id="section-284">
+          <tr id="section-288">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-284">&#182;</a>
+                <a class="pilcrow" href="#section-288">&#182;</a>
               </div>
               <p>Load native UI library.</p>
 
@@ -4764,10 +4818,10 @@ default browser instead of using NW.js as a browser.</p>
           </tr>
         
           
-          <tr id="section-285">
+          <tr id="section-289">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-285">&#182;</a>
+                <a class="pilcrow" href="#section-289">&#182;</a>
               </div>
               <p>Open URL with default browser.</p>
 
@@ -4778,10 +4832,10 @@ default browser instead of using NW.js as a browser.</p>
           </tr>
         
           
-          <tr id="section-286">
+          <tr id="section-290">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-286">&#182;</a>
+                <a class="pilcrow" href="#section-290">&#182;</a>
               </div>
               <p>prevent the link from loading in NW.js</p>
 
@@ -4792,10 +4846,10 @@ default browser instead of using NW.js as a browser.</p>
           </tr>
         
           
-          <tr id="section-287">
+          <tr id="section-291">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-287">&#182;</a>
+                <a class="pilcrow" href="#section-291">&#182;</a>
               </div>
               <p>get the href url for the current link</p>
 
@@ -4806,10 +4860,10 @@ default browser instead of using NW.js as a browser.</p>
           </tr>
         
           
-          <tr id="section-288">
+          <tr id="section-292">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-288">&#182;</a>
+                <a class="pilcrow" href="#section-292">&#182;</a>
               </div>
               <p>launch the user’s default browser and load the URL for the link they clicked</p>
 
@@ -4822,10 +4876,10 @@ default browser instead of using NW.js as a browser.</p>
           </tr>
         
           
-          <tr id="section-289">
+          <tr id="section-293">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-289">&#182;</a>
+                <a class="pilcrow" href="#section-293">&#182;</a>
               </div>
               <p>Run once on page load</p>
 
@@ -4836,10 +4890,10 @@ default browser instead of using NW.js as a browser.</p>
           </tr>
         
           
-          <tr id="section-290">
+          <tr id="section-294">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-290">&#182;</a>
+                <a class="pilcrow" href="#section-294">&#182;</a>
               </div>
               <hr>
 <h3 id="u28-ezdz-drag-and-drop">U28. EZDZ: Drag and Drop</h3>
@@ -4859,10 +4913,10 @@ the EZDZ box. If the file is an image, display a thumbnail.</p>
           </tr>
         
           
-          <tr id="section-291">
+          <tr id="section-295">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-291">&#182;</a>
+                <a class="pilcrow" href="#section-295">&#182;</a>
               </div>
               
             </td>
@@ -4884,10 +4938,10 @@ $(<span class="hljs-string">".ezdz"</span>).on(<span class="hljs-string">"dragle
           </tr>
         
           
-          <tr id="section-292">
+          <tr id="section-296">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-292">&#182;</a>
+                <a class="pilcrow" href="#section-296">&#182;</a>
               </div>
               <p>Validate that the required argument is passed and the correct type</p>
 
@@ -4915,10 +4969,10 @@ $(<span class="hljs-string">".ezdz"</span>).on(<span class="hljs-string">"dragle
           </tr>
         
           
-          <tr id="section-293">
+          <tr id="section-297">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-293">&#182;</a>
+                <a class="pilcrow" href="#section-297">&#182;</a>
               </div>
               <p>var reader = new FileReader(file);</p>
 
@@ -4929,10 +4983,10 @@ $(<span class="hljs-string">".ezdz"</span>).on(<span class="hljs-string">"dragle
           </tr>
         
           
-          <tr id="section-294">
+          <tr id="section-298">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-294">&#182;</a>
+                <a class="pilcrow" href="#section-298">&#182;</a>
               </div>
               <p>reader.readAsDataURL(file);</p>
 
@@ -4943,10 +4997,10 @@ $(<span class="hljs-string">".ezdz"</span>).on(<span class="hljs-string">"dragle
           </tr>
         
           
-          <tr id="section-295">
+          <tr id="section-299">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-295">&#182;</a>
+                <a class="pilcrow" href="#section-299">&#182;</a>
               </div>
               <p>reader.onload = function(event) {
 var data = event.target.result;
@@ -4962,10 +5016,10 @@ var $img = $(“<img />“).attr(“src”, data).fadeIn();</p>
           </tr>
         
           
-          <tr id="section-296">
+          <tr id="section-300">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-296">&#182;</a>
+                <a class="pilcrow" href="#section-300">&#182;</a>
               </div>
               <p>};</p>
 
@@ -4976,10 +5030,10 @@ var $img = $(“<img />“).attr(“src”, data).fadeIn();</p>
           </tr>
         
           
-          <tr id="section-297">
+          <tr id="section-301">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-297">&#182;</a>
+                <a class="pilcrow" href="#section-301">&#182;</a>
               </div>
               <p>Update the text on screen to display the name of the file that was dropped</p>
 
@@ -4993,10 +5047,10 @@ var $img = $(“<img />“).attr(“src”, data).fadeIn();</p>
           </tr>
         
           
-          <tr id="section-298">
+          <tr id="section-302">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-298">&#182;</a>
+                <a class="pilcrow" href="#section-302">&#182;</a>
               </div>
               <hr>
 <h3 id="u29-range-slider">U29. Range slider</h3>
@@ -5013,10 +5067,10 @@ boostrap-slider plugin.</p>
           </tr>
         
           
-          <tr id="section-299">
+          <tr id="section-303">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-299">&#182;</a>
+                <a class="pilcrow" href="#section-303">&#182;</a>
               </div>
               
             </td>
@@ -5032,10 +5086,10 @@ boostrap-slider plugin.</p>
           </tr>
         
           
-          <tr id="section-300">
+          <tr id="section-304">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-300">&#182;</a>
+                <a class="pilcrow" href="#section-304">&#182;</a>
               </div>
               <p>Validate that the required argument is passed and the correct type</p>
 
@@ -5050,10 +5104,10 @@ boostrap-slider plugin.</p>
           </tr>
         
           
-          <tr id="section-301">
+          <tr id="section-305">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-301">&#182;</a>
+                <a class="pilcrow" href="#section-305">&#182;</a>
               </div>
               <p>If the navbar is white set the slider handle to gray</p>
 
@@ -5066,10 +5120,10 @@ boostrap-slider plugin.</p>
           </tr>
         
           
-          <tr id="section-302">
+          <tr id="section-306">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-302">&#182;</a>
+                <a class="pilcrow" href="#section-306">&#182;</a>
               </div>
               <p>Set the color of the slider handle to match the color of the nav bar</p>
 
@@ -5084,10 +5138,10 @@ boostrap-slider plugin.</p>
           </tr>
         
           
-          <tr id="section-303">
+          <tr id="section-307">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-303">&#182;</a>
+                <a class="pilcrow" href="#section-307">&#182;</a>
               </div>
               <p>Validate that the required argument is passed and the correct type</p>
 
@@ -5107,10 +5161,10 @@ boostrap-slider plugin.</p>
           </tr>
         
           
-          <tr id="section-304">
+          <tr id="section-308">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-304">&#182;</a>
+                <a class="pilcrow" href="#section-308">&#182;</a>
               </div>
               <p>remove the color of the slider handle</p>
 
@@ -5121,10 +5175,10 @@ boostrap-slider plugin.</p>
           </tr>
         
           
-          <tr id="section-305">
+          <tr id="section-309">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-305">&#182;</a>
+                <a class="pilcrow" href="#section-309">&#182;</a>
               </div>
               <p>get the color of the nav bar</p>
 
@@ -5135,10 +5189,10 @@ boostrap-slider plugin.</p>
           </tr>
         
           
-          <tr id="section-306">
+          <tr id="section-310">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-306">&#182;</a>
+                <a class="pilcrow" href="#section-310">&#182;</a>
               </div>
               <p>get the background image or gradient</p>
 
@@ -5157,10 +5211,10 @@ boostrap-slider plugin.</p>
           </tr>
         
           
-          <tr id="section-307">
+          <tr id="section-311">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-307">&#182;</a>
+                <a class="pilcrow" href="#section-311">&#182;</a>
               </div>
               <p>Run once on page load</p>
 
@@ -5171,10 +5225,10 @@ boostrap-slider plugin.</p>
           </tr>
         
           
-          <tr id="section-308">
+          <tr id="section-312">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-308">&#182;</a>
+                <a class="pilcrow" href="#section-312">&#182;</a>
               </div>
               <hr>
 <h3 id="u30-cut-copy-paste-context-menu">U30 Cut/Copy/Paste context menu</h3>
@@ -5190,10 +5244,10 @@ boostrap-slider plugin.</p>
           </tr>
         
           
-          <tr id="section-309">
+          <tr id="section-313">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-309">&#182;</a>
+                <a class="pilcrow" href="#section-313">&#182;</a>
               </div>
               
             </td>
@@ -5242,10 +5296,10 @@ boostrap-slider plugin.</p>
           </tr>
         
           
-          <tr id="section-310">
+          <tr id="section-314">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-310">&#182;</a>
+                <a class="pilcrow" href="#section-314">&#182;</a>
               </div>
               <p>run once on page load</p>
 
@@ -5256,10 +5310,10 @@ boostrap-slider plugin.</p>
           </tr>
         
           
-          <tr id="section-311">
+          <tr id="section-315">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-311">&#182;</a>
+                <a class="pilcrow" href="#section-315">&#182;</a>
               </div>
               <hr>
 <h3 id="u31-save-settings">U31. Save settings</h3>
@@ -5283,26 +5337,26 @@ updated during <code>loadSettings()</code></p>
           </tr>
         
           
-          <tr id="section-312">
+          <tr id="section-316">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-312">&#182;</a>
+                <a class="pilcrow" href="#section-316">&#182;</a>
               </div>
               
             </td>
             <td class="code">
               <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">saveSettings</span>(<span class="hljs-params">customLocation</span>) </span>{
-    <span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">'nw.gui'</span>);
+    <span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"nw.gui"</span>);
 
     <span class="hljs-keyword">var</span> defaultLocation = <span class="hljs-string">""</span>;</pre></div>
             </td>
           </tr>
         
           
-          <tr id="section-313">
+          <tr id="section-317">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-313">&#182;</a>
+                <a class="pilcrow" href="#section-317">&#182;</a>
               </div>
               <p>If you’re on windows then folders in filepaths are separated with <code>\</code>, otherwise OS’s use <code>/</code></p>
 
@@ -5313,40 +5367,40 @@ updated during <code>loadSettings()</code></p>
           </tr>
         
           
-          <tr id="section-314">
+          <tr id="section-318">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-314">&#182;</a>
+                <a class="pilcrow" href="#section-318">&#182;</a>
               </div>
               <p>Find the path to the settings file and store it</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>        defaultLocation = (gui.App.dataPath + <span class="hljs-string">'\\uguisettings.json'</span>);
+              <div class='highlight'><pre>        defaultLocation = (gui.App.dataPath + <span class="hljs-string">"\\uguisettings.json"</span>);
     } <span class="hljs-keyword">else</span> {</pre></div>
             </td>
           </tr>
         
           
-          <tr id="section-315">
+          <tr id="section-319">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-315">&#182;</a>
+                <a class="pilcrow" href="#section-319">&#182;</a>
               </div>
               <p>Find the path to the settings file and store it</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>        defaultLocation = (gui.App.dataPath + <span class="hljs-string">'/uguisettings.json'</span>);
+              <div class='highlight'><pre>        defaultLocation = (gui.App.dataPath + <span class="hljs-string">"/uguisettings.json"</span>);
     }</pre></div>
             </td>
           </tr>
         
           
-          <tr id="section-316">
+          <tr id="section-320">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-316">&#182;</a>
+                <a class="pilcrow" href="#section-320">&#182;</a>
               </div>
               <p>Validate types</p>
 
@@ -5364,10 +5418,10 @@ updated during <code>loadSettings()</code></p>
           </tr>
         
           
-          <tr id="section-317">
+          <tr id="section-321">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-317">&#182;</a>
+                <a class="pilcrow" href="#section-321">&#182;</a>
               </div>
               <p>Make sure args object is up to date</p>
 
@@ -5378,10 +5432,10 @@ updated during <code>loadSettings()</code></p>
           </tr>
         
           
-          <tr id="section-318">
+          <tr id="section-322">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-318">&#182;</a>
+                <a class="pilcrow" href="#section-322">&#182;</a>
               </div>
               <p>Grab the args object and JSONify it</p>
 
@@ -5392,10 +5446,10 @@ updated during <code>loadSettings()</code></p>
           </tr>
         
           
-          <tr id="section-319">
+          <tr id="section-323">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-319">&#182;</a>
+                <a class="pilcrow" href="#section-323">&#182;</a>
               </div>
               <p>If a custom location isn’t passed into the function, use the default location for the settings file</p>
 
@@ -5406,10 +5460,10 @@ updated during <code>loadSettings()</code></p>
           </tr>
         
           
-          <tr id="section-320">
+          <tr id="section-324">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-320">&#182;</a>
+                <a class="pilcrow" href="#section-324">&#182;</a>
               </div>
               <p>Save the ugui.args object to the <code>uguisettings.json</code> file</p>
 
@@ -5421,10 +5475,10 @@ updated during <code>loadSettings()</code></p>
           </tr>
         
           
-          <tr id="section-321">
+          <tr id="section-325">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-321">&#182;</a>
+                <a class="pilcrow" href="#section-325">&#182;</a>
               </div>
               <hr>
 <h3 id="u32-load-settings">U32. Load settings</h3>
@@ -5445,26 +5499,26 @@ give it a class of <code>do-not-save</code>.</p>
           </tr>
         
           
-          <tr id="section-322">
+          <tr id="section-326">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-322">&#182;</a>
+                <a class="pilcrow" href="#section-326">&#182;</a>
               </div>
               
             </td>
             <td class="code">
               <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadSettings</span>(<span class="hljs-params">customLocation</span>) </span>{
-    <span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">'nw.gui'</span>);
+    <span class="hljs-keyword">var</span> gui = <span class="hljs-built_in">require</span>(<span class="hljs-string">"nw.gui"</span>);
 
     <span class="hljs-keyword">var</span> defaultLocation = <span class="hljs-string">""</span>;</pre></div>
             </td>
           </tr>
         
           
-          <tr id="section-323">
+          <tr id="section-327">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-323">&#182;</a>
+                <a class="pilcrow" href="#section-327">&#182;</a>
               </div>
               <p>If you’re on windows then folders in filepaths are separated with <code>\</code>, otherwise OS’s use <code>/</code></p>
 
@@ -5475,40 +5529,40 @@ give it a class of <code>do-not-save</code>.</p>
           </tr>
         
           
-          <tr id="section-324">
+          <tr id="section-328">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-324">&#182;</a>
+                <a class="pilcrow" href="#section-328">&#182;</a>
               </div>
               <p>Find the path to the settings file and store it</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>        defaultLocation = (gui.App.dataPath + <span class="hljs-string">'\\uguisettings.json'</span>);
+              <div class='highlight'><pre>        defaultLocation = (gui.App.dataPath + <span class="hljs-string">"\\uguisettings.json"</span>);
     } <span class="hljs-keyword">else</span> {</pre></div>
             </td>
           </tr>
         
           
-          <tr id="section-325">
+          <tr id="section-329">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-325">&#182;</a>
+                <a class="pilcrow" href="#section-329">&#182;</a>
               </div>
               <p>Find the path to the settings file and store it</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>        defaultLocation = (gui.App.dataPath + <span class="hljs-string">'/uguisettings.json'</span>);
+              <div class='highlight'><pre>        defaultLocation = (gui.App.dataPath + <span class="hljs-string">"/uguisettings.json"</span>);
     }</pre></div>
             </td>
           </tr>
         
           
-          <tr id="section-326">
+          <tr id="section-330">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-326">&#182;</a>
+                <a class="pilcrow" href="#section-330">&#182;</a>
               </div>
               <p>Validate types</p>
 
@@ -5526,10 +5580,10 @@ give it a class of <code>do-not-save</code>.</p>
           </tr>
         
           
-          <tr id="section-327">
+          <tr id="section-331">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-327">&#182;</a>
+                <a class="pilcrow" href="#section-331">&#182;</a>
               </div>
               <p>If a custom location isn’t passed into the function, use the default location for the settings file</p>
 
@@ -5540,24 +5594,24 @@ give it a class of <code>do-not-save</code>.</p>
           </tr>
         
           
-          <tr id="section-328">
+          <tr id="section-332">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-328">&#182;</a>
+                <a class="pilcrow" href="#section-332">&#182;</a>
               </div>
               <p>Attempt to read the file</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>    fs.readFile(settingsFile, {encoding: <span class="hljs-string">'utf-8'</span>}, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, data</span>)</span>{</pre></div>
+              <div class='highlight'><pre>    fs.readFile(settingsFile, {encoding: <span class="hljs-string">"utf-8"</span>}, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, data</span>)</span>{</pre></div>
             </td>
           </tr>
         
           
-          <tr id="section-329">
+          <tr id="section-333">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-329">&#182;</a>
+                <a class="pilcrow" href="#section-333">&#182;</a>
               </div>
               <p>Display console warning if unable to read the file</p>
 
@@ -5571,10 +5625,10 @@ give it a class of <code>do-not-save</code>.</p>
           </tr>
         
           
-          <tr id="section-330">
+          <tr id="section-334">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-330">&#182;</a>
+                <a class="pilcrow" href="#section-334">&#182;</a>
               </div>
               <p>Load the file if it’s found</p>
 
@@ -5586,56 +5640,57 @@ give it a class of <code>do-not-save</code>.</p>
           </tr>
         
           
-          <tr id="section-331">
+          <tr id="section-335">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-331">&#182;</a>
+                <a class="pilcrow" href="#section-335">&#182;</a>
               </div>
               <p>Iterate through the saved settings and update the UI</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>            <span class="hljs-keyword">for</span> (key <span class="hljs-keyword">in</span> settingsObj) {</pre></div>
+              <div class='highlight'><pre>            <span class="hljs-keyword">for</span> (key <span class="hljs-keyword">in</span> settingsObj) {
+                <span class="hljs-keyword">var</span> htmltype = settingsObj[key].htmltype;</pre></div>
             </td>
           </tr>
         
           
-          <tr id="section-332">
+          <tr id="section-336">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-332">&#182;</a>
+                <a class="pilcrow" href="#section-336">&#182;</a>
               </div>
               <p>Check if the key has a corresponding UI element
 and that it isn’t set to ‘do not save’</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>                <span class="hljs-keyword">if</span> ( $(<span class="hljs-string">'[data-argName'</span>+ key + <span class="hljs-string">']'</span>) &amp;&amp; !($(<span class="hljs-string">'[data-argName'</span>+ key + <span class="hljs-string">']'</span>).hasClass(<span class="hljs-string">'do-not-save'</span>)) ) {
-                    <span class="hljs-built_in">console</span>.log(settingsObj[key].htmltype);</pre></div>
+              <div class='highlight'><pre>                <span class="hljs-keyword">if</span> ( $(<span class="hljs-string">"[data-argName"</span> + key + <span class="hljs-string">"]"</span>) &amp;&amp; !($(<span class="hljs-string">"[data-argName"</span> + key + <span class="hljs-string">"]"</span>).hasClass(<span class="hljs-string">"do-not-save"</span>)) ) {
+                    <span class="hljs-comment">/* console.log(htmltype); */</span></pre></div>
             </td>
           </tr>
         
           
-          <tr id="section-333">
+          <tr id="section-337">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-333">&#182;</a>
+                <a class="pilcrow" href="#section-337">&#182;</a>
               </div>
-              <p>Update based on type of key:</p>
+              <p>If <code>&lt;input type=&quot;file&quot;&gt;</code> and it has value</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>                    <span class="hljs-keyword">if</span> (settingsObj[key].htmltype == <span class="hljs-string">'file'</span> &amp;&amp; settingsObj[key].value !== <span class="hljs-string">""</span>) {</pre></div>
+              <div class='highlight'><pre>                    <span class="hljs-keyword">if</span> (htmltype == <span class="hljs-string">"file"</span> &amp;&amp; settingsObj[key].value !== <span class="hljs-string">""</span>) {</pre></div>
             </td>
           </tr>
         
           
-          <tr id="section-334">
+          <tr id="section-338">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-334">&#182;</a>
+                <a class="pilcrow" href="#section-338">&#182;</a>
               </div>
-              <p>File: file</p>
+              <p>Create an object with the correct file properties</p>
 
             </td>
             <td class="code">
@@ -5647,78 +5702,7 @@ and that it isn’t set to ‘do not save’</p>
                             <span class="hljs-string">"lastModified"</span>: settingsObj[key].lastModified,
                             <span class="hljs-string">"lastModifiedDate"</span>: settingsObj[key].lastModifiedDate,
                             <span class="hljs-string">"webkitRelativePath"</span>: settingsObj[key].webkitRelativePath
-                        };
-                        $(<span class="hljs-string">'[data-argName='</span> + key + <span class="hljs-string">']'</span>)[<span class="hljs-number">0</span>].files[<span class="hljs-number">0</span>] = file;</pre></div>
-            </td>
-          </tr>
-        
-          
-          <tr id="section-335">
-            <td class="docs">
-              <div class="pilwrap">
-                <a class="pilcrow" href="#section-335">&#182;</a>
-              </div>
-              <p>Can’t manually set the val, need to change the cmd preview in devtools to look at <code>.files[0]</code> instead of <code>.val()</code>
-<code>$(&#39;[data-argName=&#39; + key + &#39;]&#39;).val(file.path);</code>
-Update ezdz</p>
-
-            </td>
-            <td class="code">
-              <div class='highlight'><pre>                        <span class="hljs-keyword">if</span> ( $(<span class="hljs-string">'[data-argName='</span> + key + <span class="hljs-string">']'</span>).parent().hasClass(<span class="hljs-string">"ezdz"</span>) ) {</pre></div>
-            </td>
-          </tr>
-        
-          
-          <tr id="section-336">
-            <td class="docs">
-              <div class="pilwrap">
-                <a class="pilcrow" href="#section-336">&#182;</a>
-              </div>
-              <p>run ezdz to update visuals on the page</p>
-
-            </td>
-            <td class="code">
-              <div class='highlight'><pre>                            ezdz(file);
-                        }
-                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (settingsObj[key].htmltype == <span class="hljs-string">'radio'</span>) {</pre></div>
-            </td>
-          </tr>
-        
-          
-          <tr id="section-337">
-            <td class="docs">
-              <div class="pilwrap">
-                <a class="pilcrow" href="#section-337">&#182;</a>
-              </div>
-              <p>Radio dials: checked</p>
-
-            </td>
-            <td class="code">
-              <div class='highlight'><pre>                        <span class="hljs-keyword">if</span> (settingsObj[key].htmlticked == <span class="hljs-literal">true</span>) {
-                            $(<span class="hljs-string">'[data-argName='</span> + key + <span class="hljs-string">']'</span>).prop(<span class="hljs-string">'checked'</span>, <span class="hljs-literal">true</span>);
-                        } <span class="hljs-keyword">else</span> {
-                            $(<span class="hljs-string">'[data-argName='</span> + key + <span class="hljs-string">']'</span>).prop(<span class="hljs-string">'checked'</span>, <span class="hljs-literal">false</span>);
-                        }
-                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (settingsObj[key].htmltype == <span class="hljs-string">'checkbox'</span>) {</pre></div>
-            </td>
-          </tr>
-        
-          
-          <tr id="section-338">
-            <td class="docs">
-              <div class="pilwrap">
-                <a class="pilcrow" href="#section-338">&#182;</a>
-              </div>
-              <p>Checkbox: checked</p>
-
-            </td>
-            <td class="code">
-              <div class='highlight'><pre>                        <span class="hljs-keyword">if</span> (settingsObj[key].htmlticked == <span class="hljs-literal">true</span>) {
-                            $(<span class="hljs-string">'[data-argName='</span> + key + <span class="hljs-string">']'</span>).prop(<span class="hljs-string">'checked'</span>, <span class="hljs-literal">true</span>);
-                        } <span class="hljs-keyword">else</span> {
-                            $(<span class="hljs-string">'[data-argName='</span> + key + <span class="hljs-string">']'</span>).prop(<span class="hljs-string">'checked'</span>, <span class="hljs-literal">false</span>);
-                        }
-                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (settingsObj[key].htmltype == <span class="hljs-string">'color'</span>) {</pre></div>
+                        };</pre></div>
             </td>
           </tr>
         
@@ -5728,12 +5712,11 @@ Update ezdz</p>
               <div class="pilwrap">
                 <a class="pilcrow" href="#section-339">&#182;</a>
               </div>
-              <p>Color: value
-This one actually updates the color and is most important!</p>
+              <p>Set the matching UI element in the app with the above properties</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>                        $(<span class="hljs-string">'[data-argName='</span> + key + <span class="hljs-string">']'</span>).val(settingsObj[key].value);</pre></div>
+              <div class='highlight'><pre>                        $(<span class="hljs-string">"[data-argName="</span> + key + <span class="hljs-string">"]"</span>)[<span class="hljs-number">0</span>].files[<span class="hljs-number">0</span>] = file;</pre></div>
             </td>
           </tr>
         
@@ -5743,12 +5726,11 @@ This one actually updates the color and is most important!</p>
               <div class="pilwrap">
                 <a class="pilcrow" href="#section-340">&#182;</a>
               </div>
-              <p>This one updates the html value, which doesn’t do anything that I can tell</p>
+              <p>Update EZDZ if the element is using it</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>                        $(<span class="hljs-string">'[data-argName='</span> + key + <span class="hljs-string">']'</span>).attr(<span class="hljs-string">'value'</span>, settingsObj[key].value);
-                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (settingsObj[key].htmltype == <span class="hljs-string">'range'</span>) {</pre></div>
+              <div class='highlight'><pre>                        <span class="hljs-keyword">if</span> ( $(<span class="hljs-string">"[data-argName="</span> + key + <span class="hljs-string">"]"</span>).parent().hasClass(<span class="hljs-string">"ezdz"</span>) ) {</pre></div>
             </td>
           </tr>
         
@@ -5758,20 +5740,12 @@ This one actually updates the color and is most important!</p>
               <div class="pilwrap">
                 <a class="pilcrow" href="#section-341">&#182;</a>
               </div>
-              <p>Range: value
-Check if the value is not a number, which means it’s a <code>2</code> value slider like <code>&#39;0,25&#39;</code></p>
+              <p>Run EZDZ to update visuals on the page</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>                        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isNaN</span>(settingsObj[key].value)) {
-                            <span class="hljs-keyword">var</span> parsedValue = settingsObj[key].value.split(<span class="hljs-string">','</span>).map( <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">num</span>) </span>{
-                                <span class="hljs-keyword">return</span> <span class="hljs-built_in">parseInt</span> (num);
-                            });
-                            $(<span class="hljs-string">'[data-argName='</span> + key + <span class="hljs-string">']'</span>).slider(<span class="hljs-string">'setValue'</span>, parsedValue);
-                        } <span class="hljs-keyword">else</span> {
-                            $(<span class="hljs-string">'[data-argName='</span> + key + <span class="hljs-string">']'</span>).slider(<span class="hljs-string">'setValue'</span>, <span class="hljs-built_in">parseInt</span>(settingsObj[key].value));
-                        }
-                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (settingsObj[key].htmltype == <span class="hljs-string">'textarea'</span>) {</pre></div>
+              <div class='highlight'><pre>                            ezdz(file);
+                        }</pre></div>
             </td>
           </tr>
         
@@ -5781,12 +5755,11 @@ Check if the value is not a number, which means it’s a <code>2</code> value sl
               <div class="pilwrap">
                 <a class="pilcrow" href="#section-342">&#182;</a>
               </div>
-              <p>Textarea: text</p>
+              <p>If <code>&lt;input type=&quot;checkbox&quot;&gt;</code> or <code>&lt;input type=&quot;radio&quot;&gt;</code></p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>                        $(<span class="hljs-string">'[data-argName='</span> + key + <span class="hljs-string">']'</span>).text(settingsObj[key].value);
-                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (settingsObj[key].value) {</pre></div>
+              <div class='highlight'><pre>                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( htmltype == <span class="hljs-string">"checkbox"</span> || htmltype == <span class="hljs-string">"radio"</span>) {</pre></div>
             </td>
           </tr>
         
@@ -5796,14 +5769,15 @@ Check if the value is not a number, which means it’s a <code>2</code> value sl
               <div class="pilwrap">
                 <a class="pilcrow" href="#section-343">&#182;</a>
               </div>
-              <p>Catch-all</p>
+              <p>Set the value of the element as checked or not</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>                        $(<span class="hljs-string">'[data-argName='</span> + key + <span class="hljs-string">']'</span>).val(settingsObj[key].value);
-                    }
-                }
-            }</pre></div>
+              <div class='highlight'><pre>                        <span class="hljs-keyword">if</span> (settingsObj[key].htmlticked == <span class="hljs-literal">true</span>) {
+                            $(<span class="hljs-string">"[data-argName="</span> + key + <span class="hljs-string">"]"</span>).prop(<span class="hljs-string">"checked"</span>, <span class="hljs-literal">true</span>);
+                        } <span class="hljs-keyword">else</span> {
+                            $(<span class="hljs-string">"[data-argName="</span> + key + <span class="hljs-string">"]"</span>).prop(<span class="hljs-string">"checked"</span>, <span class="hljs-literal">false</span>);
+                        }</pre></div>
             </td>
           </tr>
         
@@ -5812,6 +5786,170 @@ Check if the value is not a number, which means it’s a <code>2</code> value sl
             <td class="docs">
               <div class="pilwrap">
                 <a class="pilcrow" href="#section-344">&#182;</a>
+              </div>
+              <p>If the setting is for a radio in one of Bootstrap’s fake dropdowns</p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (htmltype == <span class="hljs-string">"dropdown"</span>) {</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-345">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-345">&#182;</a>
+              </div>
+              <p>Force the UI to be updated</p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>                        $(<span class="hljs-string">"[data-argName="</span> + key + <span class="hljs-string">"]"</span>).trigger(<span class="hljs-string">"click"</span>);</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-346">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-346">&#182;</a>
+              </div>
+              <p>If the setting is for a range slider</p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (htmltype == <span class="hljs-string">"range"</span>) {</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-347">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-347">&#182;</a>
+              </div>
+              <p>Check if the value is not a number, like <code>&#39;0,25&#39;</code> rather than <code>2</code></p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>                        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isNaN</span>(settingsObj[key].value)) {</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-348">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-348">&#182;</a>
+              </div>
+              <p>TODO: cmd preview doesn’t update this when doing a loadSettings()</p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>                            <span class="hljs-keyword">var</span> parsedValue = settingsObj[key].value.split(<span class="hljs-string">","</span>).map( <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">num</span>) </span>{
+                                <span class="hljs-keyword">return</span> <span class="hljs-built_in">parseInt</span>(num);
+                            });</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-349">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-349">&#182;</a>
+              </div>
+              <p>Set the value to <code>0,25</code> and the data-slider-value to <code>[0,25]</code></p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>                            $(<span class="hljs-string">"[data-argName="</span> + key + <span class="hljs-string">"]"</span>).slider(<span class="hljs-string">"setValue"</span>, parsedValue);
+                            $(<span class="hljs-string">"[data-argName="</span> + key + <span class="hljs-string">"]"</span>).attr(<span class="hljs-string">"data-slider-value"</span>, <span class="hljs-string">"["</span> + parsedValue + <span class="hljs-string">"]"</span>);
+                        } <span class="hljs-keyword">else</span> {</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-350">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-350">&#182;</a>
+              </div>
+              <p>Set the value to <code>2</code></p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>                            $(<span class="hljs-string">"[data-argName="</span> + key + <span class="hljs-string">"]"</span>).slider(<span class="hljs-string">"setValue"</span>, <span class="hljs-built_in">parseInt</span>(settingsObj[key].value));
+                        }</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-351">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-351">&#182;</a>
+              </div>
+              <p>If <code>&lt;textarea&gt;</code></p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (htmltype == <span class="hljs-string">"textarea"</span>) {</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-352">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-352">&#182;</a>
+              </div>
+              <p>TODO: cmd preview doesn’t update this when doing a loadSettings()
+Set the value and UI text for the matching textarea in the app</p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>                        $(<span class="hljs-string">"[data-argName="</span> + key + <span class="hljs-string">"]"</span>).val(settingsObj[key].value);
+                        $(<span class="hljs-string">"[data-argName="</span> + key + <span class="hljs-string">"]"</span>).text(settingsObj[key].value);</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-353">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-353">&#182;</a>
+              </div>
+              <p>Catch-all for any generic other input types</p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (settingsObj[key].value) {</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-354">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-354">&#182;</a>
+              </div>
+              <p>set the value for the matching element</p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>                        $(<span class="hljs-string">"[data-argName="</span> + key + <span class="hljs-string">"]"</span>).val(settingsObj[key].value);
+                    }
+                }
+            }</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-355">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-355">&#182;</a>
               </div>
               <p>Build the arg object based on our updated UI</p>
 
@@ -5826,10 +5964,10 @@ Check if the value is not a number, which means it’s a <code>2</code> value sl
           </tr>
         
           
-          <tr id="section-345">
+          <tr id="section-356">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-345">&#182;</a>
+                <a class="pilcrow" href="#section-356">&#182;</a>
               </div>
               <hr>
 <h3 id="u33-the-ugui-object">U33. The UGUI Object</h3>
@@ -5846,10 +5984,10 @@ NW.js Developer Tools console.</p>
           </tr>
         
           
-          <tr id="section-346">
+          <tr id="section-357">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-346">&#182;</a>
+                <a class="pilcrow" href="#section-357">&#182;</a>
               </div>
               
             </td>
@@ -5894,10 +6032,10 @@ NW.js Developer Tools console.</p>
           </tr>
         
           
-          <tr id="section-347">
+          <tr id="section-358">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-347">&#182;</a>
+                <a class="pilcrow" href="#section-358">&#182;</a>
               </div>
               <p>end <code>ugui();</code></p>
 
