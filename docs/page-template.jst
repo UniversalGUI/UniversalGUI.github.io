@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>UGUI - Annotated Documentation</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="syntax_highlight.css">
+</head>
+<body>
+  <div id="container">
+    <header>
+      <h3>Documentation</h3>
+      <h1>UGUI Annotated Source Code</h1>
+    </header>
+    <div id="background"></div>
+    <% if (sources.length > 1) { %>
+      <div id="jump_to">
+        Jump To &hellip;
+        <div id="jump_wrapper">
+          <div id="jump_page">
+            <% for (var i=0, l=sources.length; i<l; i++) { %>
+              <% var source = sources[i]; %>
+              <a class="source" href="<%= path.basename(destination(source)) %>">
+                <%= path.basename(source) %>
+              </a>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    <% } %>
+    <table cellpadding="0" cellspacing="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1>
+              <%= title %>
+            </h1>
+          </th>
+          <th class="code">
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (var i=0, l=sections.length; i<l; i++) { %>
+          <% var section = sections[i]; %>
+          <tr id="section-<%= i + 1 %>">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-<%= i + 1 %>">&#182;</a>
+              </div>
+              <%= section.docsHtml %>
+            </td>
+            <td class="code">
+              <%= section.codeHtml %>
+            </td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <footer>
+      <p>2015 - Some Rights Reserved - The Universal GUI Project</p>
+    </footer>
+  </div>
+</body>
+</html>
