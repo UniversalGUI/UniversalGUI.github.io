@@ -1,3 +1,71 @@
+body {
+  font-family: sans-serif;
+}
+
+hr {
+  background-color: #4E5C75;
+  border: 3px solid #4E5C75;
+  border-radius: 10px;
+}
+
+td.code,
+td.docs {
+  display: table-cell;
+}
+
+td.code {
+  padding: 0px 0px 0px 10px;
+}
+td.docs {
+  background-color: #D5E1E6;
+  padding: 0px 10px;
+  font-size: 0.95em;
+}
+td.docs a {
+  color: #1E566D;
+}
+td.docs p {
+  line-height: 1.3em;
+}
+td.docs code {
+  background-color: #E6E4D5;
+  border: 1px solid #848273;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+td.docs blockquote {
+  background: #E6E4D5;
+  border: 1px solid #848273;
+  border-left: 6px solid #1EAB60;
+  border-radius: 5px;
+  margin: 0px;
+  padding: 8px;
+}
+td.docs blockquote p {
+  margin: 0px 0px 7px 0px;
+  color: #444;
+}
+td.docs blockquote code {
+  background-color: #D0CEBD;
+  border: none;
+}
+
+.pilwrap {}
+.pilcrow {
+  display: block;
+  text-decoration: none;
+  visibility: hidden;
+}
+.pilwrap:hover .pilcrow {
+  visibility: visible;
+}
+
+
+
+
+
+/* SYNTAX HIGHLIGHTING */
+
 td.linenos { background-color: #f0f0f0; padding-right: 10px; }
 span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
 /*
