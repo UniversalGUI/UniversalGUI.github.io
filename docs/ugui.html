@@ -866,7 +866,11 @@ filled out.</p>
               
             </td>
             <td class="code">
-              <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unlockSubmit</span>(<span class="hljs-params"></span>) </span>{</pre></div>
+              <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unlockSubmit</span>(<span class="hljs-params">pickedExecutable</span>) </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span>(pickedExecutable) !== <span class="hljs-string">"string"</span> &amp;&amp; <span class="hljs-keyword">typeof</span>(pickedExecutable) !== <span class="hljs-string">"undefined"</span>) {
+        <span class="hljs-built_in">console</span>.info(<span class="hljs-string">"Executable must be passed as a string."</span>);
+        <span class="hljs-keyword">return</span>;
+    }</pre></div>
             </td>
           </tr>
         
@@ -880,7 +884,7 @@ filled out.</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>    <span class="hljs-keyword">var</span> whichExecutable = $(<span class="hljs-keyword">this</span>).closest(<span class="hljs-string">"form"</span>).attr(<span class="hljs-string">"id"</span>);
+              <div class='highlight'><pre>    <span class="hljs-keyword">var</span> whichExecutable = pickedExecutable || $(<span class="hljs-keyword">this</span>).closest(<span class="hljs-string">"form"</span>).attr(<span class="hljs-string">"id"</span>);
     <span class="hljs-keyword">var</span> formClicked = <span class="hljs-string">""</span>;</pre></div>
             </td>
           </tr>
@@ -989,9 +993,15 @@ filled out.</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>    $(argsForm[index]).keyup  ( unlockSubmit );
-    $(argsForm[index]).mouseup( unlockSubmit );
-    $(argsForm[index]).change ( unlockSubmit );
+              <div class='highlight'><pre>    $(argsForm[index]).keyup  ( <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        unlockSubmit();
+    });
+    $(argsForm[index]).mouseup( <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        unlockSubmit();
+    });
+    $(argsForm[index]).change ( <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        unlockSubmit();
+    });
 }</pre></div>
             </td>
           </tr>
@@ -1006,7 +1016,9 @@ filled out.</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>$(<span class="hljs-string">".sendCmdArgs"</span>).each( unlockSubmit );</pre></div>
+              <div class='highlight'><pre><span class="hljs-keyword">for</span> (subindex = <span class="hljs-number">0</span>; subindex &lt; executable.length; subindex++) {
+    unlockSubmit(executable[subindex]);
+}</pre></div>
             </td>
           </tr>
         
@@ -2195,6 +2207,7 @@ Skip everything without a value</p>
               <div class='highlight'><pre>        <span class="hljs-keyword">if</span> (
             (matched.htmltype === <span class="hljs-string">"checkbox"</span> &amp;&amp; matched.htmlticked === <span class="hljs-literal">false</span>) ||
             (matched.htmltype === <span class="hljs-string">"radio"</span> &amp;&amp; matched.htmlticked === <span class="hljs-literal">false</span>) ||
+            (matched.htmltype === <span class="hljs-string">"dropdown"</span> &amp;&amp; matched.htmlticked === <span class="hljs-literal">false</span>) ||
             (<span class="hljs-keyword">typeof</span>(matched.value) === <span class="hljs-string">"undefined"</span>) ||
             (matched.value === <span class="hljs-string">""</span>)
            ) {</pre></div>
@@ -3953,7 +3966,7 @@ displays the Command Line output at the bottom of the page.</p>
 <h3 id="u21-put-all-executables-in-dropdowns">U21. Put all executables in dropdowns</h3>
 <blockquote>
 <p>In the UGUI Dev Toolbar, there are dropdowns in the “CMD
-Output” and “Exectuable Info” sections that contain all of
+Output” and “Executable Info” sections that contain all of
 the executables used in the app.</p>
 </blockquote>
 
@@ -3972,8 +3985,7 @@ the executables used in the app.</p>
               
             </td>
             <td class="code">
-              <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fillExecutableDropdowns</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">var</span> executables = ugui.executable;</pre></div>
+              <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fillExecutableDropdowns</span>(<span class="hljs-params"></span>) </span>{</pre></div>
             </td>
           </tr>
         
@@ -3987,8 +3999,8 @@ the executables used in the app.</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>    <span class="hljs-keyword">for</span> (index = <span class="hljs-number">0</span>; index &lt; executables.length; index++) {
-        $(<span class="hljs-string">".executableName"</span>).append(<span class="hljs-string">'&lt;option value="'</span> + executables[index] + <span class="hljs-string">'"&gt;'</span> + executables[index] + <span class="hljs-string">'&lt;/option&gt;'</span>);
+              <div class='highlight'><pre>    <span class="hljs-keyword">for</span> (index = <span class="hljs-number">0</span>; index &lt; executable.length; index++) {
+        $(<span class="hljs-string">".executableName"</span>).append(<span class="hljs-string">'&lt;option value="'</span> + executable[index] + <span class="hljs-string">'"&gt;'</span> + executable[index] + <span class="hljs-string">'&lt;/option&gt;'</span>);
     }
 }</pre></div>
             </td>
@@ -5480,6 +5492,22 @@ updated during <code>loadSettings()</code></p>
               <div class="pilwrap">
                 <a class="pilcrow" href="#section-325">&#182;</a>
               </div>
+              <p>Make sure anything is a class of <code>save-ugui-settings</code> is wired up to save the UGUI settings</p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>$(<span class="hljs-string">".save-ugui-settings"</span>).click( <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    saveSettings();
+} );</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-326">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-326">&#182;</a>
+              </div>
               <hr>
 <h3 id="u32-load-settings">U32. Load settings</h3>
 <blockquote>
@@ -5499,10 +5527,10 @@ give it a class of <code>do-not-save</code>.</p>
           </tr>
         
           
-          <tr id="section-326">
+          <tr id="section-327">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-326">&#182;</a>
+                <a class="pilcrow" href="#section-327">&#182;</a>
               </div>
               
             </td>
@@ -5515,31 +5543,16 @@ give it a class of <code>do-not-save</code>.</p>
           </tr>
         
           
-          <tr id="section-327">
+          <tr id="section-328">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-327">&#182;</a>
+                <a class="pilcrow" href="#section-328">&#182;</a>
               </div>
               <p>If you’re on windows then folders in filepaths are separated with <code>\</code>, otherwise OS’s use <code>/</code></p>
 
             </td>
             <td class="code">
               <div class='highlight'><pre>    <span class="hljs-keyword">if</span> ( process.platform == <span class="hljs-string">"win32"</span> ) {</pre></div>
-            </td>
-          </tr>
-        
-          
-          <tr id="section-328">
-            <td class="docs">
-              <div class="pilwrap">
-                <a class="pilcrow" href="#section-328">&#182;</a>
-              </div>
-              <p>Find the path to the settings file and store it</p>
-
-            </td>
-            <td class="code">
-              <div class='highlight'><pre>        defaultLocation = (gui.App.dataPath + <span class="hljs-string">"\\uguisettings.json"</span>);
-    } <span class="hljs-keyword">else</span> {</pre></div>
             </td>
           </tr>
         
@@ -5553,8 +5566,8 @@ give it a class of <code>do-not-save</code>.</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>        defaultLocation = (gui.App.dataPath + <span class="hljs-string">"/uguisettings.json"</span>);
-    }</pre></div>
+              <div class='highlight'><pre>        defaultLocation = (gui.App.dataPath + <span class="hljs-string">"\\uguisettings.json"</span>);
+    } <span class="hljs-keyword">else</span> {</pre></div>
             </td>
           </tr>
         
@@ -5563,6 +5576,21 @@ give it a class of <code>do-not-save</code>.</p>
             <td class="docs">
               <div class="pilwrap">
                 <a class="pilcrow" href="#section-330">&#182;</a>
+              </div>
+              <p>Find the path to the settings file and store it</p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>        defaultLocation = (gui.App.dataPath + <span class="hljs-string">"/uguisettings.json"</span>);
+    }</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-331">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-331">&#182;</a>
               </div>
               <p>Validate types</p>
 
@@ -5580,10 +5608,10 @@ give it a class of <code>do-not-save</code>.</p>
           </tr>
         
           
-          <tr id="section-331">
+          <tr id="section-332">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-331">&#182;</a>
+                <a class="pilcrow" href="#section-332">&#182;</a>
               </div>
               <p>If a custom location isn’t passed into the function, use the default location for the settings file</p>
 
@@ -5594,10 +5622,10 @@ give it a class of <code>do-not-save</code>.</p>
           </tr>
         
           
-          <tr id="section-332">
+          <tr id="section-333">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-332">&#182;</a>
+                <a class="pilcrow" href="#section-333">&#182;</a>
               </div>
               <p>Attempt to read the file</p>
 
@@ -5608,10 +5636,10 @@ give it a class of <code>do-not-save</code>.</p>
           </tr>
         
           
-          <tr id="section-333">
+          <tr id="section-334">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-333">&#182;</a>
+                <a class="pilcrow" href="#section-334">&#182;</a>
               </div>
               <p>Display console warning if unable to read the file</p>
 
@@ -5625,10 +5653,10 @@ give it a class of <code>do-not-save</code>.</p>
           </tr>
         
           
-          <tr id="section-334">
+          <tr id="section-335">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-334">&#182;</a>
+                <a class="pilcrow" href="#section-335">&#182;</a>
               </div>
               <p>Load the file if it’s found</p>
 
@@ -5640,25 +5668,26 @@ give it a class of <code>do-not-save</code>.</p>
           </tr>
         
           
-          <tr id="section-335">
+          <tr id="section-336">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-335">&#182;</a>
+                <a class="pilcrow" href="#section-336">&#182;</a>
               </div>
               <p>Iterate through the saved settings and update the UI</p>
 
             </td>
             <td class="code">
               <div class='highlight'><pre>            <span class="hljs-keyword">for</span> (key <span class="hljs-keyword">in</span> settingsObj) {
-                <span class="hljs-keyword">var</span> htmltype = settingsObj[key].htmltype;</pre></div>
+                <span class="hljs-keyword">var</span> htmltype = settingsObj[key].htmltype;
+                <span class="hljs-keyword">var</span> htmlticked = settingsObj[key].htmlticked;</pre></div>
             </td>
           </tr>
         
           
-          <tr id="section-336">
+          <tr id="section-337">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-336">&#182;</a>
+                <a class="pilcrow" href="#section-337">&#182;</a>
               </div>
               <p>Check if the key has a corresponding UI element
 and that it isn’t set to ‘do not save’</p>
@@ -5671,10 +5700,10 @@ and that it isn’t set to ‘do not save’</p>
           </tr>
         
           
-          <tr id="section-337">
+          <tr id="section-338">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-337">&#182;</a>
+                <a class="pilcrow" href="#section-338">&#182;</a>
               </div>
               <p>If <code>&lt;input type=&quot;file&quot;&gt;</code> and it has value</p>
 
@@ -5685,10 +5714,10 @@ and that it isn’t set to ‘do not save’</p>
           </tr>
         
           
-          <tr id="section-338">
+          <tr id="section-339">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-338">&#182;</a>
+                <a class="pilcrow" href="#section-339">&#182;</a>
               </div>
               <p>Create an object with the correct file properties</p>
 
@@ -5707,10 +5736,10 @@ and that it isn’t set to ‘do not save’</p>
           </tr>
         
           
-          <tr id="section-339">
+          <tr id="section-340">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-339">&#182;</a>
+                <a class="pilcrow" href="#section-340">&#182;</a>
               </div>
               <p>Set the matching UI element in the app with the above properties</p>
 
@@ -5721,10 +5750,10 @@ and that it isn’t set to ‘do not save’</p>
           </tr>
         
           
-          <tr id="section-340">
+          <tr id="section-341">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-340">&#182;</a>
+                <a class="pilcrow" href="#section-341">&#182;</a>
               </div>
               <p>Update EZDZ if the element is using it</p>
 
@@ -5735,10 +5764,10 @@ and that it isn’t set to ‘do not save’</p>
           </tr>
         
           
-          <tr id="section-341">
+          <tr id="section-342">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-341">&#182;</a>
+                <a class="pilcrow" href="#section-342">&#182;</a>
               </div>
               <p>Run EZDZ to update visuals on the page</p>
 
@@ -5750,10 +5779,10 @@ and that it isn’t set to ‘do not save’</p>
           </tr>
         
           
-          <tr id="section-342">
+          <tr id="section-343">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-342">&#182;</a>
+                <a class="pilcrow" href="#section-343">&#182;</a>
               </div>
               <p>If <code>&lt;input type=&quot;checkbox&quot;&gt;</code> or <code>&lt;input type=&quot;radio&quot;&gt;</code></p>
 
@@ -5764,16 +5793,16 @@ and that it isn’t set to ‘do not save’</p>
           </tr>
         
           
-          <tr id="section-343">
+          <tr id="section-344">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-343">&#182;</a>
+                <a class="pilcrow" href="#section-344">&#182;</a>
               </div>
               <p>Set the value of the element as checked or not</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>                        <span class="hljs-keyword">if</span> (settingsObj[key].htmlticked == <span class="hljs-literal">true</span>) {
+              <div class='highlight'><pre>                        <span class="hljs-keyword">if</span> (htmlticked == <span class="hljs-literal">true</span>) {
                             $(<span class="hljs-string">"[data-argName="</span> + key + <span class="hljs-string">"]"</span>).prop(<span class="hljs-string">"checked"</span>, <span class="hljs-literal">true</span>);
                         } <span class="hljs-keyword">else</span> {
                             $(<span class="hljs-string">"[data-argName="</span> + key + <span class="hljs-string">"]"</span>).prop(<span class="hljs-string">"checked"</span>, <span class="hljs-literal">false</span>);
@@ -5782,24 +5811,24 @@ and that it isn’t set to ‘do not save’</p>
           </tr>
         
           
-          <tr id="section-344">
+          <tr id="section-345">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-344">&#182;</a>
+                <a class="pilcrow" href="#section-345">&#182;</a>
               </div>
               <p>If the setting is for a radio in one of Bootstrap’s fake dropdowns</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (htmltype == <span class="hljs-string">"dropdown"</span>) {</pre></div>
+              <div class='highlight'><pre>                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (htmltype == <span class="hljs-string">"dropdown"</span> &amp;&amp; htmlticked == <span class="hljs-literal">true</span>) {</pre></div>
             </td>
           </tr>
         
           
-          <tr id="section-345">
+          <tr id="section-346">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-345">&#182;</a>
+                <a class="pilcrow" href="#section-346">&#182;</a>
               </div>
               <p>Force the UI to be updated</p>
 
@@ -5810,10 +5839,10 @@ and that it isn’t set to ‘do not save’</p>
           </tr>
         
           
-          <tr id="section-346">
+          <tr id="section-347">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-346">&#182;</a>
+                <a class="pilcrow" href="#section-347">&#182;</a>
               </div>
               <p>If the setting is for a range slider</p>
 
@@ -5824,10 +5853,10 @@ and that it isn’t set to ‘do not save’</p>
           </tr>
         
           
-          <tr id="section-347">
+          <tr id="section-348">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-347">&#182;</a>
+                <a class="pilcrow" href="#section-348">&#182;</a>
               </div>
               <p>Check if the value is not a number, like <code>&#39;0,25&#39;</code> rather than <code>2</code></p>
 
@@ -5838,10 +5867,10 @@ and that it isn’t set to ‘do not save’</p>
           </tr>
         
           
-          <tr id="section-348">
+          <tr id="section-349">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-348">&#182;</a>
+                <a class="pilcrow" href="#section-349">&#182;</a>
               </div>
               <p>TODO: cmd preview doesn’t update this when doing a loadSettings()</p>
 
@@ -5854,10 +5883,10 @@ and that it isn’t set to ‘do not save’</p>
           </tr>
         
           
-          <tr id="section-349">
+          <tr id="section-350">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-349">&#182;</a>
+                <a class="pilcrow" href="#section-350">&#182;</a>
               </div>
               <p>Set the value to <code>0,25</code> and the data-slider-value to <code>[0,25]</code></p>
 
@@ -5870,10 +5899,10 @@ and that it isn’t set to ‘do not save’</p>
           </tr>
         
           
-          <tr id="section-350">
+          <tr id="section-351">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-350">&#182;</a>
+                <a class="pilcrow" href="#section-351">&#182;</a>
               </div>
               <p>Set the value to <code>2</code></p>
 
@@ -5885,10 +5914,10 @@ and that it isn’t set to ‘do not save’</p>
           </tr>
         
           
-          <tr id="section-351">
+          <tr id="section-352">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-351">&#182;</a>
+                <a class="pilcrow" href="#section-352">&#182;</a>
               </div>
               <p>If <code>&lt;textarea&gt;</code></p>
 
@@ -5899,13 +5928,12 @@ and that it isn’t set to ‘do not save’</p>
           </tr>
         
           
-          <tr id="section-352">
+          <tr id="section-353">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-352">&#182;</a>
+                <a class="pilcrow" href="#section-353">&#182;</a>
               </div>
-              <p>TODO: cmd preview doesn’t update this when doing a loadSettings()
-Set the value and UI text for the matching textarea in the app</p>
+              <p>Set the value and UI text for the matching textarea in the app</p>
 
             </td>
             <td class="code">
@@ -5915,10 +5943,10 @@ Set the value and UI text for the matching textarea in the app</p>
           </tr>
         
           
-          <tr id="section-353">
+          <tr id="section-354">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-353">&#182;</a>
+                <a class="pilcrow" href="#section-354">&#182;</a>
               </div>
               <p>Catch-all for any generic other input types</p>
 
@@ -5929,10 +5957,10 @@ Set the value and UI text for the matching textarea in the app</p>
           </tr>
         
           
-          <tr id="section-354">
+          <tr id="section-355">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-354">&#182;</a>
+                <a class="pilcrow" href="#section-355">&#182;</a>
               </div>
               <p>set the value for the matching element</p>
 
@@ -5946,16 +5974,35 @@ Set the value and UI text for the matching textarea in the app</p>
           </tr>
         
           
-          <tr id="section-355">
+          <tr id="section-356">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-355">&#182;</a>
+                <a class="pilcrow" href="#section-356">&#182;</a>
               </div>
               <p>Build the arg object based on our updated UI</p>
 
             </td>
             <td class="code">
-              <div class='highlight'><pre>            buildUGUIArgObject();
+              <div class='highlight'><pre>            removeTypedQuotes();
+            buildUGUIArgObject();
+            patternMatchingDefinitionEngine();
+            updateUGUIDevCommandLine();</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-357">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-357">&#182;</a>
+              </div>
+              <p>On page load have this run once to unlock submit if nothing is required.</p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>            <span class="hljs-keyword">for</span> (subindex = <span class="hljs-number">0</span>; subindex &lt; executable.length; subindex++) {
+                unlockSubmit(executable[subindex]);
+            }
         }
     });
 
@@ -5964,10 +6011,26 @@ Set the value and UI text for the matching textarea in the app</p>
           </tr>
         
           
-          <tr id="section-356">
+          <tr id="section-358">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-356">&#182;</a>
+                <a class="pilcrow" href="#section-358">&#182;</a>
+              </div>
+              <p>Make sure anything is a class of <code>load-ugui-settings</code> is wired up to load the UGUI settings</p>
+
+            </td>
+            <td class="code">
+              <div class='highlight'><pre>$(<span class="hljs-string">".load-ugui-settings"</span>).click( <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    loadSettings();
+});</pre></div>
+            </td>
+          </tr>
+        
+          
+          <tr id="section-359">
+            <td class="docs">
+              <div class="pilwrap">
+                <a class="pilcrow" href="#section-359">&#182;</a>
               </div>
               <hr>
 <h3 id="u33-the-ugui-object">U33. The UGUI Object</h3>
@@ -5984,10 +6047,10 @@ NW.js Developer Tools console.</p>
           </tr>
         
           
-          <tr id="section-357">
+          <tr id="section-360">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-357">&#182;</a>
+                <a class="pilcrow" href="#section-360">&#182;</a>
               </div>
               
             </td>
@@ -6025,17 +6088,18 @@ NW.js Developer Tools console.</p>
         <span class="hljs-string">"warnIfDuplicateArgNames"</span>: warnIfDuplicateArgNames,
         <span class="hljs-string">"openDefaultBrowser"</span>: openDefaultBrowser,
         <span class="hljs-string">"saveSettings"</span>: saveSettings,
-        <span class="hljs-string">"loadSettings"</span>: loadSettings
+        <span class="hljs-string">"loadSettings"</span>: loadSettings,
+        <span class="hljs-string">"patternMatchingDefinitionEngine"</span>: patternMatchingDefinitionEngine
     }
 };</pre></div>
             </td>
           </tr>
         
           
-          <tr id="section-358">
+          <tr id="section-361">
             <td class="docs">
               <div class="pilwrap">
-                <a class="pilcrow" href="#section-358">&#182;</a>
+                <a class="pilcrow" href="#section-361">&#182;</a>
               </div>
               <p>end <code>ugui();</code></p>
 
