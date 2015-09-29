@@ -136,6 +136,37 @@
         -webkit-animation-name: dawn;
                 animation-name: dawn;
       }
+      .btn {
+          position: relative;
+          display: inline-block;
+          background-color: #911146;
+          border-radius: 5px;
+          margin: 20px;
+          padding: 15px 25px;
+          color: #F9B88F;
+          font-family: 'Teko', Sans-Serif;
+          font-size: 22px;
+          text-decoration: none;
+          box-shadow: 0px 5px 0px 0px #5D0A2C;
+      }
+      .btn:active {
+          transform: translate(0px, 5px);
+          -webkit-transform: translate(0px, 5px);
+          box-shadow: 0px 1px 0px 0px #5D0A2C;
+      }
+      .btn:hover {
+          background-color: #AF1052;
+          color: #F5C8C3;
+      }
+      .btn svg {
+          position: relative;
+          top: 2px;
+          right: 4px;
+          fill: #F9B88F;
+      }
+      .btn:hover svg {
+          fill: #F5C8C3;
+      }
     </style>
   </head>
   <body class="dawn">
@@ -147,6 +178,7 @@
           <p>UGUI gives a face to command line applications using HTML, CSS, &amp; JavaScript.</p>
           <p>This site is <strong>under construction</strong>, but you can checkout the <a href="http://github.com/UniversalGUI/UGUI">UGUI project on Github</a></p>
           <p>or be an early member to our new <a href="http://reddit.com/r/UGUI">community forum</a> on Reddit.</p>
+          <a href="https://github.com/UniversalGUI/UGUI/releases/download/v1.0.0/ugui_1.0.0.zip" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32"><path d="M21.354 7.26v9.501h6.646l-11.783 14.213-11.783-14.213h6.646v-9.501zM11.08 1.208h10.275v4.222h-10.275z"/></svg>Download UGUI v1.0.0</a>
         </td>
       </tr>
     </table>
