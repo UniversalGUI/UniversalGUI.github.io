@@ -47,27 +47,27 @@ a:hover {
     color: #F5C8C3;
     text-shadow: 0px 3px 10px rgba(255,255,255,0.35);
 }
-.tmp,
-.tmp tr,
-.tmp td {
+.t,
+.t tr,
+.t td {
     width: 100%;
     height: 100%;
     border: 0px;
     margin: 0px;
     padding: 0px;
     text-align: center;
-    vertical-align: top;
     line-height: 1.1em;
 }
-.tmp {
+.t {
     padding: 20px;
     background-image: url('../_img/noise.png');
 }
-.tmp td {
-    padding: 125px 0px
+.t td {
+    vertical-align: middle;
 }
 img {
     max-width: 100%;
+    margin-top: 90px;
 }
 h3 {
     font-family: "Teko", sans-serif;
@@ -77,21 +77,21 @@ h3 {
     margin: 14px 0px 0px 0px;
     color: #F9B88F;
 }
-@-webkit-keyframes dawn {
+@-webkit-keyframes d {
   0% {   background-size: 1000px 0px;   }
   100% { background-size: 1000px 400px; } }
-@keyframes dawn {
+@keyframes d {
   0% {   background-size: 1000px 0px;   }
   100% { background-size: 1000px 400px; } }
-.dawn {
+.d {
   -webkit-animation-duration: 8s;
           animation-duration: 8s;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
-  -webkit-animation-name: dawn;
-          animation-name: dawn;
+  -webkit-animation-name: d;
+          animation-name: d;
 }
-.btn {
+.b {
     position: relative;
     display: inline-block;
     background-color: #911146;
@@ -104,21 +104,27 @@ h3 {
     text-decoration: none;
     box-shadow: 0px 5px 0px 0px #5D0A2C, 0px 0px 33px rgba(145, 17, 70, 0.69);
 }
-.btn:active {
+.b:active {
     transform: translate(0px, 5px);
     -webkit-transform: translate(0px, 5px);
     box-shadow: 0px 1px 0px 0px #5D0A2C, 0px 0px 33px rgba(145, 17, 70, 0.69);
 }
-.btn:hover {
+.b:hover {
     background-color: #AF1052;
     color: #F5C8C3;
 }
-.btn svg {
+.b svg {
     position: relative;
     top: 2px;
     right: 4px;
     fill: #F9B88F;
 }
-.btn:hover svg {
+.b:hover svg {
     fill: #F5C8C3;
+}
+
+ol {
+    width: 600px;
+    margin 21px auto;
+    text-align: left;
 }
