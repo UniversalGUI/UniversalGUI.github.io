@@ -1,1 +1,311 @@
-<!DOCTYPE html><html lang="en"><head><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><title>UGUI Annotated Source Code</title><meta charset="UTF-8"/><meta name="description" content="UGUI gives a face to the command line, and that face is HTML, CSS, and JavaScript"/><meta name="keywords" content="UGUI, Universal GUI, Universal Graphical User Interface, Command Line Interface, CLI, terminal, command prompt, dos prompt, node-webkit, nwjs, desktop application, web technology, easy, fast, development, dev tools, cross-platform"/><meta http-equiv="Expires" content="0"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="subject" content="Software Development"/><meta name="copyright" content="Jared Wilcurt"/><meta name="language" content="EN"/><meta name="robots" content="index,follow"/><meta name="rating" content="General"/><meta name="google-site-verification" content="x"/><meta name="HandheldFriendly" content="True"/><meta http-equiv="cleartype" content="on"/><meta name="application-name" content="UGUI"/><meta name="msapplication-navbutton-color" content="#FFFFFF"/><meta name="msapplication-TileColor" content="#FFFFFF"/><meta name="msapplication-square70x70logo" content="../_img/meta/mstile01sm.png"/><meta name="msapplication-square150x150logo" content="../_img/meta/mstile02md.png"/><meta name="msapplication-wide310x150logo" content="../_img/meta/mstile03wd.png"/><meta name="msapplication-square310x310logo" content="../_img/meta/mstile04lg.png"/><meta name="apple-mobile-web-app-title" content="UGUI"/><meta name="apple-mobile-web-app-capable" content="no"/><meta name="apple-touch-fullscreen" content="no"/><meta name="apple-mobile-web-app-status-bar-style" content="black"/><link rel="apple-touch-icon" href="../_img/meta/apl-57.png" type="image/png" sizes="57x57"/><link rel="apple-touch-icon-precomposed" href="../_img/meta/apl-57.png" type="image/png" sizes="57x57"/><link rel="apple-touch-icon" href="../_img/meta/apl-72.png" type="image/png" sizes="72x72"/><link rel="apple-touch-icon-precomposed" href="../_img/meta/apl-72.png" type="image/png" sizes="72x72"/><link rel="apple-touch-icon" href="../_img/meta/apl-114.png" type="image/png" sizes="114x114"/><link rel="apple-touch-icon-precomposed" href="../_img/meta/apl-114.png" type="image/png" sizes="114x114"/><link rel="apple-touch-icon" href="../_img/meta/apl-144.png" type="image/png" sizes="144x144"/><link rel="apple-touch-icon-precomposed" href="../_img/meta/apl-144.png" type="image/png" sizes="144x144"/><link rel="apple-touch-startup-image" href="../_img/meta/apl-str.png" type="image/png"/><link rel="fluid-icon" href="../_img/meta/fluid.png" type="image/png"/><link rel="icon" href="../favicon.ico" type="image/x-icon"/><link rel="shortcut icon" href="../favicon.ico" type="image/ico"/><link rel="stylesheet" href="../_style/style.css" type="text/css"/></head><body class="d"><table class="t"><tr><td><a href="http://github.com/UniversalGUI/UGUI"><img src="../_img/logo.png" alt="UGUI Logo" /></a><h3>Annotated Source Code</h3><p><a href="ugui.js-1.1.1.html">ugui.js Version 1.1.1</a></p><p><a href="ugui.js-1.1.0.html">ugui.js Version 1.1.0</a></p><p><a href="ugui.js-1.0.0.html">ugui.js Version 1.0.0</a></p></td></tr></table></body><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-67786036-1','auto');ga('send','pageview');</script></html>
+<style>
+  body { font-family: sans-serif; }
+  #wrapper { margin: 0 auto; max-width: 1400px; }
+  .hide { display: none; }
+  .note {
+    font-size: 0.71em;
+    font-style: italic;
+    color: #666; }
+  code {
+    background: #CCC;
+    border: 1px solid #888;
+    border-radius: 4px;
+    padding: 0px 2px; }
+  .text-center {
+    display: block;
+    text-align: center; }
+  kbd {
+    background: #EEE;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    padding: 0px 2px; }
+  ul li { margin-top: 20px; }
+  ul li ul li { margin-top: 3px; }
+  .footerpadding { height: 200px; }
+  .filter-img {
+    box-shadow: 0px 0px 9px rgba(0,0,0,0.3);
+    border: 1px solid rgba(0,0,0,0.15); }
+  .filter-exm {
+    background-color: #EEE;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    overflow: auto;
+    padding: 6px; }
+  .filter-img,
+  .filter-exm,
+  .cp_embed_iframe { margin: 1em 0em; }
+
+  .win .filter-mac,
+  .win .filter-lin,
+  .mac .filter-win,
+  .mac .filter-lin,
+  .linux .filter-win,
+  .linux .filter-mac { display: none; }
+</style>
+<script type="text/javascript" src="../_scripts/main.min.js"></script>
+
+<div class="hide">
+  filter-win  Windows
+  filter-mac  OSX
+  filter-lin  Linux
+
+  filter-32   32-Bit
+  filter-64   64-Bit
+
+  filter-nov  Beginner
+  filter-int  Intermediate
+  filter-adv  Advanced
+
+  filter-exm  Examples
+  filter-img  Images
+
+  All of the above are checkboxes grouped (review dropbox image). Here is the logic for the functionality:
+
+  1. Show all elements on the page by default on page load.
+  2. Loop through all checkboxes on page load and any time a checkbox is clicked/toggled.
+  http://jsfiddle.net/sfcxwotc/17/
+  3. If a checkbox is unchecked find all matching items on the page with that class and hide them.
+  4. After all items have been hidden that relate to unchecked checkboxes run a different loop.
+  5. Loop through all checkboxes again.
+  6. This time if a checkbox is checked find all matching items on the page with that class and show them.
+
+</div>
+
+<div id="wrapper">
+
+<h1>UGUI Documentation</h1>
+
+<p>Use the filter system above to only show the content that is relevent to you. This documentation is a work in progress. Areas that need improvement have been marked by four question marks like so: ????</p>
+
+<hr />
+
+<h2>The Basics/Getting Started</h2>
+
+<p>
+  <span class="filter-nov">Before we get started, you'll need to know if your operating system is 32&#8209;Bit or 64&#8209;Bit to make sure you get the correct version of NW.js.</span>
+  <span class="filter-nov filter-win">On Windows, right&#8209;click on "Computer" and go to properties, or just press <kbd>Windows Key + Pause/Break</kbd>.</span>
+  <span class="filter-nov filter-mac">On OSX, click the Apple icon in the top left of the screen and go to "About his Mac". Click on More Information. If you have an Intel Core Solo or Intel Core Duo, it's 32&#8209;Bit. Intel Core 2 Duo and all other Intel CPU's will mean you have a 64&#8209;Bit OS. For a full listing, see <a href="https://support.apple.com/en-us/HT3696">Apple's website</a>.</span>
+  <span class="filter-nov filter-lin">On Ubuntu Linux, click the top right power icon and go to "About This Computer".</span>
+</p>
+
+<p>
+  <span class="filter-nov">Once you know if your OS is 32&#8209;Bit or 64&#8209;Bit, download the correct version of <a href="http://nwjs.io" target="_blank">NW.js</a>. </span>
+</p>
+<p>
+  <span class="filter-nov">Then download a copy of <a href="http://ugui.io/download">UGUI</a>. After you extract the UGUI project folder from the zipped archive, you should rename the UGUI folder to whatever your project name is.</span>
+  <span class="text-center">
+    <img src="../_img/docs/extract_zip_rename_folder_win.gif" alt="An animation showing UGUI.zip being extracted and the extracted folder being renamed on Windows." class="filter-img filter-nov filter-win" />
+    <img src="../_img/docs/extract_zip_rename_folder_mac.gif" alt="An animation showing UGUI.zip being extracted and the extracted folder being renamed on OSX." class="filter-img filter-nov filter-mac" />
+    <img src="../_img/docs/extract_zip_rename_folder_lin.gif" alt="An animation showing UGUI.zip being extracted and the extracted folder being renamed on Ubuntu." class="filter-img filter-nov filter-lin" />
+  </span>
+</p>
+
+<h3>Setting up your NW.js environment</h3>
+
+<p>
+  <span class="filter-nov">Once you've downloaded NW.js, extract it's contents from the zip archive. Find an appropriate place for it's folder. For the purposes of this documentation, and tutorials, we will presume you've placed the NW.js folder in specific location.</span>
+  <span class="filter-nov filter-win">In Windows we'll assume you've placed it in the root of your C: drive and renamed the folder to <code>nw</code>.</span>
+  <span class="filter-nov filter-mac">In OSX we assume you've placed it in your ???? and renamed the folder to <code>nw</code>.</span>
+  <span class="filter-nov filter-lin">In Ubuntu we assume you've placed it in your ???? and renamed the folder to <code>nw</code>.</span>
+
+  <span class="filter-nov">Now you're ready to run your application for the first time!</span>
+
+  <div>
+    <span class="filter-int filter-win">In Windows press <kbd>Windows Key + R</kbd>, this will bring up the Run dialog. Type in the path to your NW.js folder and include the <code>nw.exe</code> file. Follow this with a <kbd>space</kbd> and the path your project folder where the <code>package.json</code> file is. Like so:</span>
+    <pre class="filter-exm filter-win filter-int">C:\nw\nw.exe C:\Users\YOURNAME\Desktop\YOURPROJECT</pre>
+    <span class="filter-int filter-win">Another way to run your project is to create a shortcut in your project folder that runs that same command. To do this, right&#8209;click an empty part of your project folder and select <kbd>New &gt; Shortcut</kbd>. A new window will appear, type in that same command (pointing to nw.exe and your project folder) and press next. Name your shortcut something like "Run NW", then hit <code>Finish</code>. Now you can simply double&#8209;click this shortcut any time you want to run your project.</span>
+  </div>
+
+  <div>
+    <span class="filter-int filter-mac">????how to run your nwjs project on mac????</span>
+  </div>
+
+  <div>
+    <span class="filter-int filter-lin">????how to run your nwjs project on unbuntu????</span>
+  </div>
+
+</p>
+
+<h3>Setting up your UGUI Project</h3>
+
+<h4>package.json</h4>
+<p>
+  <span class="filter-nov">In your project folder you'll find a <code>package.json</code> file. This is the configuration file that controls the way your application is displayed and behaves. Open it in any text editing application you're comfortable with (some common ones Sublime Text, Atom, Brackets, <span class="filter-win">Notepad,</span> <span class="filter-mac">TextEdit,</span> <span class="filter-lin">gedit,</span> or Notepad++) Each line is commented to explain the purpose of the line. Some of these are used by NW.js, some are used exclusively by UGUI, and some are used by both. Take a moment go line&#8209;by&#8209;line to familiarize yourself with the settings you have at your disposal and updating this file for your project. If a setting seems advanced or your not sure what it means, that's fine, just leave it at it's default setting.</span>
+</p>
+<h4>index.htm</h4>
+<p>
+  <span class="filter-nov">There are many aspects to the <code>index.htm</code> file that you should be aware, some parts will be covered in other sections below. Several parts of this file contain dummy data that will automatically be updated to reflect the content in the <code>package.json</code> file. For example the <code>&lt;title class="applicationTitle"&gt;Your Application Name&lt;/title&gt;</code> has the dummy "Your Application Name" text, however it is automatically updated to whatever value you set window.title to in the <code>package.json</code>. So although you can update these parts of the <code>index.htm</code>, you don't have to.</span>
+</p>
+
+<h3>Changing the style theming</h3>
+
+<p>
+  <span class="filter-">????</span>
+</p>
+
+<h3>Adding in your arguments</h3>
+
+<p>
+  <span class="filter-">????</span>
+</p>
+
+<h3>About your program</h3>
+
+<p>
+  <span class="filter-nov">In the <code>index.htm</code> towards the bottom is a section of HTML for the about modal. The about modal can be viewed when you run the UGUI app by clicking <kbd>Help &gt; About</kbd> in the top navigation.</span>
+  <span class="text-center">
+    <img src="../_img/docs/about-help.png" alt="Screenshot of the UGUI navigation bar highlighting the Help submenu where About is located." class="filter-img filter-nov" />
+  </span>
+  <span class="filter-int">In the <code>#aboutModal</code> section of the <code>index.htm</code> file (towards the bottom) you'll find this chunk of code:</span>
+
+  <pre class="filter-exm filter-int codepen" data-height="442" data-theme-id="0" data-slug-hash="xbmxBy" data-default-tab="html" data-user="TheJaredWilcurt">&lt;div class=&quot;panel panel-primary&quot;&gt;
+  &lt;div class=&quot;panel-heading&quot;&gt;
+    &lt;span class=&quot;pull-right versionApp&quot; title=&quot;Version&quot;&gt;V0.1.0&lt;/span&gt;
+    &lt;h3 class=&quot;panel-title&quot;&gt;About &lt;span class=&quot;applicationName&quot;&gt;Your Application Name&lt;/span&gt;&lt;/h3&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;panel-body&quot;&gt;
+    &lt;p class=&quot;well well-sm&quot;&gt;A detailed explanation of what your application does or is used for.&lt;/p&gt;
+    &lt;p&gt;
+      &lt;span class=&quot;applicationName&quot;&gt;Your Application Name&lt;/span&gt; created by &lt;span class=&quot;authorName&quot;&gt;Your Name&lt;/span&gt;&lt;br /&gt;
+    &lt;!--
+      Be sure to credit whoever made the command line executable.&lt;br /&gt;
+      You should probably &lt;a href=&quot;http://theirsite.com&quot; class=&quot;external-link&quot;&gt;link to their site&lt;/a&gt; and give a version number for the CLI program.
+    --&gt;
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+  <script async src="http://assets.codepen.io/assets/embed/ei.js"></script>
+
+  <span class="filter-int">Some of the content in this code will be overwritten by what you've defined in the <code>package.json</code> file. Specifically, the version (V0.1.0), Your Application Name, and Your Name. Although you can change this content here in the <code>index.htm</code> file, they will ultimately be displayed in your app with what was written in the <code>package.json</code>.</span>
+  <span class="filter-nov">The rest of the content in this section of code should be updated by you to reflect your application. You'll need to give a detailed explanation of what your app does or is used for and you should put in the version number for the command line program you're using and credit it's creators as well.</span>
+  <span class="filter-int">The link shown in the commented out example has a class of <code>external&#8209;link</code>, which means it will launch in the user's default browser rather than in NW.js.</span>
+</p>
+
+<h3>Changing from Development to Production mode</h3>
+
+<p>
+  <span class="filter-">????</span>
+</p>
+
+<h3>Distribution</h3>
+
+<p>
+  <span class="filter-">????</span>
+</p>
+
+<h4>Single Folder Transfer Method</h4>
+
+<p>
+  <span class="filter-">????</span>
+</p>
+
+<h4>Packaging as Your_App.nw</h4>
+
+<p>
+  <span class="filter-">????</span>
+</p>
+
+<h4>Package your app with NW.js</h4>
+
+<p>
+  <span class="filter-">????</span>
+</p>
+
+<hr />
+
+
+<h2>Code stuff</h2>
+<ul>
+  <li><strong>#argsForm</strong> <span class="note">HTML form ID</span>
+    <ul>
+      <li><pre class="filter-exm filter-int">&lt;form id="argsForm" role="form-inline"&gt;</pre></li>
+      <li class="filter-int"> This ID is used to identify the main form in which all your form elements will be processed.</li>
+      <li class="filter-adv">Since this element is defined by its ID, you can only have one on a page. If your app has multiple sections or modes for interacting with your command line program, then be sure to remove the current <code>#argsForm</code> node from the DOM before swapping in another instance with different form elements.</span></li>
+    </ul>
+  </li>
+  <li><strong>data&#8209;argOrder</strong> <span class="note">Positive whole numbers</span>
+    <ul>
+      <li><pre class="filter-exm filter-int">&lt;input type="checkbox" data-argOrder="1" value="-help" /&gt;
+&lt;input type="checkbox" data-argOrder="2" value="-about" /&gt;</pre></li>
+      <li class="filter-int"><strong>Important:</strong> Every form element whose value you want processed and sent to the command line must both be in the <code>#argsForm</code> and have a <code>data&#8209;argOrder</code>.</li>
+      <li class="filter-nov">The <code>data&#8209;argOrder</code> is mandatory because it is what decides the order in which all your commands will be sent to the command line.</li>
+      <li class="filter-nov">This means that you can design your application knowing that you don't need to put the form elements in the same order that the command line expects them. You can put them in the order that makes the most sense for using your application and then the <code>data&#8209;argOrder</code> sorts them later.</li>
+      <li class="filter-nov">Since this attribute is used to sort the arguments that get sent to the command line you can't have two elements with the same argOrder. If you do, a warning will appear in your app and in the console to warn you, but only when you are in Developer Mode (have <code>dev</code> as a class in the <code>&lt;body&gt;</code>).</li>
+      <li class="filter-nov">The numbers you pick for your argOrders do <strong>not</strong> need to be sequential. They can be in any order, and any value above 0, with missing numbers between them. Just don't have duplicates, negative numbers, non&#8209;numbers, numbers with decimal points, or the number zero.</li>
+      <li class="filter-nov">In the above example we see two argOrders, 1 and 2. The sequence for that would be 1, 2. Here are two examples of longer sequences:
+        <ul>
+          <li class="filter-nov">Good sequence: 30, 1, 2, 3, 15, 18, 7, 99, 8</li>
+          <li class="filter-nov">Bad sequence: &#8209;18, 0, 3, false, 3, ?, 0.8, cow</li>
+          <li class="filter-nov">You'll never need to write out a sequence like this. This is just am example to simplify what values are and aren't allowed. Although 3 is allowed in the Good example, it's shown in the Bad example because it is duplicated.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>data&#8209;argPrefix</strong> or <strong>data&#8209;argSuffix</strong> <span class="note">String, no quotes</span>
+    <ul>
+      <li><pre class="filter-exm filter-int">&lt;input type="text"   data-argOrder="1" data-argPrefix="-firstname " /&gt;                  &lt;!-- -firstname Kevin --&gt;
+&lt;input type="number" data-argOrder="2" data-argSuffix="px" /&gt;                           &lt;!-- 18px             --&gt;
+&lt;input type="number" data-argOrder="3" data-argPrefix="/speed " data-argSuffix="mph" /&gt; &lt;!-- /speed 60mph     --&gt;</pre></li>
+      <li class="filter-nov">The <code>data&#8209;argPrefix</code> and <code>data&#8209;argSuffix</code> allow you to prepend and append strings of text to the values of form elements. This can be very useful as some form elements, like textareas for example, don't all you to set the value, the user gets to. If your command line application is expecting an argument in a specific format, where it begins or ends with specific characters you can control that easily while still giving your end users control over the value of the content.</li>
+      <li class="filter-nov">As shown in the example above, you can have both a prefix and a suffix on the same element.</li>
+      <li class="filter-nov"><strong>Do not</strong> put single or double quotes in either the <code>data&#8209;argPrefix</code> or the <code>data&#8209;argSuffix</code>. A warning will appear in your app and in the console while in Developer Mode (have <code>dev</code> as a class in the <code>&lt;body&gt;</code>). If you need to wrap your value in quotes, use <code>data&#8209;argWrapQuotes</code>.</li>
+    </ul>
+  </li>
+  <li><strong>data&#8209;argWrapQuotes</strong> <span class="note">Boolean</span>
+    <ul>
+      <li><pre class="filter-exm filter-int">&lt;textarea data-argOrder="6" data-argPrefix="-m " data-argWrapQuotes="true"&gt;&lt;/textarea&gt;  &lt;!-- -m "Some text." --&gt;
+&lt;textarea data-argOrder="7" data-argPrefix="-m " data-argWrapQuotes="false"&gt;&lt;/textarea&gt; &lt;!-- -m Some text.   --&gt;
+&lt;input type="text" data-argOrder="8" data-argPrefix="/speed " data-argSuffix="mph" data-argWrapQuotes="true" /&gt;  &lt;!-- /speed "60"mph --&gt;
+&lt;input type="text" data-argOrder="9" data-argPrefix="/speed " data-argSuffix="mph" data-argWrapQuotes="false" /&gt; &lt;!-- /speed 60mph   --&gt;</pre></li>
+      <li class="filter-nov">Sometimes you need to allow your users to enter some text that should be wrapped in quotes when sent to the command line. In those instances just add <code>data&#8209;argWrapQuotes</code> to the element and set it to true.</li>
+      <li class="filter-nov"><strong>Important!</strong> All textarea elements and input boxes with a type of text are set to true by default (as long as they're in the <code>&lt;form id="argForm"&gt;</code> and have a <code>data&#8209;argOrger</code> attribute), even if there is no <code>data&#8209;argWrapQuotes</code> at all on that element. If you explicitly want to make sure your <code>&lt;input type="text" /&gt;</code> or your <code>&lt;textarea&gt;</code> don't get wrapped in quotes, make sure to add in <code>data&#8209;argWrapQuotes="false"</code>. The example below will help to clarify this:</li>
+      <li><pre class="filter-exm filter-int">&lt;form id="argForm"&gt;
+
+    &lt;textarea data-argOrder="1"&gt;&lt;/textarea&gt;                               &lt;!-- Will be wrapped --&gt;
+    &lt;textarea data-argOrder="2" data-argWrapQuote="true"&gt;&lt;/textarea&gt;      &lt;!-- Will be wrapped --&gt;
+    &lt;textarea data-argOrder="3" data-argWrapQuote="false"&gt;&lt;/textarea&gt;     &lt;!-- Won't be wrapped --&gt;
+
+    &lt;input type="text" data-argOrder="4" /&gt;                               &lt;!-- Will be wrapped --&gt;
+    &lt;input type="text" data-argOrder="5" data-argWrapQuote="true" /&gt;      &lt;!-- Will be wrapped --&gt;
+    &lt;input type="text" data-argOrder="6" data-argWrapQuote="false" /&gt;     &lt;!-- Won't be wrapped --&gt;
+
+    &lt;input type="checkbox" data-argOrder="7" /&gt;                           &lt;!-- Won't be wrapped --&gt;
+    &lt;input type="checkbox" data-argOrder="8" data-argWrapQuote="true" /&gt;  &lt;!-- Will be wrapped --&gt;
+    &lt;input type="checkbox" data-argOrder="9" data-argWrapQuote="false" /&gt; &lt;!-- Won't be wrapped --&gt;
+    &lt;!-- Only &lt;textarea&gt; and &lt;input type="text"&gt; get auto-wrapped --&gt;
+
+&lt;/form&gt;</pre></li>
+      <li>The reason this is done this way is because in almost all cases text that can contain spaces in a command line must be wrapped. So we use the UX principle of smart defaults to make sure this is done automatically. However to give you as much control as possible, in the rare case you don't want these form elements to have their output wrapped you can disable it.</li>
+    </ul>
+  </li>
+</ul>
+
+
+<hr />
+
+<h2>Known Issues</h2>
+
+<ul>
+  <li>UGUI does not currently support contentEditable. This is not very common so it isn't a high priority currently. If you'd like to fork the project to add in support for this, your pull request will be reviewed and likely accepted if it functions properly.</li>
+  <li>We believe that UGUI should enable you to work quickly, but not limit what you can do. One of the current limitations is in the way we hand quotes surrounding values. We do not allow quotes in <code>data-argPrefix</code> or <code>data-argSuffix</code>. <code>data-argWrapQuotes</code> will will wrap the value in double quotes (prefix "value" suffix). It doesn't allow you to wrap the prefix and the value together ("prefix value" suffix). It doesn't allow you to wrap the value and suffix together either (prefix "value suffix"). And it doesn't let you choose if the type of quotes sent to the command line are single or double quotes. We've yet to find a use case for some of these, so it's very low on the priorites list. Below is an example of our desired future options. If you can cite an example where these would be required <a href="https://github.com/UniversalGUI/UniversalGUI.github.io/issues">let us know</a>.
+    <ul>
+      <li><code>data-argWrapQuotes="false"</code> (prefix value suffix) <small>currently functional</small></li>
+      <li><code>data-argWrapQuotes="true"</code> (prefix "value" suffix) <small>currently functional</small></li>
+      <li><code>data-argWrapQuotes="single"</code> (prefix 'value' suffix)</li>
+      <li><code>data-argWrapQuotes="double"</code> (prefix "value" suffix)</li>
+      <li><code>data-argWrapQuotes="inlcudeprefix"</code> ("prefix value" suffix)</li>
+      <li><code>data-argWrapQuotes="includesuffix"</code> (prefix "value suffix")</li>
+    </ul>
+  </li>
+  <li></li>
+</ul>
+
+<hr />
+
+<div>
+  Couldn't find what you were looking for? Try asking about it in our <a href="http://ugui.reddit.com">forum on Reddit</a> (email not required to create an account). Find a typo or mistake on this page? Let us know on our <a href="https://github.com/UniversalGUI/UniversalGUI.github.io/issues">GitHub repository's issues page</a>.
+</div>
+
+
+</div> <!--/wrapper -->
+<div class="footerpadding"></div>
