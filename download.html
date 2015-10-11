@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
+    <script>window.jQuery || document.write('<script src="_scripts/jquery-2.1.3.min.js"><\/script>')</script>
+    <script>
+        $(document).ready(function(){
+            function getReleaseData() {
+                $.get("https://api.github.com/repos/UniversalGUI/UGUI/releases", function(data){
+                    for (var i = 0; i < data.length; i++) {
+                        var version = data[i].tag_name;
+                        var versionNumber = version.split('v')[1];
+                        var dateTime = data[i].created_at;
+                        var date = dateTime.split('T')[0];
+                        var downloadURL = "#";
+                        var downloads = "N/A";
+                        var sizeMB = "N/A";
+                        var downloadAndVersion = 'UGUI ' + version;
+                        if (data[i].assets[0]) {
+                            downloadURL = data[i].assets[0].browser_download_url;
+                            downloads = data[i].assets[0].download_count;
+                            var Bytes = data[i].assets[0].size;
+                            var KB = Bytes / 1024;
+                            var MB = KB / 1024;
+                            sizeMB = (Math.floor(MB * 100) / 100) + " MB";
+                            downloadAndVersion = '<a href="' + downloadURL + '">UGUI ' + version + '.zip</a>';
+                        }
+                        $("#output").append(
+                            '<tr>' +
+                              '<td>' + downloadAndVersion + '</td>' +
+                              '<td>' + sizeMB + '</td>' +
+                              '<td>' + date + '</td>' +
+                              '<td>' + downloads + '</td>' +
+                              '<td><a href="docs/ugui.js-' + versionNumber + '.html">' + version + '</a></td>' +
+                            '</tr>'
+                        );
+                    }
+                });
+            }
+            getReleaseData();
+        });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Download</h1>
+      <table id="output" class="table">
+        <tr>
+          <th>Version</th>
+            <th>Size</th>
+            <th>Released</th>
+            <th>Downloads</th>
+            <th>Annotated Source Code</th>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
