@@ -46,6 +46,7 @@
     <script>
         $(document).ready(function(){
             $.get("https://api.github.com/repos/UniversalGUI/UGUI/releases", function(data){
+                var totalDownloads = [];
                 for (var i = 0; i < data.length; i++) {
                     var version = data[i].tag_name;
                     var versionNumber = version.split('v')[1];
@@ -63,6 +64,7 @@
                         var MB = KB / 1024;
                         sizeMB = (Math.floor(MB * 100) / 100) + " MB";
                         downloadAndVersion = '<a href="' + downloadURL + '">UGUI ' + version + '.zip</a>';
+                        totalDownloads.push(downloads);
                     }
                     $("#output").append(
                         '<tr>' +
@@ -74,6 +76,11 @@
                         '</tr>'
                     );
                 }
+                var downloadCount = 0;
+                for (var i = 0; i < totalDownloads.length; i++) {
+                    downloadCount = downloadCount + totalDownloads[i];
+                }
+                $("#output").after('<p>The official releases of UGUI have been downloaded <strong>' + downloadCount + '</strong> times.</p>');
             });
         });
     </script>
