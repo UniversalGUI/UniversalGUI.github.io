@@ -213,91 +213,12 @@
 
 <hr />
 
-
-<h2>Code stuff</h2>
-<ul>
-  <li><strong>#argsForm</strong> <span class="note">HTML form ID</span>
-    <ul>
-      <li><pre class="filter-exm filter-int">&lt;form id="argsForm" role="form-inline"&gt;</pre></li>
-      <li class="filter-int"> This ID is used to identify the main form in which all your form elements will be processed.</li>
-      <li class="filter-adv">Since this element is defined by its ID, you can only have one on a page. If your app has multiple sections or modes for interacting with your command line program, then be sure to remove the current <code>#argsForm</code> node from the DOM before swapping in another instance with different form elements.</span></li>
-    </ul>
-  </li>
-  <li><strong>data&#8209;argOrder</strong> <span class="note">Positive whole numbers</span>
-    <ul>
-      <li><pre class="filter-exm filter-int">&lt;input type="checkbox" data-argOrder="1" value="-help" /&gt;
-&lt;input type="checkbox" data-argOrder="2" value="-about" /&gt;</pre></li>
-      <li class="filter-int"><strong>Important:</strong> Every form element whose value you want processed and sent to the command line must both be in the <code>#argsForm</code> and have a <code>data&#8209;argOrder</code>.</li>
-      <li class="filter-nov">The <code>data&#8209;argOrder</code> is mandatory because it is what decides the order in which all your commands will be sent to the command line.</li>
-      <li class="filter-nov">This means that you can design your application knowing that you don't need to put the form elements in the same order that the command line expects them. You can put them in the order that makes the most sense for using your application and then the <code>data&#8209;argOrder</code> sorts them later.</li>
-      <li class="filter-nov">Since this attribute is used to sort the arguments that get sent to the command line you can't have two elements with the same argOrder. If you do, a warning will appear in your app and in the console to warn you, but only when you are in Developer Mode (have <code>dev</code> as a class in the <code>&lt;body&gt;</code>).</li>
-      <li class="filter-nov">The numbers you pick for your argOrders do <strong>not</strong> need to be sequential. They can be in any order, and any value above 0, with missing numbers between them. Just don't have duplicates, negative numbers, non&#8209;numbers, numbers with decimal points, or the number zero.</li>
-      <li class="filter-nov">In the above example we see two argOrders, 1 and 2. The sequence for that would be 1, 2. Here are two examples of longer sequences:
-        <ul>
-          <li class="filter-nov">Good sequence: 30, 1, 2, 3, 15, 18, 7, 99, 8</li>
-          <li class="filter-nov">Bad sequence: &#8209;18, 0, 3, false, 3, ?, 0.8, cow</li>
-          <li class="filter-nov">You'll never need to write out a sequence like this. This is just am example to simplify what values are and aren't allowed. Although 3 is allowed in the Good example, it's shown in the Bad example because it is duplicated.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><strong>data&#8209;argPrefix</strong> or <strong>data&#8209;argSuffix</strong> <span class="note">String, no quotes</span>
-    <ul>
-      <li><pre class="filter-exm filter-int">&lt;input type="text"   data-argOrder="1" data-argPrefix="-firstname " /&gt;                  &lt;!-- -firstname Kevin --&gt;
-&lt;input type="number" data-argOrder="2" data-argSuffix="px" /&gt;                           &lt;!-- 18px             --&gt;
-&lt;input type="number" data-argOrder="3" data-argPrefix="/speed " data-argSuffix="mph" /&gt; &lt;!-- /speed 60mph     --&gt;</pre></li>
-      <li class="filter-nov">The <code>data&#8209;argPrefix</code> and <code>data&#8209;argSuffix</code> allow you to prepend and append strings of text to the values of form elements. This can be very useful as some form elements, like textareas for example, don't all you to set the value, the user gets to. If your command line application is expecting an argument in a specific format, where it begins or ends with specific characters you can control that easily while still giving your end users control over the value of the content.</li>
-      <li class="filter-nov">As shown in the example above, you can have both a prefix and a suffix on the same element.</li>
-      <li class="filter-nov"><strong>Do not</strong> put single or double quotes in either the <code>data&#8209;argPrefix</code> or the <code>data&#8209;argSuffix</code>. A warning will appear in your app and in the console while in Developer Mode (have <code>dev</code> as a class in the <code>&lt;body&gt;</code>). If you need to wrap your value in quotes, use <code>data&#8209;argWrapQuotes</code>.</li>
-    </ul>
-  </li>
-  <li><strong>data&#8209;argWrapQuotes</strong> <span class="note">Boolean</span>
-    <ul>
-      <li><pre class="filter-exm filter-int">&lt;textarea data-argOrder="6" data-argPrefix="-m " data-argWrapQuotes="true"&gt;&lt;/textarea&gt;  &lt;!-- -m "Some text." --&gt;
-&lt;textarea data-argOrder="7" data-argPrefix="-m " data-argWrapQuotes="false"&gt;&lt;/textarea&gt; &lt;!-- -m Some text.   --&gt;
-&lt;input type="text" data-argOrder="8" data-argPrefix="/speed " data-argSuffix="mph" data-argWrapQuotes="true" /&gt;  &lt;!-- /speed "60"mph --&gt;
-&lt;input type="text" data-argOrder="9" data-argPrefix="/speed " data-argSuffix="mph" data-argWrapQuotes="false" /&gt; &lt;!-- /speed 60mph   --&gt;</pre></li>
-      <li class="filter-nov">Sometimes you need to allow your users to enter some text that should be wrapped in quotes when sent to the command line. In those instances just add <code>data&#8209;argWrapQuotes</code> to the element and set it to true.</li>
-      <li class="filter-nov"><strong>Important!</strong> All textarea elements and input boxes with a type of text are set to true by default (as long as they're in the <code>&lt;form id="argForm"&gt;</code> and have a <code>data&#8209;argOrger</code> attribute), even if there is no <code>data&#8209;argWrapQuotes</code> at all on that element. If you explicitly want to make sure your <code>&lt;input type="text" /&gt;</code> or your <code>&lt;textarea&gt;</code> don't get wrapped in quotes, make sure to add in <code>data&#8209;argWrapQuotes="false"</code>. The example below will help to clarify this:</li>
-      <li><pre class="filter-exm filter-int">&lt;form id="argForm"&gt;
-
-    &lt;textarea data-argOrder="1"&gt;&lt;/textarea&gt;                               &lt;!-- Will be wrapped --&gt;
-    &lt;textarea data-argOrder="2" data-argWrapQuote="true"&gt;&lt;/textarea&gt;      &lt;!-- Will be wrapped --&gt;
-    &lt;textarea data-argOrder="3" data-argWrapQuote="false"&gt;&lt;/textarea&gt;     &lt;!-- Won't be wrapped --&gt;
-
-    &lt;input type="text" data-argOrder="4" /&gt;                               &lt;!-- Will be wrapped --&gt;
-    &lt;input type="text" data-argOrder="5" data-argWrapQuote="true" /&gt;      &lt;!-- Will be wrapped --&gt;
-    &lt;input type="text" data-argOrder="6" data-argWrapQuote="false" /&gt;     &lt;!-- Won't be wrapped --&gt;
-
-    &lt;input type="checkbox" data-argOrder="7" /&gt;                           &lt;!-- Won't be wrapped --&gt;
-    &lt;input type="checkbox" data-argOrder="8" data-argWrapQuote="true" /&gt;  &lt;!-- Will be wrapped --&gt;
-    &lt;input type="checkbox" data-argOrder="9" data-argWrapQuote="false" /&gt; &lt;!-- Won't be wrapped --&gt;
-    &lt;!-- Only &lt;textarea&gt; and &lt;input type="text"&gt; get auto-wrapped --&gt;
-
-&lt;/form&gt;</pre></li>
-      <li>The reason this is done this way is because in almost all cases text that can contain spaces in a command line must be wrapped. So we use the UX principle of smart defaults to make sure this is done automatically. However to give you as much control as possible, in the rare case you don't want these form elements to have their output wrapped you can disable it.</li>
-    </ul>
-  </li>
-</ul>
-
-
-<hr />
-
 <h2>Known Issues</h2>
 
 <ul>
-  <li>UGUI does not currently support contentEditable. This is not very common so it isn't a high priority currently. If you'd like to fork the project to add in support for this, your pull request will be reviewed and likely accepted if it functions properly.</li>
-  <li>We believe that UGUI should enable you to work quickly, but not limit what you can do. One of the current limitations is in the way we hand quotes surrounding values. We do not allow quotes in <code>data-argPrefix</code> or <code>data-argSuffix</code>. <code>data-argWrapQuotes</code> will will wrap the value in double quotes (prefix "value" suffix). It doesn't allow you to wrap the prefix and the value together ("prefix value" suffix). It doesn't allow you to wrap the value and suffix together either (prefix "value suffix"). And it doesn't let you choose if the type of quotes sent to the command line are single or double quotes. We've yet to find a use case for some of these, so it's very low on the priorites list. Below is an example of our desired future options. If you can cite an example where these would be required <a href="https://github.com/UniversalGUI/UniversalGUI.github.io/issues">let us know</a>.
-    <ul>
-      <li><code>data-argWrapQuotes="false"</code> (prefix value suffix) <small>currently functional</small></li>
-      <li><code>data-argWrapQuotes="true"</code> (prefix "value" suffix) <small>currently functional</small></li>
-      <li><code>data-argWrapQuotes="single"</code> (prefix 'value' suffix)</li>
-      <li><code>data-argWrapQuotes="double"</code> (prefix "value" suffix)</li>
-      <li><code>data-argWrapQuotes="inlcudeprefix"</code> ("prefix value" suffix)</li>
-      <li><code>data-argWrapQuotes="includesuffix"</code> (prefix "value suffix")</li>
-    </ul>
-  </li>
-  <li></li>
+  <li>UGUI does not currently support <code>contentEditable</code>. This is not very common so it isn't a high priority currently. If you'd like to fork the project to add in support for this, your pull request will be reviewed and likely accepted if it functions properly.</li>
+  <li>Loading settings doesn't update the value of <code>&lt;input type="file"&gt;</code>. It does update it's internal file list though and should be functional if ran. There seems to currently be no method of updating the value of these elements due to security restrictions originally placed in Chromium. To get around this, we visually update the EZDZ plugin to make it look as though it's been updated, this however will not make a required <code>&lt;input type="file"&gt;</code> activate as being fullfilled until the user interacts with it. To work around this you can give the EZDZ input a class of <code>do-not-save</code> or remove the <code>required="required"</code>.</li>
+  <li>Range slider value is empty in the UGUI Arg Obj (window.ugui.args) on load. This doesn't matter though as it will get it's value when clicking run or any other form element with a data-argName, which in turn updates the UGUI Developer Toolbar's CMD Output Preview. Will not fix. Will accept pull request.</li>
 </ul>
 
 <hr />
