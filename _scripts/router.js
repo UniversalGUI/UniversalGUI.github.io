@@ -1,5 +1,5 @@
 
 
-var desiredURL = window.location.href;
+var desiredURL = window.location.pathname;
 
 console.log(desiredURL);
