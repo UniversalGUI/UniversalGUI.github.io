@@ -4,11 +4,14 @@ var desiredURL = window.location.pathname;
 
 //The second item in each array is what the user could have typed
 //The first item in each array is a known good URL to forward them to
+//The comment after some of these shows other words it would also catch
 var set = [
     ["/download", "downloads"],
-    ["/download", "dl"],
-    ["/download", "source"],
-    ["/download", "archive"]
+    ["/download", "dl"], //dls
+    ["/download", "source"], //sourcecode
+    ["/download", "archive"], //archives
+    ["/download", "binaries"],
+    ["/docs", "doc"] //documentation
 ];
 
 function forward(arr) {
