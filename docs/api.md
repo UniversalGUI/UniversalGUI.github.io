@@ -56,7 +56,7 @@ ___
 * [View the source code of this function]()
 
 ___
-##### ugui.helpers.loadSettings()
+##### ugui.helpers.loadSettings(optionalFile)
 * [View the source code of this function]()
 
 ___
@@ -76,38 +76,49 @@ ___
 * [View the source code of this function]()
 
 ___
-##### ugui.helpers.readAFolder()
-* [View the source code of this function]()
+##### ugui.helpers.readAFolder(file, callback)
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#b04-read-contents-of-a-folder)
 
 ___
 ##### ugui.helpers.removeTypedQuotes()
-* [View the source code of this function]()
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#c10-prevent-user-from-entering-quotes-in-forms)
 
 ___
 ##### ugui.helpers.runcmd()
-* [View the source code of this function]()
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#b01-run-cmd)
 
 ___
-##### ugui.helpers.runcmdAdvanced()
-* [View the source code of this function]()
+##### ugui.helpers.runcmdAdvanced(parameters)
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#b02-run-cmd-advanced-)
 
 ___
-##### ugui.helpers.saveSettings()
-* [View the source code of this function]()
+##### ugui.helpers.saveSettings(optionalFile)
+This saves the settings of your app into a local user account specific folder on the computer that is different for each Operating System. You can run the following to see what the default location is on your OS:
+
+    ugui.helpers.saveSettings(["Show Default"]);
+
+Or you can pass in a custom path for the location of your settings file.
+
+    ugui.helpers.saveSettings("C:/folder/settings.json");
+    ugui.helpers.saveSettings("~/folder/settings.json");
+
+**What gets saved:**
+
+Add a `data-argName` attribute to an element in your HTML to ensure it gets saved automatically. Add a class of `do-not-save` for items you don’t want to be updated during <a href="#ugui.helpers.loadsettings(optionalfile)">ugui.helpers.loadSettings(optionalFile)</a>.
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#h01-save-settings)
 
 ___
 ##### ugui.helpers.sliderHandleColor()
-Since bootstrap-slider is a plugin and not officially a part of Bootstrap, Bootswatches don’t contain styles for them. So we dynamically set the styles to match the background color of the navigation bar. However you can pass in any color or gradient you want by using <a href="#ugui.helpers.sliderHandleGradient()">ugui.helpers.sliderHandleGradient()</a> or .
+Since bootstrap-slider is a plugin and not officially a part of Bootstrap, Bootswatches don’t contain styles for them. So we dynamically set the styles to match the background color of the navigation bar. However you can pass in any color or gradient you want by using <a href="#ugui.helpers.sliderhandlegradient(gradient)">ugui.helpers.sliderHandleGradient()</a> or <a href="#ugui.helpers.sliderhandlesolid(color)">ugui.helpers.sliderHandleSolid(color)</a>.
+
 * [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#g02-range-slider)
 
 ___
-##### ugui.helpers.sliderHandleGradient()
+##### ugui.helpers.sliderHandleGradient(gradient)
+The `gradient` typically comes from the background-image of the navigation bar, however you can pass in any css gradient you want.
 
-    ugui.helpers.sliderHandleGradient("
--webkit-radial-gradient(center top, farthest-side, #ED8C2B, #911146 40%, #2B2728 95%, #2B2728), #2B2728
-linear-gradient(rgb(84, 180, 235), rgb(47, 164, 231) 60%, rgb(29, 156, 229))
-
-");
+    ugui.helpers.sliderHandleGradient("linear-gradient(#ED8C2B, #911146 40%, #2B2728)");
 
 * * [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#g02-range-slider)
 
@@ -135,13 +146,25 @@ While in [developer mode](#developer-vs-production-mode) if there are multiple e
 * [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#e01-warn-if-identical-data-argnames)
 
 ___
-##### ugui.helpers.writeToFile(file, data)
+##### ugui.helpers.writeToFile(file, data, callback)
 This will override the contents of a file you pass in with the data you supply. If the file you point to doesn’t exist, it will be created with your supplied data.
 
     ugui.helpers.writeToFile("C:/folder/file.htm", "Text.");
     ugui.helpers.writeToFile("~/folder/file.txt", "Text.");
 
+With a callback and variables:
+
+    var yourFile = "../random-number.txt";
+    var randomNumber = Math.random();
+    functionToRunUponCompletion() {
+    	console.log("Finished writing to file.");
+    }
+    ugui.helpers.writeToFile(yourFile, randomNumber, functionToRunUponCompletion);
+
 * [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#b05-write-to-file)
+
+***
+## Information
 
 ___
 ##### ugui.platform
