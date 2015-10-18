@@ -52,10 +52,12 @@
                     var versionNumber = version.split('v')[1];
                     var dateTime = data[i].created_at;
                     var date = dateTime.split('T')[0];
+                    var release = '<a href="https://github.com/UniversalGUI/UGUI/releases/tag/' + version + '" title="View release notes">' + date + '</a>';
                     var downloadURL = "#";
                     var downloads = "N/A";
                     var sizeMB = "N/A";
                     var downloadAndVersion = 'UGUI ' + version;
+                    var source = '<a href="../docs/ugui.js-' + versionNumber + '.html" title="View annotated source code">ugui.js ' + version + '</a>';
                     if (data[i].assets[0]) {
                         downloadURL = data[i].assets[0].browser_download_url;
                         downloads = data[i].assets[0].download_count;
@@ -63,16 +65,16 @@
                         var KB = Bytes / 1024;
                         var MB = KB / 1024;
                         sizeMB = (Math.floor(MB * 100) / 100) + " MB";
-                        downloadAndVersion = '<a href="' + downloadURL + '">UGUI ' + version + '.zip</a>';
+                        downloadAndVersion = '<a href="' + downloadURL + '" title="Download this version">UGUI ' + version + '.zip</a>';
                         totalDownloads.push(downloads);
                     }
-                    $("#output").append(
+                    $("#output tbody").append(
                         '<tr>' +
                           '<td>' + downloadAndVersion + '</td>' +
                           '<td>' + sizeMB + '</td>' +
-                          '<td>' + date + '</td>' +
+                          '<td>' + release + '</td>' +
                           '<td>' + downloads + '</td>' +
-                          '<td><a href="../docs/ugui.js-' + versionNumber + '.html">ugui.js ' + version + '</a></td>' +
+                          '<td>' + source + '</td>' +
                         '</tr>'
                     );
                 }
@@ -89,15 +91,18 @@
   <body>
 
     <div class="container">
-      <h1>Download</h1>
-      <table id="output" class="table">
-        <tr>
-          <th>Version</th>
+      <h1>Download UGUI</h1>
+      <table id="output" class="table table-hover">
+        <thead>
+          <tr class="warning">
+            <th>Version</th>
             <th>Size</th>
             <th>Released</th>
             <th>Downloads</th>
             <th>Annotated Source Code</th>
-        </tr>
+          </tr>
+        </thead>
+        <tbody></tbody>
       </table>
     </div>
 
