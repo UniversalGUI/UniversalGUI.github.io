@@ -172,32 +172,35 @@ ___
 ##### ugui.
 ___
 ##### ugui.args
-This is commonly referred to as the *UGUI Args Object*. It contains an inventory of information about all form elements on that bear a `data-argName`.
+This is commonly referred to as the ***UGUI Args Object***. It contains an inventory of information about all form elements on that bear a `data-argName`. It is central to much of UGUI's functionality such as processing what arguments are sent to command line or saving and loading settings.
+
+###### Universal Properties
 
 All items have the following properties stored with them:
 
-    htmltag: {input|textarea|select}
-    htmltype: {radio|color|select|file}
+    htmltag: {input|select|textarea}
+    htmltype: {checkbox|color|dropdown|file|folder|radio|range|select}
     value: {The value of the element.}
 
-Checkboxes and Radio dials:
+###### Checkboxes and Radio dials:
 
     htmlticked: {true|false}
 
-Color picker:
+###### Color picker:
 
     decRrGgBb: "{0-15} {0-15} {0-15} {0-15} {0-15} {0-15}"
-    decblue: {0-255}
-    decgreen: {0-255}
-    decred: {0-255}
-    hexRrGgBb: "{000000-ffffff}"
-    percentBlue: {0-100}
-    percentGreen: {0-100}
-    percentRed: {0-100}
-    rgb: "rgb({0-255},{0-255},{0-255})"
-    value: "#{000000-ffffff}"
+                                       //Compute each hex value as a decimal (0-15)
+    decblue: {0-255}                   //Convert Hex blue to a decimal
+    decgreen: {0-255}                  //Convert Hex green to a decimal
+    decred: {0-255}                    //Convert Hex red to a decimal
+    hexRrGgBb: "{000000-ffffff}"       //The hex value with the "#" removed
+    percentBlue: {0-100}               //Percentage of blue in the color
+    percentGreen: {0-100}              //Percentage of green in the color
+    percentRed: {0-100}                //Percentage of red in the color
+    rgb: "rgb({0-255},{0-255},{0-255})"//Standard CSS acceptable rgb format
+    value: "#{000000-ffffff}"          //Standard CSS acceptable hex format
 
-File Browser or EZDZ drag and drop box
+###### File Browser or EZDZ drag and drop box
 
     value: "C:\folder\fileName.png"    //What the user selected
     fullpath: "C:\folder\fileName.png" //How JavaScript understand that
@@ -212,6 +215,28 @@ File Browser or EZDZ drag and drop box
                                        //Human readable time stamp with it's own special properites
                                        //like .getYear() and .getMinutes()
     webkitRelativePath: ""             //Used when an input tag has an attribute of webkitdirectory
+
+###### Folder Browser
+
+    value: "C:\pictures\cats"          //The HTML value for the input element
+    fullpath: "C:\pictures\cats"       //Full file path to the selected folder, including it
+    path: "C:\pictures\"               //Path to the selected folder
+    folderName: "cats"                 //Name of the selected folder
+    contents: Object                   //Listing of items in the folder with "size" and "isFolder" values for each
+    contentsList: Array                //An array with the names of all files and folders in the root of the folder
+    lastModified: 1422110168000        //Unix date/time stamp
+    lastModifiedDate: Sat Jan 24 2015 09:36:08 GMT-0500 (Eastern Standard Time)
+                                       //Human readable time stamp with it's own special properites
+                                       //like .getYear() and .getMinutes()
+    webkitRelativePath: ""             //Used when an input tag has an attribute of webkitdirectory
+
+###### Range Slider
+
+    value: "{value}" or "{min},{max}"  //This is based on the settings for your range slider
+                                       //Some allow one handle for the user to input a numerical value
+                                       //Some allow two handles for the user to select an min and max value
+
+
 
 ___
 ##### ugui.executable
