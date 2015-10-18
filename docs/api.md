@@ -20,7 +20,7 @@ The "**ugui Object**" contains many useful items for developers. This section wi
 ***
 ### Helper Functions
 
-##### ugui.helpers.buildCommandArray()
+##### ugui.helpers.buildCommandArray(executable)
 * [View the source code of this function]()
 
 ___
@@ -32,19 +32,19 @@ ___
 * [View the source code of this function]()
 
 ___
-##### ugui.helpers.convertCommandArraytoString()
+##### ugui.helpers.convertCommandArraytoString(cmdArray)
 * [View the source code of this function]()
 
 ___
-##### ugui.helpers.createAFolder()
+##### ugui.helpers.createAFolder(file, callback)
 * [View the source code of this function]()
 
 ___
-##### ugui.helpers.deleteAFile()
+##### ugui.helpers.deleteAFile(file, callback)
 * [View the source code of this function]()
 
 ___
-##### ugui.helpers.deleteAFolder()
+##### ugui.helpers.deleteAFolder(file, callback)
 * [View the source code of this function]()
 
 ___
@@ -52,11 +52,11 @@ ___
 * [View the source code of this function]()
 
 ___
-##### ugui.helpers.findKeyValue()
+##### ugui.helpers.findKeyValue(obj, arr)
 * [View the source code of this function]()
 
 ___
-##### ugui.helpers.loadSettings(optionalFile)
+##### ugui.helpers.loadSettings(optionalFile, callback)
 * [View the source code of this function]()
 
 ___
@@ -64,7 +64,7 @@ ___
 * [View the source code of this function]()
 
 ___
-##### ugui.helpers.parseArgument()
+##### ugui.helpers.parseArgument(argumentText)
 * [View the source code of this function]()
 
 ___
@@ -72,7 +72,7 @@ ___
 * [View the source code of this function]()
 
 ___
-##### ugui.helpers.readAFile()
+##### ugui.helpers.readAFile(file)
 * [View the source code of this function]()
 
 ___
@@ -84,7 +84,7 @@ ___
 * [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#c10-prevent-user-from-entering-quotes-in-forms)
 
 ___
-##### ugui.helpers.runcmd()
+##### ugui.helpers.runcmd(executableAndArgs, callback)
 * [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#b01-run-cmd)
 
 ___
@@ -92,7 +92,7 @@ ___
 * [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#b02-run-cmd-advanced-)
 
 ___
-##### ugui.helpers.saveSettings(optionalFile)
+##### ugui.helpers.saveSettings(optionalFile, callback)
 This saves the settings of your app into a local user account specific folder on the computer that is different for each Operating System. You can run the following to see what the default location is on your OS:
 
     ugui.helpers.saveSettings(["Show Default"]);
@@ -165,6 +165,57 @@ With a callback and variables:
 
 ***
 ## Information
+
+___
+##### ugui.
+___
+##### ugui.
+___
+##### ugui.args
+This is commonly referred to as the *UGUI Args Object*. It contains an inventory of information about all form elements on that bear a `data-argName`.
+
+All items have the following properties stored with them:
+
+    htmltag: {input|textarea|select}
+    htmltype: {radio|color|select|file}
+    value: {The value of the element.}
+
+Checkboxes and Radio dials:
+
+    htmlticked: {true|false}
+
+Color picker:
+
+    decRrGgBb: "{0-15} {0-15} {0-15} {0-15} {0-15} {0-15}"
+    decblue: {0-255}
+    decgreen: {0-255}
+    decred: {0-255}
+    hexRrGgBb: "{000000-ffffff}"
+    percentBlue: {0-100}
+    percentGreen: {0-100}
+    percentRed: {0-100}
+    rgb: "rgb({0-255},{0-255},{0-255})"
+    value: "#{000000-ffffff}"
+
+File Browser or EZDZ drag and drop box
+
+    value: "C:\folder\fileName.png"    //What the user selected
+    fullpath: "C:\folder\fileName.png" //How JavaScript understand that
+    path: "C:\folder\"                 //Full path to the folder containing the file
+    name: "fileName"                   //Name of file without path or extension
+    ext: "png"                         //The file extension without a .
+    nameExt: "fileName.png"            //
+    type: "image/png"                  //File mime-type
+    size: 112                          //size in bytes
+    lastModified: 1423895123000        //Unix date/time stamp
+    lastModifiedDate: Sat Feb 14 2015 01:25:23 GMT-0500 (Eastern Standard Time)
+                                       //Human readable time stamp with it's own special properites
+                                       //like .getYear() and .getMinutes()
+    webkitRelativePath: ""             //Used when an input tag has an attribute of webkitdirectory
+
+___
+##### ugui.executable
+Returns an array of all executables used by this app. It is populated by, and in the same order as, the `<cmd>` blocks at the top of your `index.html` file.
 
 ___
 ##### ugui.platform
