@@ -210,64 +210,75 @@ This is commonly referred to as the ***UGUI Args Object***. It contains an inven
 
 All items have the following properties stored with them:
 
-    htmltag: {input|select|textarea}
-    htmltype: {checkbox|color|dropdown|file|folder|radio|range|select}
-    value: {The value of the element.}
+```javascript
+htmltag: { input | select | textarea }
+htmltype: { checkbox | color | dropdown | file | folder | radio | range | select }
+value: { The value of the element. }
+```
 
 ###### Checkboxes and Radio dials:
 
-    htmlticked: {true|false}
+```javascript
+htmlticked: {true|false}
+```
 
 ###### Color picker:
 
-    decRrGgBb: "{0-15} {0-15} {0-15} {0-15} {0-15} {0-15}"
-                                       //Compute each hex value as a decimal (0-15)
-    decblue: {0-255}                   //Convert Hex blue to a decimal
-    decgreen: {0-255}                  //Convert Hex green to a decimal
-    decred: {0-255}                    //Convert Hex red to a decimal
-    hexRrGgBb: "{000000-ffffff}"       //The hex value with the "#" removed
-    percentBlue: {0-100}               //Percentage of blue in the color
-    percentGreen: {0-100}              //Percentage of green in the color
-    percentRed: {0-100}                //Percentage of red in the color
-    rgb: "rgb({0-255},{0-255},{0-255})"//Standard CSS acceptable rgb format
-    value: "#{000000-ffffff}"          //Standard CSS acceptable hex format
+```javascript
+decRrGgBb: "{0-15} {0-15} {0-15} {0-15} {0-15} {0-15}"
+                                   //Compute each hex value as a decimal (0-15)
+decblue: {0-255}                   //Convert Hex blue to a decimal
+decgreen: {0-255}                  //Convert Hex green to a decimal
+decred: {0-255}                    //Convert Hex red to a decimal
+hexRrGgBb: "{000000-ffffff}"       //The hex value with the "#" removed
+percentBlue: {0-100}               //Percentage of blue in the color
+percentGreen: {0-100}              //Percentage of green in the color
+percentRed: {0-100}                //Percentage of red in the color
+rgb: "rgb({0-255},{0-255},{0-255})"//Standard CSS acceptable rgb format
+value: "#{000000-ffffff}"          //Standard CSS acceptable hex format
+```
 
 ###### File Browser or EZDZ drag and drop box
 
-    value: "C:\folder\fileName.png"    //What the user selected
-    fullpath: "C:\folder\fileName.png" //How JavaScript understand that
-    path: "C:\folder\"                 //Full path to the folder containing the file
-    name: "fileName"                   //Name of file without path or extension
-    ext: "png"                         //The file extension without a .
-    nameExt: "fileName.png"            //
-    type: "image/png"                  //File mime-type
-    size: 112                          //size in bytes
-    lastModified: 1423895123000        //Unix date/time stamp
-    lastModifiedDate: Sat Feb 14 2015 01:25:23 GMT-0500 (Eastern Standard Time)
-                                       //Human readable time stamp with it's own special properites
-                                       //like .getYear() and .getMinutes()
-    webkitRelativePath: ""             //Used when an input tag has an attribute of webkitdirectory
+```javascript
+value: "C:\folder\fileName.png"    //What the user selected
+fullpath: "C:\folder\fileName.png" //How JavaScript understand that
+path: "C:\folder\"                 //Full path to the folder containing the file
+name: "fileName"                   //Name of file without path or extension
+ext: "png"                         //The file extension without a .
+nameExt: "fileName.png"            //
+type: "image/png"                  //File mime-type
+size: 112                          //size in bytes
+lastModified: 1423895123000        //Unix date/time stamp
+lastModifiedDate: Sat Feb 14 2015 01:25:23 GMT-0500 (Eastern Standard Time)
+                                   //Human readable time stamp with it's own special properites
+                                   //like .getYear() and .getMinutes()
+webkitRelativePath: ""             //Used when an input tag has an attribute of webkitdirectory
+```
 
 ###### Folder Browser
 
-    value: "C:\pictures\cats"          //The HTML value for the input element
-    fullpath: "C:\pictures\cats"       //Full file path to the selected folder, including it
-    path: "C:\pictures\"               //Path to the selected folder
-    folderName: "cats"                 //Name of the selected folder
-    contents: Object                   //Listing of items in the folder with "size" and "isFolder" values for each
-    contentsList: Array                //An array with the names of all files and folders in the root of the folder
-    lastModified: 1422110168000        //Unix date/time stamp
-    lastModifiedDate: Sat Jan 24 2015 09:36:08 GMT-0500 (Eastern Standard Time)
-                                       //Human readable time stamp with it's own special properites
-                                       //like .getYear() and .getMinutes()
-    webkitRelativePath: ""             //Used when an input tag has an attribute of webkitdirectory
+```javascript
+value: "C:\pictures\cats"          //The HTML value for the input element
+fullpath: "C:\pictures\cats"       //Full file path to the selected folder, including it
+path: "C:\pictures\"               //Path to the selected folder
+folderName: "cats"                 //Name of the selected folder
+contents: Object                   //Listing of items in the folder with "size" and "isFolder" values for each
+contentsList: Array                //An array with the names of all files and folders in the root of the folder
+lastModified: 1422110168000        //Unix date/time stamp
+lastModifiedDate: Sat Jan 24 2015 09:36:08 GMT-0500 (Eastern Standard Time)
+                                   //Human readable time stamp with it's own special properites
+                                   //like .getYear() and .getMinutes()
+webkitRelativePath: ""             //Used when an input tag has an attribute of webkitdirectory
+```
 
 ###### Range Slider
 
-    value: "{value}" or "{min},{max}"  //This is based on the settings for your range slider
-                                       //Some allow one handle for the user to input a numerical value
-                                       //Some allow two handles for the user to select an min and max value
-
+```javascript
+value: "{value}" or "{min},{max}"  //This is based on the settings for your range slider
+                                   //Some allow one handle for the user to input a numerical value
+                                   //Some allow two handles for the user to select an min and max value
+```
 
 
 ___
@@ -276,7 +287,7 @@ Returns an array of all executables used by this app. It is populated by, and in
 
 ___
 ##### ugui.platform
-Returns what OS you are currently on, such as `darwin`, `freebsd`, `linux`, `sunos`, or `win32`. Note that these results are not related to your OS Architecture being 32 or 64-Bit. A 64-Bit copy of Windows will still have it's platform set as `win32`. To get the archetecture use type `process.arch` in the Webkit Developer Tools console.
+Returns what OS you are currently on, such as `darwin`, `freebsd`, `linux`, `sunos`, or `win32`. Note that these results are not related to your OS Architecture being 32 or 64-Bit. A 64-Bit copy of Windows will still have it's platform set as `win32`. To get the archetecture use `process.arch`.
 
 ___
 ##### ugui.textFields
