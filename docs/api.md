@@ -219,7 +219,7 @@ value: { The value of the element. }
 ###### Checkboxes and Radio dials:
 
 ```javascript
-htmlticked: {true|false}
+htmlticked: { true | false }
 ```
 
 ###### Color picker:
@@ -240,7 +240,7 @@ value: "#{000000-ffffff}"          //Standard CSS acceptable hex format
 
 ###### File Browser or EZDZ drag and drop box
 
-```javascript
+```
 value: "C:\folder\fileName.png"    //What the user selected
 fullpath: "C:\folder\fileName.png" //How JavaScript understand that
 path: "C:\folder\"                 //Full path to the folder containing the file
@@ -258,7 +258,7 @@ webkitRelativePath: ""             //Used when an input tag has an attribute of 
 
 ###### Folder Browser
 
-```javascript
+```
 value: "C:\pictures\cats"          //The HTML value for the input element
 fullpath: "C:\pictures\cats"       //Full file path to the selected folder, including it
 path: "C:\pictures\"               //Path to the selected folder
