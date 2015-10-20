@@ -167,9 +167,41 @@ With a callback and variables:
 ## Information
 
 ___
-##### ugui.
+##### ugui.app
+This returns an object of useful information specific to the app you make using UGUI.
+
 ___
-##### ugui.
+##### ugui.app.author
+Returns the value from the `author` field in your package.json file. This is the creator(s) of your app.
+
+___
+##### ugui.app.description
+Returns the value from the `description` field in your package.json file. This is a short description or tagline for you app.
+
+___
+##### ugui.app.name
+Returns the value from the `name` field in your package.json file. This is a URL safe name for your app.
+
+___
+##### ugui.app.packageJSON
+Returns the contents of your package.json file. Such as `keywords`, `node-main`, your app settings, and more.
+
+___
+##### ugui.app.pathToProject
+Returns the file path to the folder that contains your project.
+
+___
+##### ugui.app.startPage
+Returns the value from the `main` field in your package.json file. This is the first page your app loads when launched.
+
+___
+##### ugui.app.title
+Returns the value from the `window.title` field in your package.json file. This is the plain text/human readable title for your app. It does not need to be URL safe.
+
+___
+##### ugui.app.version
+Returns the value from the `version` field in your package.json file. This is the version number for you app. Do not confuse `ugui.app.version` with `ugui.version` which is the version of UGUI your app is using, not the version of your app.
+
 ___
 ##### ugui.args
 This is commonly referred to as the ***UGUI Args Object***. It contains an inventory of information about all form elements on that bear a `data-argName`. It is central to much of UGUI's functionality such as processing what arguments are sent to command line or saving and loading settings.
