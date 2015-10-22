@@ -99,7 +99,7 @@ footer {
 }
 
 .wrapper {
-    padding-left: 300px;
+    padding-left: 0px;
 }
 
 .wrapper h1 {
@@ -129,10 +129,11 @@ footer {
 }
 
 #toc {
+    display: none;
+    position: fixed;
     top: 0px;
     left: 0px;
     height: 100%;
-    position: fixed;
     width: 280px;
     background: #2B2728;
     background-image: url('/_img/noise.png');
@@ -188,7 +189,7 @@ footer {
     margin-bottom: 53px;
 }
 
-@media (min-width: 927px) {
-    #toc { display: none; }
-    .wrapper { padding-left: 0px; }
+@media screen and (min-width: 927px) {
+    #toc { display: block; }
+    .wrapper { padding-left: 300px; }
 }
