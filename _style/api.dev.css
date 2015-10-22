@@ -103,10 +103,11 @@ footer {
 }
 
 .wrapper h1 {
-    font-family: "Teko", sans-serif;
+    margin-bottom: 0px;
     color: #911146;
+    font-family: "Teko", sans-serif;
     font-size: 4em;
-    line-height: 0.5em;
+    line-height: 0.9em;
 }
 
 .wrapper h2 {
@@ -121,6 +122,7 @@ footer {
 .wrapper h5 {
     color: #264AA5;
     font-size: 1.1em;
+    word-wrap: break-word;
 }
 
 .wrapper li {
