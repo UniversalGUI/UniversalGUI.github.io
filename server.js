@@ -1,4 +1,4 @@
-//This is only used to test 404.html and router.js
+//This is needed in order to test 404.html, router.js, and api.html
 
 var http = require("http");
 var url = require("url");
@@ -19,12 +19,15 @@ http.createServer(function (request, response) {
 
     fs.exists(filename, function(exists) {
         if (!exists) {
+            console.log("FAIL: " + filename);
             filename = path.join(process.cwd(), '/404.html');
         } else if (fs.statSync(filename).isDirectory()) {
+            console.log("FLDR: " + filename);
             filename += '/index.html';
         }
 
         fs.readFile(filename, "binary", function(err, file) {
+            console.log("FILE: " + filename);
             if(err) {
                 response.writeHead(500, {"Content-Type": "text/plain"});
                 response.write(err + "\n");
