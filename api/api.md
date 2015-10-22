@@ -297,7 +297,10 @@ With a callback and variables:
 
 
 ***
+
 ## Concepts
+
+***
 
 ##### Developer vs Production Mode
 This is controlled by changing the class of `<body>` from between `dev` and `prod`.

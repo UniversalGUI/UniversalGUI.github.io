@@ -12,10 +12,10 @@
     background: #ED8C2B;
     height: 18px;
 }
-::-webkit-scrollbar-track-piece:vertical {
+::-webkit-scrollbar-track-piece {
   background-color: #2B2728;
 }
-::-webkit-scrollbar-thumb:vertical {
+::-webkit-scrollbar-thumb {
   background: #911146;
 }
 
@@ -110,7 +110,12 @@ footer {
 }
 
 .wrapper h2 {
-    margin-top: 52px;
+    margin: 52px 0px 0px 0px;
+    color: #ED8C2B;
+    font-family: "Teko", sans-serif;
+    font-size: 2em;
+    letter-spacing: 2px;
+    text-transform: lowercase;
 }
 
 .wrapper h5 {
@@ -161,7 +166,7 @@ footer {
     margin: 0px 0px 7px 0px;
 }
 
-#toc .h1 { font-size: 27px; margin-top: 14px; text-shadow: 0px 0px 19px rgba(202, 76, 128, 0.73); }
+#toc .h1 { font-size: 27px; margin-top: 14px; text-shadow: 0px 3px 19px rgba(202, 76, 128, 0.73); }
 #toc .h2 { font-size: 19px; margin-top: 20px; }
 #toc .h3 { font-size: 17px; }
 #toc .h4 { font-size: 15px; }
@@ -181,4 +186,9 @@ footer {
 
 #toc .h5:last-of-type {
     margin-bottom: 53px;
+}
+
+@media (min-width: 927px) {
+    #toc { display: none; }
+    .wrapper { padding-left: 0px; }
 }
