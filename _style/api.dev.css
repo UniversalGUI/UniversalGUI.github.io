@@ -26,6 +26,13 @@ body {
     font-family: sans-serif;
 }
 
+img {
+    display: block;
+    max-width: 100%;
+    margin: 0px auto;
+    -ms-interpolation-mode: bicubic;
+}
+
 hr {
     height: 2px;
     border: none;
@@ -119,6 +126,12 @@ footer {
     text-transform: lowercase;
 }
 
+.blue {
+    color: #264AA5;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
 .wrapper h5 {
     color: #264AA5;
     font-size: 1.1em;
@@ -191,7 +204,7 @@ footer {
     margin-bottom: 53px;
 }
 
-@media screen and (min-width: 927px) {
+@media screen and (min-width: 875px) {
     #toc { display: block; }
     .wrapper { padding-left: 300px; }
 }

@@ -2,6 +2,9 @@
 
 The "**ugui Object**" contains many useful items for developers. This section will outline everything it contains.
 
+Titles on this page <span class="blue">in blue</span> can be typed into the Webkit Developer Tools Console, like so:
+
+![An animation demonstrating typing in ugui.args into the console.](/_img/docs/ugui.args_console.gif "Typing ugui.args in the console.")
 
 
 ## General Information
