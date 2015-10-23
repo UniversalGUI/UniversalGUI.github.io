@@ -14,7 +14,7 @@ This is commonly referred to as the ***UGUI Args Object***. It contains an inven
 
 All items have the following properties stored with them:
 
-```javascript
+```css
 htmltag: { input | select | textarea }
 htmltype: { checkbox | color | dropdown | file | folder | radio | range | select }
 value: { The value of the element. }
@@ -22,7 +22,7 @@ value: { The value of the element. }
 
 **Checkboxes and Radio Dials**
 
-```javascript
+```css
 htmlticked: { true | false }
 ```
 
@@ -94,7 +94,7 @@ Returns what OS you are currently on, such as `darwin`, `freebsd`, `linux`, `sun
 
 ___
 ##### ugui.textFields
-Returns a jQuery object of all `<textarea>` and `<input type="text">` that occur on the page and bear a `data-argName`. This is primarily used by <a href="#ugui.helpers.removetypedquotes()">ugui.helpers.removeTypedQuotes()</a>.
+Returns a jQuery object of all `<textarea>` and `<input type="text">` that occur on the page and bear a `data-argName`. This is primarily used by [ugui.helpers.removeTypedQuotes()](#ugui-helpers-removetypedquotes-)</a>.
 
 ___
 ##### ugui.version
@@ -207,91 +207,164 @@ ___
 
 ___
 ##### ugui.helpers.readAFolder(file, callback)
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#b04-read-contents-of-a-folder)
+
+Supply a path to a folder as a string and UGUI will return an array of all files/folders and an object with each file and folder as a sub-object. Each sub-object returned will have a boolean `isFolder` property and a numeral `size` to represent (in bytes) the file size. Some system files and all folders will report `0` for size.
+
+```javascript
+var mediaContents = ugui.helpers.readAFolder("C:\pictures\cats", function(contents, contentsList) {
+    console.log("Number of items in folder: " + contentsList.length);
+});
+```
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#b04-read-contents-of-a-folder)
 
 ___
 ##### ugui.helpers.removeTypedQuotes()
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#c10-prevent-user-from-entering-quotes-in-forms)
+
+In all input text fields and textareas, remove both single and double quotes as they are typed, on page load, and when the form is submitted.
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#c10-prevent-user-from-entering-quotes-in-forms)
 
 ___
 ##### ugui.helpers.runcmd(executableAndArgs, callback)
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#b01-run-cmd)
+
+You can pass in the location of an executable, or just the name if it is in the user's environment path. Arguments for the executable should be in the same string. You can use this to run an executable and text it would output to the command line.
+
+```javascript
+//Running an executable when a button is clicked
+$('button').click( function() {
+    ugui.helpers.runcmd('C:\pngquant.exe --force "C:\file.png"');
+});
+
+//Putting text on the page that was returned from an executable
+ugui.helpers.runcmd('node --version', function(data) {
+    $('div').html('<pre>Node Version: ' + data + '</pre>');
+});
+```
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#b01-run-cmd)
 
 ___
 ##### ugui.helpers.runcmdAdvanced(parameters)
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#b02-run-cmd-advanced-)
+
+This is a more advanced option for running executables. You can pass in a parameters object to get additional functionality such as running a function when an executable closes, finishes, errors, or returns data.
+
+```javascript
+var parameters = {
+    "executableAndArgs": "node --version",
+    "returnedData": function(data) {
+        console.log("The text from the executable: " + data);
+    },
+    "onExit": function(code) {
+        console.log("Executable finished with the exit code: " + code);
+    },
+    "onError": function(err) {
+        console.log("Executable finished with the error: " + err);
+    },
+    "onClose": function(code) {
+        console.log("Executable has closed with the exit code: " + code);
+    }
+};
+ugui.helpers.runcmdAdvanced(parameters);
+```
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#b02-run-cmd-advanced-)
 
 ___
 ##### ugui.helpers.saveSettings(optionalFile, callback)
 This saves the settings of your app into a local user account specific folder on the computer that is different for each Operating System. You can run the following to see what the default location is on your OS:
 
-    ugui.helpers.saveSettings(["Show Default"]);
+```javascript
+ugui.helpers.saveSettings(["Show Default"]);
+```
 
 Or you can pass in a custom path for the location of your settings file.
 
-    ugui.helpers.saveSettings("C:/folder/settings.json");
-    ugui.helpers.saveSettings("~/folder/settings.json");
+```javascript
+ugui.helpers.saveSettings("C:/folder/settings.json");
+ugui.helpers.saveSettings("~/folder/settings.json");
+```
 
 **What gets saved:**
 
-Add a `data-argName` attribute to an element in your HTML to ensure it gets saved automatically. Add a class of `do-not-save` for items you don’t want to be updated during <a href="#ugui.helpers.loadsettings(optionalfile)">ugui.helpers.loadSettings(optionalFile)</a>.
+Add a `data-argName` attribute to an element in your HTML to ensure it gets saved automatically. Add a class of `do-not-save` for items you don’t want to be updated during [ugui.helpers.loadSettings(optionalFile)](#ugui-helpers-loadsettings-optionalfile-callback-).
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#h01-save-settings)
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#h01-save-settings)
 
 ___
 ##### ugui.helpers.sliderHandleColor()
-Since bootstrap-slider is a plugin and not officially a part of Bootstrap, Bootswatches don’t contain styles for them. So we dynamically set the styles to match the background color of the navigation bar. However you can pass in any color or gradient you want by using <a href="#ugui.helpers.sliderhandlegradient(gradient)">ugui.helpers.sliderHandleGradient()</a> or <a href="#ugui.helpers.sliderhandlesolid(color)">ugui.helpers.sliderHandleSolid(color)</a>.
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#g02-range-slider)
+Since bootstrap-slider is a plugin and not officially a part of Bootstrap, Bootswatches don’t contain styles for them. So we dynamically set the styles to match the background color of the navigation bar. However you can pass in any color or gradient you want by using [ugui.helpers.sliderHandleGradient()](#ugui-helpers-sliderhandlegradient-gradient-) or [ugui.helpers.sliderHandleSolid(color)](#ugui-helpers-sliderhandlesolid-color-).
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#g02-range-slider)
 
 ___
 ##### ugui.helpers.sliderHandleGradient(gradient)
+
 The `gradient` typically comes from the background-image of the navigation bar, however you can pass in any css gradient you want.
 
-    ugui.helpers.sliderHandleGradient("linear-gradient(#ED8C2B, #911146 40%, #2B2728)");
+```javascript
+ugui.helpers.sliderHandleGradient("linear-gradient(#ED8C2B, #911146 40%, #2B2728)");
+```
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#g02-range-slider)
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#g02-range-slider)
 
 ___
 ##### ugui.helpers.sliderHandleSolid(color)
+
 The `color` typically comes from the background color of the navigation bar, however you can pass in any color you want.
 
-    ugui.helpers.sliderHandleSolid("#ED8C2B");
+```javascript
+ugui.helpers.sliderHandleSolid("#ED8C2B");
+```
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#g02-range-slider)
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#g02-range-slider)
 
 ___
 ##### ugui.helpers.updateCommandLineOutputPreviewHint()
+
 While in [developer mode](#developer-vs-production-mode), in the UGUI Developer Toolbar section "CMD Output", we display a hint that states "Click the Run! button to see output.". The "Run!" part is loaded dynamically depending on what the `sendCmdArgs` button says.
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#f01-detect-if-in-developer-environment)
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#f01-detect-if-in-developer-environment)
 
 ___
 ##### ugui.helpers.updateUGUIDevCommandLine()
+
 While in [developer mode](#developer-vs-production-mode), this updates the contents the UGUI Developer Toolbar’s "CMD Output" section whenever the user interacts with any form elements.
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#f03-real-time-updating-dev-tool-command-output)
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#f03-real-time-updating-dev-tool-command-output)
 
 ___
 ##### ugui.helpers.warnIfDuplicateArgNames()
+
 While in [developer mode](#developer-vs-production-mode) if there are multiple elements on the page with the same `data-argName` we display a warning.
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#e01-warn-if-identical-data-argnames)
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#e01-warn-if-identical-data-argnames)
 
 ___
 ##### ugui.helpers.writeToFile(file, data, callback)
+
 This will override the contents of a file you pass in with the data you supply. If the file you point to doesn’t exist, it will be created with your supplied data.
 
-    ugui.helpers.writeToFile("C:/folder/file.htm", "Text.");
-    ugui.helpers.writeToFile("~/folder/file.txt", "Text.");
+```javascript
+ugui.helpers.writeToFile("C:/folder/file.htm", "Text.");
+ugui.helpers.writeToFile("~/folder/file.txt", "Text.");
+```
 
 With a callback and variables:
 
-    var yourFile = "../random-number.txt";
-    var randomNumber = Math.random();
-    functionToRunUponCompletion() {
-    	console.log("Finished writing to file.");
-    }
-    ugui.helpers.writeToFile(yourFile, randomNumber, functionToRunUponCompletion);
+```javascript
+var yourFile = "../random-number.txt";
+var randomNumber = Math.random();
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.2.html#b05-write-to-file)
+functionToRunUponCompletion() {
+    console.log("Finished writing to file.");
+}
+
+ugui.helpers.writeToFile(yourFile, randomNumber, functionToRunUponCompletion);
+```
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#b05-write-to-file)
 
 
 
@@ -307,4 +380,4 @@ This is controlled by changing the class of `<body>` from between `dev` and `pro
 
 **Developer Mode** displays the UGUI Developer Toolbar at the bottom of your app. It supplies you helpful information and enables common shortcut keys such as refreshing the page and opening Developer Tools. Any time a form element with a `data-argName` is interacted with, an inventory of all items on the page with `data-argName`'s is performed and the "CMD Output" section of the UGUI Developer Toolbar is updated.
 
-While in **Production Mode** we don't activate any keyboard shortcuts (you can add in your own in `_scripts/app.js`, use [this](http://ugui.io/docs/ugui.js-1.1.2.html#f07-custom-keyboard-shortcuts) as a reference). We turn of developer warnings and skip loading the UGUI Developer Toolbar. We only take inventory of contents of the page when the user clicks the submit button for a form.
+While in **Production Mode** we don't activate any keyboard shortcuts (you can add in your own in `_scripts/app.js`, use [this](http://ugui.io/docs/ugui.js-1.1.3.html#f07-custom-keyboard-shortcuts) as a reference). We turn of developer warnings and skip loading the UGUI Developer Toolbar. We only take inventory of contents of the page when the user clicks the submit button for a form.
