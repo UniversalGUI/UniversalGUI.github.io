@@ -103,6 +103,8 @@ ___
 ##### ugui.version
 Returns what version of UGUI is in use.
 
+![A screenshot of the About section of UGUI displaying both the App and UGUI versions.](/_img/docs/ugui.app.version.png "App and UGUI versions on display")
+
 
 
 
@@ -144,6 +146,8 @@ Returns the value from the `window.title` field in your package.json file. This 
 ___
 ##### ugui.app.version
 Returns the value from the `version` field in your package.json file. This is the version number for you app. Do not confuse `ugui.app.version` with `ugui.version` which is the version of UGUI your app is using, not the version of your app.
+
+![A screenshot of the About section of UGUI displaying both the App and UGUI versions.](/_img/docs/ugui.app.version.png "App and UGUI versions on display")
 
 
 
@@ -297,7 +301,11 @@ Add a `data-argName` attribute to an element in your HTML to ensure it gets save
 ___
 ##### ugui.helpers.sliderHandleColor()
 
-Since bootstrap-slider is a plugin and not officially a part of Bootstrap, Bootswatches don’t contain styles for them. So we dynamically set the styles to match the background color of the navigation bar. However you can pass in any color or gradient you want by using [ugui.helpers.sliderHandleGradient()](#ugui-helpers-sliderhandlegradient-gradient-) or [ugui.helpers.sliderHandleSolid(color)](#ugui-helpers-sliderhandlesolid-color-).
+Run this if you want the slider handles to match the background color/gradient of the navigation bar.
+
+Since bootstrap-slider is a plugin and not officially a part of Bootstrap, Bootswatches don’t contain styles for them. So we dynamically set the styles to match the background color of the navigation bar.
+
+However you can pass in any color or gradient you want by using [ugui.helpers.sliderHandleGradient()](#ugui-helpers-sliderhandlegradient-gradient-) or [ugui.helpers.sliderHandleSolid(color)](#ugui-helpers-sliderhandlesolid-color-).
 
 * [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#g02-range-slider)
 
@@ -310,6 +318,10 @@ The `gradient` typically comes from the background-image of the navigation bar, 
 ugui.helpers.sliderHandleGradient("linear-gradient(#ED8C2B, #911146 40%, #2B2728)");
 ```
 
+The above code would produce:
+
+![Example of a Range Slider with a gradient on its handle](/_img/docs/slider-grad.png "Range Slider with gradient handles.")
+
 * [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#g02-range-slider)
 
 ___
@@ -320,6 +332,10 @@ The `color` typically comes from the background color of the navigation bar, how
 ```javascript
 ugui.helpers.sliderHandleSolid("#ED8C2B");
 ```
+
+The above code would produce:
+
+![Example of a Range Slider with a solid color handle](/_img/docs/slider-solid.png "Range Slider with solid color handles.")
 
 * [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#g02-range-slider)
 
