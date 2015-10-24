@@ -158,59 +158,73 @@ Returns the value from the `version` field in your package.json file. This is th
 
 ___
 ##### ugui.helpers.buildCommandArray(executable)
-* [View the source code of this function]()
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#c02-building-the-command-array)
 
 ___
 ##### ugui.helpers.buildUGUIArgObject()
-* [View the source code of this function]()
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#c03-build-ugui-arg-object)
 
 ___
 ##### ugui.helpers.centerNavLogo()
-* [View the source code of this function]()
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#d04-navigation-bar-functionality)
 
 ___
 ##### ugui.helpers.convertCommandArraytoString(cmdArray)
-* [View the source code of this function]()
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#c07-convert-command-array-to-string)
 
 ___
 ##### ugui.helpers.createAFolder(file, callback)
-* [View the source code of this function]()
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#b06-create-a-folder)
 
 ___
 ##### ugui.helpers.deleteAFile(file, callback)
-* [View the source code of this function]()
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#b07-delete-a-file)
 
 ___
 ##### ugui.helpers.deleteAFolder(file, callback)
-* [View the source code of this function]()
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#b08-delete-a-folder)
 
 ___
 ##### ugui.helpers.fillExecutableDropdowns()
-* [View the source code of this function]()
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#f02-put-all-executables-in-dropdowns)
 
 ___
 ##### ugui.helpers.findKeyValue(obj, arr)
-* [View the source code of this function]()
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#c04-find-key-value)
 
 ___
 ##### ugui.helpers.loadSettings(optionalFile, callback)
-* [View the source code of this function]()
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#h02-load-settings)
 
 ___
 ##### ugui.helpers.openDefaultBrowser()
-* [View the source code of this function]()
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#d05-launch-links-in-default-browser)
 
 ___
 ##### ugui.helpers.parseArgument(argumentText)
-* [View the source code of this function]()
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#c05-parse-argument)
 
 ___
 ##### ugui.helpers.patternMatchingDefinitionEngine()
-* [View the source code of this function]()
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#c06-process-all-cmd-definitions)
 
 ___
 ##### ugui.helpers.readAFile(file)
-* [View the source code of this function]()
+
+* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#b03-read-a-file)
 
 ___
 ##### ugui.helpers.readAFolder(file, callback)
@@ -294,7 +308,7 @@ ugui.helpers.saveSettings("~/folder/settings.json");
 
 **What gets saved:**
 
-Add a `data-argName` attribute to an element in your HTML to ensure it gets saved automatically. Add a class of `do-not-save` for items you don’t want to be updated during [ugui.helpers.loadSettings(optionalFile)](#ugui-helpers-loadsettings-optionalfile-callback-).
+The "[UGUI Args Object](#ugui-args)" is what gets saved. Add a `data-argName` attribute to an element in your HTML to ensure it gets saved automatically. Add a class of `do-not-save` for items you don’t want to be updated during [ugui.helpers.loadSettings(optionalFile)](#ugui-helpers-loadsettings-optionalfile-callback-).
 
 * [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#h01-save-settings)
 
