@@ -51,6 +51,26 @@ h2 + hr {
     border-radius: 2px;
 }
 
+blockquote {
+    background: #911146;
+    border: 2px solid #ED8C2B;
+    border-radius: 11px;
+    margin: 0px;
+    padding: 5px;
+    color: #F9B88F;
+    font-size: 1.2em;
+    text-align: center;
+    letter-spacing: 0.2px;
+}
+
+blockquote p {
+    margin: 0px;
+}
+
+blockquote strong {
+    color: #E3CEAB;
+}
+
 p,
 .wrapper li {
     font-size: 0.85em;

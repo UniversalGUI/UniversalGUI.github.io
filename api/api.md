@@ -219,6 +219,8 @@ ___
 ___
 ##### ugui.helpers.patternMatchingDefinitionEngine()
 
+This loops through all `<def>`'s and processes the value of them to create the correct key value pairs on the UGUI Args Object. [Custom Definitions](#custom-definitions) are an advanced feature of UGUI, read more about them in the [Concepts](#concepts) section.
+
 * [View the source code of this function](/docs/ugui.js-1.1.3.html#c06-process-all-cmd-definitions)
 
 ___
@@ -420,3 +422,105 @@ This is controlled by changing the class of `<body>` from between `dev` and `pro
 **Developer Mode** displays the UGUI Developer Toolbar at the bottom of your app. It supplies you helpful information and enables common shortcut keys such as refreshing the page and opening Developer Tools. Any time a form element with a `data-argName` is interacted with, an inventory of all items on the page with `data-argName`'s is performed and the "CMD Output" section of the UGUI Developer Toolbar is updated.
 
 While in **Production Mode** we don't activate any keyboard shortcuts (you can add in your own in `_scripts/app.js`, use [this](/docs/ugui.js-1.1.3.html#f07-custom-keyboard-shortcuts) as a reference). We turn off developer warnings and skip loading the UGUI Developer Toolbar. We only take inventory of contents of the page when the user clicks the submit button for a form.
+
+___
+
+##### Custom Definitions
+
+> **Note:** Custom Definitions are the most powerful feature of UGUI, and thus require a lot of explanation. If you intend on using them, you should read this section thoroughly.
+
+Custom Definitions allow you to pull user defined data from predictable patterns and set them as custom keys on the [UGUI Args Object](#ugui-args). (It isn't as complicated as it sounds though).
+
+___
+
+**Custom Definitions - Example 1**
+
+If you have an input that will return a consistent pattern of `I like X`, where `X` could be anything the user would enter, you could create a definition like so:
+
+```html
+<def name="like">I like ((thing))</def>
+```
+
+The definition `name` will match against a form element with a `data-argName="like"`. It will get the value of that element, and compare it against the definition to produce the following on the [UGUI Args Object](#ugui-args):
+
+```javascript
+ugui.args.like = {
+  value: "I like cows", //The value of the form element
+  htmltag: "input",
+  htmltype: "text",
+  thing: "cows" //This was set by the <def>
+};
+```
+
+You could then call `ugui.args.like.thing` to get `cows` (or whatever the user types), or use that key in a command line argument, like this:
+
+```html
+<cmd executable="myexe">
+  <def name="like">I like ((thing))</def>
+  <arg>-m "((like.thing))"</arg>
+</cmd>
+```
+
+The command that would be sent out would be `myexe -m "cows"`.
+
+___
+
+**Custom Definitions - Example 2**
+
+This is a real world example.
+
+When range sliders have two handles, they always return a value that contains the values of both handle's (comma seperated). So it would look something like this:
+
+```html
+<form id="myexe">
+  <input class="slider" type="text" id="quality" data-argname="quality"
+    data-slider-id="qualitySlider" data-slider-min="0" data-slider-max="100"
+    data-slider-step="25" data-slider-value="[0,100]" data-value="25,100"
+    value="25,100" />
+</form>
+```
+
+Notice that its `value` is **`25,100`** and its `data-argName` is **`quality`**. In the `<cmd>` block, we can use a `<def>` to take advantage of the predictable nature of this comma seperated value.
+
+```html
+<cmd executable="myexe">
+  <def name="quality">((min)),((max))</def>
+  <arg>-Q ((quality.min))-((quality.max))</arg>
+</cmd>
+<!--
+  What would be sent to the command line:
+  myexe -Q 25-100
+-->
+```
+
+In the console we can also view the contents of `quality` on the [UGUI Args Object](#ugui-args).
+
+```javascript
+console.log( ugui.args.quality ); //would print out the following:
+Object: {
+  value: "25,100", //Set by the user
+  htmltag: "input",
+  htmltype: "range",
+  min: "25", //Set by the <def>
+  max: "100" //Set by the <def>
+}
+```
+
+___
+
+**Custom Definitions - Additional Information**
+
+* All `<def>`'s are processed before any `<arg>`'s; so they can be placed anywhere in the `<cmd>` block. They could be before or after an `<arg>` that uses them.
+* You can have as many keywords in your definition as you want:
+```html
+<def name="example">The ((first), ((second)), then the ((third)), finally ((fourth)) is last.</def>
+```
+* You can **not** have two values next to each other without a separator:
+```html
+<def name="BADexample">Some text ((first))((second)).</def>
+```
+  If the value was `Some text 1234`. We would have no idea how to seperate the values, like `1`,`234` or `12`,`34` or `123`,`4`.
+* Values do not need text at the begining or end.
+```html
+<def name="another">((nothingBeforeOrAfter))</def>
+```
