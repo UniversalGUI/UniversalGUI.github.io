@@ -159,72 +159,78 @@ Returns the value from the `version` field in your package.json file. This is th
 ___
 ##### ugui.helpers.buildCommandArray(executable)
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#c02-building-the-command-array)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#c02-building-the-command-array)
 
 ___
 ##### ugui.helpers.buildUGUIArgObject()
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#c03-build-ugui-arg-object)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#c03-build-ugui-arg-object)
 
 ___
 ##### ugui.helpers.centerNavLogo()
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#d04-navigation-bar-functionality)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#d04-navigation-bar-functionality)
 
 ___
 ##### ugui.helpers.convertCommandArraytoString(cmdArray)
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#c07-convert-command-array-to-string)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#c07-convert-command-array-to-string)
 
 ___
 ##### ugui.helpers.createAFolder(file, callback)
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#b06-create-a-folder)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#b06-create-a-folder)
 
 ___
 ##### ugui.helpers.deleteAFile(file, callback)
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#b07-delete-a-file)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#b07-delete-a-file)
 
 ___
 ##### ugui.helpers.deleteAFolder(file, callback)
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#b08-delete-a-folder)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#b08-delete-a-folder)
 
 ___
 ##### ugui.helpers.fillExecutableDropdowns()
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#f02-put-all-executables-in-dropdowns)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#f02-put-all-executables-in-dropdowns)
 
 ___
 ##### ugui.helpers.findKeyValue(obj, arr)
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#c04-find-key-value)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#c04-find-key-value)
 
 ___
 ##### ugui.helpers.loadSettings(optionalFile, callback)
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#h02-load-settings)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#h02-load-settings)
 
 ___
 ##### ugui.helpers.openDefaultBrowser()
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#d05-launch-links-in-default-browser)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#d05-launch-links-in-default-browser)
 
 ___
 ##### ugui.helpers.parseArgument(argumentText)
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#c05-parse-argument)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#c05-parse-argument)
 
 ___
 ##### ugui.helpers.patternMatchingDefinitionEngine()
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#c06-process-all-cmd-definitions)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#c06-process-all-cmd-definitions)
 
 ___
 ##### ugui.helpers.readAFile(file)
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#b03-read-a-file)
+This returns the contents of a file, allowing you to store them in a variable. This is reads the file directly from the local drive it's stored on, and not does not perform a network request.
+
+```javascript
+var devToolsHTML = ugui.helpers.readAFile("../_markup/ugui-devtools.htm");
+```
+
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#b03-read-a-file)
 
 ___
 ##### ugui.helpers.readAFolder(file, callback)
@@ -237,14 +243,14 @@ var mediaContents = ugui.helpers.readAFolder("C:\pictures\cats", function(conten
 });
 ```
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#b04-read-contents-of-a-folder)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#b04-read-contents-of-a-folder)
 
 ___
 ##### ugui.helpers.removeTypedQuotes()
 
 In all input text fields and textareas, remove both single and double quotes as they are typed, on page load, and when the form is submitted.
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#c10-prevent-user-from-entering-quotes-in-forms)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#c10-prevent-user-from-entering-quotes-in-forms)
 
 ___
 ##### ugui.helpers.runcmd(executableAndArgs, callback)
@@ -263,7 +269,7 @@ ugui.helpers.runcmd('node --version', function(data) {
 });
 ```
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#b01-run-cmd)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#b01-run-cmd)
 
 ___
 ##### ugui.helpers.runcmdAdvanced(parameters)
@@ -289,7 +295,7 @@ var parameters = {
 ugui.helpers.runcmdAdvanced(parameters);
 ```
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#b02-run-cmd-advanced-)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#b02-run-cmd-advanced-)
 
 ___
 ##### ugui.helpers.saveSettings(optionalFile, callback)
@@ -310,7 +316,7 @@ ugui.helpers.saveSettings("~/folder/settings.json");
 
 The "[UGUI Args Object](#ugui-args)" is what gets saved. Add a `data-argName` attribute to an element in your HTML to ensure it gets saved automatically. Add a class of `do-not-save` for items you don’t want to be updated during [ugui.helpers.loadSettings(optionalFile)](#ugui-helpers-loadsettings-optionalfile-callback-).
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#h01-save-settings)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#h01-save-settings)
 
 ___
 ##### ugui.helpers.sliderHandleColor()
@@ -321,7 +327,7 @@ Since bootstrap-slider is a plugin and not officially a part of Bootstrap, Boots
 
 However you can pass in any color or gradient you want by using [ugui.helpers.sliderHandleGradient()](#ugui-helpers-sliderhandlegradient-gradient-) or [ugui.helpers.sliderHandleSolid(color)](#ugui-helpers-sliderhandlesolid-color-).
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#g02-range-slider)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#g02-range-slider)
 
 ___
 ##### ugui.helpers.sliderHandleGradient(gradient)
@@ -336,7 +342,7 @@ The above code would produce:
 
 ![Example of a Range Slider with a gradient on its handle](/_img/docs/slider-grad.png "Range Slider with gradient handles.")
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#g02-range-slider)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#g02-range-slider)
 
 ___
 ##### ugui.helpers.sliderHandleSolid(color)
@@ -351,28 +357,28 @@ The above code would produce:
 
 ![Example of a Range Slider with a solid color handle](/_img/docs/slider-solid.png "Range Slider with solid color handles.")
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#g02-range-slider)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#g02-range-slider)
 
 ___
 ##### ugui.helpers.updateCommandLineOutputPreviewHint()
 
 While in [developer mode](#developer-vs-production-mode), in the UGUI Developer Toolbar section "CMD Output", we display a hint that states "Click the Run! button to see output.". The "Run!" part is loaded dynamically depending on what the `sendCmdArgs` button says.
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#f01-detect-if-in-developer-environment)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#f01-detect-if-in-developer-environment)
 
 ___
 ##### ugui.helpers.updateUGUIDevCommandLine()
 
 While in [developer mode](#developer-vs-production-mode), this updates the contents the UGUI Developer Toolbar’s "CMD Output" section whenever the user interacts with any form elements.
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#f03-real-time-updating-dev-tool-command-output)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#f03-real-time-updating-dev-tool-command-output)
 
 ___
 ##### ugui.helpers.warnIfDuplicateArgNames()
 
 While in [developer mode](#developer-vs-production-mode) if there are multiple elements on the page with the same `data-argName` we display a warning.
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#e01-warn-if-identical-data-argnames)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#e01-warn-if-identical-data-argnames)
 
 ___
 ##### ugui.helpers.writeToFile(file, data, callback)
@@ -397,7 +403,7 @@ functionToRunUponCompletion() {
 ugui.helpers.writeToFile(yourFile, randomNumber, functionToRunUponCompletion);
 ```
 
-* [View the source code of this function](http://ugui.io/docs/ugui.js-1.1.3.html#b05-write-to-file)
+* [View the source code of this function](/docs/ugui.js-1.1.3.html#b05-write-to-file)
 
 
 
@@ -413,4 +419,4 @@ This is controlled by changing the class of `<body>` from between `dev` and `pro
 
 **Developer Mode** displays the UGUI Developer Toolbar at the bottom of your app. It supplies you helpful information and enables common shortcut keys such as refreshing the page and opening Developer Tools. Any time a form element with a `data-argName` is interacted with, an inventory of all items on the page with `data-argName`'s is performed and the "CMD Output" section of the UGUI Developer Toolbar is updated.
 
-While in **Production Mode** we don't activate any keyboard shortcuts (you can add in your own in `_scripts/app.js`, use [this](http://ugui.io/docs/ugui.js-1.1.3.html#f07-custom-keyboard-shortcuts) as a reference). We turn off developer warnings and skip loading the UGUI Developer Toolbar. We only take inventory of contents of the page when the user clicks the submit button for a form.
+While in **Production Mode** we don't activate any keyboard shortcuts (you can add in your own in `_scripts/app.js`, use [this](/docs/ugui.js-1.1.3.html#f07-custom-keyboard-shortcuts) as a reference). We turn off developer warnings and skip loading the UGUI Developer Toolbar. We only take inventory of contents of the page when the user clicks the submit button for a form.
