@@ -5,6 +5,9 @@ var url = require("url");
 var path = require("path");
 var fs = require("fs");
 var port = process.argv[2] || 8000;
+var WHT = "\033[39m";
+var RED = "\033[91m";
+var GRN = "\033[32m";
 
 http.createServer(function (request, response) {
 
@@ -19,16 +22,16 @@ http.createServer(function (request, response) {
 
     fs.exists(filename, function(exists) {
         if (!exists) {
-            console.log("FAIL: " + filename);
+            console.log(RED + "FAIL: " + filename);
             filename = path.join(process.cwd(), '/404.html');
         } else if (fs.statSync(filename).isDirectory()) {
-            console.log("FLDR: " + filename);
+            console.log(GRN + "FLDR: " + WHT + filename);
             filename += '/index.html';
         }
 
         fs.readFile(filename, "binary", function(err, file) {
-            console.log("FILE: " + filename);
-            if(err) {
+            console.log(GRN + "FILE: " + WHT + filename);
+            if (err) {
                 response.writeHead(500, {"Content-Type": "text/plain"});
                 response.write(err + "\n");
                 response.end();
@@ -37,12 +40,17 @@ http.createServer(function (request, response) {
 
             var headers = {};
             var contentType = contentTypesByExtension[path.extname(filename)];
-            if (contentType) headers["Content-Type"] = contentType;
+            if (contentType) {
+                headers["Content-Type"] = contentType;
+            }
+
             response.writeHead(200, headers);
             response.write(file, "binary");
             response.end();
         });
+
     });
+
 }).listen(parseInt(port, 10));
 
-console.log("Static file server running at\n  => http://localhost:" + port + "/\nCTRL + C to shutdown");
+console.log(WHT + "Static file server running at\n  => http://localhost:" + port + "/\nCTRL + C to shutdown");
