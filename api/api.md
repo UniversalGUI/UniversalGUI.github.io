@@ -1,6 +1,6 @@
 # UGUI API Documentation
 
-The "**ugui Object**" contains many useful items for developers. This section will outline everything it contains.
+The "**ugui Object**" contains many useful items for developers. This section will outline everything it contains. Items in each section of displayed alphabetically.
 
 Titles on this page <span class="blue">in blue</span> can be typed into the Webkit Developer Tools Console, like so:
 
@@ -159,60 +159,178 @@ Returns the value from the `version` field in your package.json file. This is th
 ___
 ##### ugui.helpers.buildCommandArray(executable)
 
+This begins the process of obtaining information from UI elements, interpretting `<arg>`'s and returns an array of the passed in executable and processed `<arg>`'s that have had their `((keywords))` replaced by data from the [ugui.args](#ugui-args) object. This array can then be processed using [ugui.helpers.convertCommandArraytoString()](#ugui-helpers-convertcommandarraytostring-cmdarray-) then passed into [ugui.helpers.runcmd()](#ugui-helpers-runcmd-executableandargs-callback-).
+
+This function is automatically triggered when clicking a submit button with a class of `sendCmdArgs`. When in [dev mode](#developer-vs-production-mode) the UGUI Developer Toolbar's "CMD Output" section is updated using this function.
+
+If you don't pass in a specific executable as a string, it will default to the first executable mentioned in your `<cmd>` blocks.
+
 * [View the source code of this function](/docs/ugui.js-1.1.3.html#c02-building-the-command-array)
 
 ___
 ##### ugui.helpers.buildUGUIArgObject()
+
+This grabs all the data about the elements on the page that have a `data-argName` and puts that information in the `ugui` object, accessible here: `ugui.args`.
+
+For information regarding the data that is stored view the [ugui.args](#ugui-args) section of the API documentation.
 
 * [View the source code of this function](/docs/ugui.js-1.1.3.html#c03-build-ugui-arg-object)
 
 ___
 ##### ugui.helpers.centerNavLogo()
 
+Makes sure that the logo and app name in the nav bar are vertically centered. UGUI runs this anytime the BootSwatch theme is changed.
+
 * [View the source code of this function](/docs/ugui.js-1.1.3.html#d04-navigation-bar-functionality)
 
 ___
 ##### ugui.helpers.convertCommandArraytoString(cmdArray)
+
+Takes an array of strings starting with an executable name followed by commands. Thn removes empty strings and returns a string ready to be sent out to the command line with [ugui.helpers.runcmd()](#ugui-helpers-runcmd-executableandargs-callback-).
+
+```javascript
+var cmdArray = ["myexe","-Q 25-75","","","--input 'C:\file.txt'","","--ouput 'C:\file.new.txt'"];
+ugui.helpers.convertCommandArraytoString(cmdArray);
+```
+
+The above example would return the following string `myexe -Q 25-75 --import 'C:\file.txt' --ouput 'C:\file.new.txt'`.
 
 * [View the source code of this function](/docs/ugui.js-1.1.3.html#c07-convert-command-array-to-string)
 
 ___
 ##### ugui.helpers.createAFolder(file, callback)
 
+This will create a new folder in the location you pass in. You cannot create a new folder with a folder in it. So if `C:/Taco` doesn't exist then the following wouldn't work:
+
+```javascript
+ugui.helpers.createAFolder("C:/Taco/Cheese");
+```
+
+You'd need to create the "Taco" folder first, then the "Cheese" folder, like so:
+
+```javascript
+ugui.helpers.createAFolder("C:/Taco", function(){
+    ugui.helpers.createAFolder("C:/Taco/Cheese");
+});
+```
+
+In this example we are using a callback to create a subfolder. This ensures that the "Taco" folder will exist before we attempt to create the "Cheese" folder.
+
 * [View the source code of this function](/docs/ugui.js-1.1.3.html#b06-create-a-folder)
 
 ___
 ##### ugui.helpers.deleteAFile(file, callback)
+
+Quick and easy way of deleting files.
+
+```javascript
+ugui.helpers.deleteAFile("C:/folder/delete_me.htm");
+
+ugui.helpers.deleteAFile("C:/folder/delete_me.htm", function(){
+    console.log("File delete finished.");
+});
+```
 
 * [View the source code of this function](/docs/ugui.js-1.1.3.html#b07-delete-a-file)
 
 ___
 ##### ugui.helpers.deleteAFolder(file, callback)
 
+Quick and easy way to delete folders. **This will not delete a folder unless it is empty.**
+
+```javascript
+ugui.helpers.deleteAFolder("C:/path/to/folder");
+
+ugui.helpers.deleteAFolder("C:/path/to/folder", function(){
+    console.log("Folder delete finished.");
+});
+```
+
 * [View the source code of this function](/docs/ugui.js-1.1.3.html#b08-delete-a-folder)
 
 ___
 ##### ugui.helpers.fillExecutableDropdowns()
+
+In the UGUI Developer Toolbar, there are dropdowns in the "CMD Output" and "Executable Info" sections that contain all of the executables used in the app.
 
 * [View the source code of this function](/docs/ugui.js-1.1.3.html#f02-put-all-executables-in-dropdowns)
 
 ___
 ##### ugui.helpers.findKeyValue(obj, arr)
 
+This is a general purpose function that allows retrieving information from an object. Here is an example object and how `findKeyValue()` works to return data from it:
+
+```javascript
+var a = {
+    "b": "dog",
+    "c": {
+        "d": "cat",
+        "e": "bat"
+    }
+};
+var ab  = ["b"];
+var acd = ["c","d"];
+console.log( findKeyValue(a,ab) );  //dog
+console.log( findKeyValue(a,acd) ); //cat
+```
+
 * [View the source code of this function](/docs/ugui.js-1.1.3.html#c04-find-key-value)
 
 ___
 ##### ugui.helpers.loadSettings(optionalFile, callback)
+
+This loads your settings from the default save location or a location that you've passed in. It reads the file, which is a JSON version of the `ugui.args` object, and updates the UI elements on the page with the correct values, then updates the current `ugui.args` to reflect the UI changes.
+
+To have an HTML element skipped during the load process, give it a class of `do-not-save`.
+
+Check the default location for `uguisettings.json` and load it
+
+```javascript
+ugui.helpers.loadSettings();
+```
+
+Check your custom location for settings and attempt to load them
+
+```javascript
+ugui.helpers.loadSettings("../appsettings.json");
+```
+
+Check the default location for `uguisettings.json` and load it, and then run a callback function
+
+```javascript
+ugui.helpers.loadSettings(function(){
+    console.log("Settings have finished loading");
+});
+```
+
+Check your custom location for settings and attempt to load them, then run a callback function
+
+```javascript
+ugui.helpers.loadSettings("~/my-app-settings.json", function(){
+    console.log("Settings have finished loading");
+});
+```
 
 * [View the source code of this function](/docs/ugui.js-1.1.3.html#h02-load-settings)
 
 ___
 ##### ugui.helpers.openDefaultBrowser()
 
+Detects all links on the page with a class of `external-link` and sets them to open the link in the user’s default browser instead of using NW.js as a browser which can cause issues.
+
+This should be treated like an initialize function. If you have dynamically added new links to the page with a class of `external-link` you'll need to re-run this function.
+
 * [View the source code of this function](/docs/ugui.js-1.1.3.html#d05-launch-links-in-default-browser)
 
 ___
 ##### ugui.helpers.parseArgument(argumentText)
+
+This takes the argument from an `<arg>`, finds all the `((keywords))` and replaces them with the information on the UGUI Args Object found here: `window.ugui.args`
+
+```javascript
+ugui.helpers.parseArgument("--import ((fileToProcess))");
+//Returns something like: "--import C:\file.txt"
+```
 
 * [View the source code of this function](/docs/ugui.js-1.1.3.html#c05-parse-argument)
 
@@ -445,10 +563,10 @@ The definition `name` will match against a form element with a `data-argName="li
 
 ```javascript
 ugui.args.like = {
-  value: "I like cows", //The value of the form element
-  htmltag: "input",
-  htmltype: "text",
-  thing: "cows" //This was set by the <def>
+    value: "I like cows", //The value of the form element
+    htmltag: "input",
+    htmltype: "text",
+    thing: "cows" //This was set by the <def>
 };
 ```
 
@@ -498,11 +616,11 @@ In the console we can also view the contents of `quality` on the [UGUI Args Obje
 ```javascript
 console.log( ugui.args.quality ); //would print out the following:
 Object: {
-  value: "25,100", //Set by the user
-  htmltag: "input",
-  htmltype: "range",
-  min: "25", //Set by the <def>
-  max: "100" //Set by the <def>
+    value: "25,100", //Set by the user
+    htmltag: "input",
+    htmltype: "range",
+    min: "25", //Set by the <def>
+    max: "100" //Set by the <def>
 }
 ```
 
