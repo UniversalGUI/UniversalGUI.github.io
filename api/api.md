@@ -249,13 +249,6 @@ ugui.helpers.deleteAFolder("C:/path/to/folder", function(){
 * [View the source code of this function](/docs/ugui.js-1.1.3.html#b08-delete-a-folder)
 
 ___
-##### ugui.helpers.fillExecutableDropdowns()
-
-In the UGUI Developer Toolbar, there are dropdowns in the "CMD Output" and "Executable Info" sections that contain all of the executables used in the app.
-
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#f02-put-all-executables-in-dropdowns)
-
-___
 ##### ugui.helpers.findKeyValue(obj, arr)
 
 This is a general purpose function that allows retrieving information from an object. Here is an example object and how `findKeyValue()` works to return data from it:
@@ -480,25 +473,11 @@ The above code would produce:
 * [View the source code of this function](/docs/ugui.js-1.1.3.html#g02-range-slider)
 
 ___
-##### ugui.helpers.updateCommandLineOutputPreviewHint()
-
-While in [developer mode](#developer-vs-production-mode), in the UGUI Developer Toolbar section "CMD Output", we display a hint that states "Click the Run! button to see output.". The "Run!" part is loaded dynamically depending on what the `sendCmdArgs` button says.
-
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#f01-detect-if-in-developer-environment)
-
-___
 ##### ugui.helpers.updateUGUIDevCommandLine()
 
 While in [developer mode](#developer-vs-production-mode), this updates the contents the UGUI Developer Toolbar’s "CMD Output" section whenever the user interacts with any form elements.
 
 * [View the source code of this function](/docs/ugui.js-1.1.3.html#f03-real-time-updating-dev-tool-command-output)
-
-___
-##### ugui.helpers.warnIfDuplicateArgNames()
-
-While in [developer mode](#developer-vs-production-mode) if there are multiple elements on the page with the same `data-argName` we display a warning.
-
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#e01-warn-if-identical-data-argnames)
 
 ___
 ##### ugui.helpers.writeToFile(file, data, callback)
