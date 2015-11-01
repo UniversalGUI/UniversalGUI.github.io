@@ -1,0 +1,33 @@
+{
+  "name": "universalgui.github.io",
+  "version": "1.0.0",
+  "description": "The public website for the UGUI project. It consists of Templates, Tutorials, and Documentation.",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UniversalGUI/UniversalGUI.github.io.git"
+  },
+  "author": "thejaredwilcurt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UniversalGUI/UniversalGUI.github.io/issues"
+  },
+  "homepage": "https://github.com/UniversalGUI/UniversalGUI.github.io#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-htmlmin": "^1.2.0",
+    "gulp-jshint": "^1.11.2",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.0",
+    "gulp-uglify": "^1.4.2"
+  }
+}
