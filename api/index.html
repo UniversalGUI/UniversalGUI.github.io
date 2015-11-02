@@ -102,6 +102,11 @@
                     }
                 }
 
+                $.get("/_markup/nav.html", function(y){
+                    $("body").prepend(y);
+                    $("#ugui-nav").css("text-align","right");
+                });
+
             });
         });
     </script>

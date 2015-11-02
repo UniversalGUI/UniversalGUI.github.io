@@ -130,3 +130,21 @@ ol {
     margin 21px auto;
     text-align: left;
 }
+
+#ugui-nav {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background: linear-gradient(rgba(145, 17, 70, 0.2), rgba(43, 39, 40, 0.2));
+    color: #F9B88F;
+    font-weight: bold;
+    text-align: center;
+    line-height: 2.5em;
+}
+#ugui-nav a {
+    color: #F9B88F;
+}
+#ugui-nav a:hover {
+    color: #F5C8C3;
+}
