@@ -49,7 +49,7 @@ value: "#{000000-ffffff}"          //Standard CSS acceptable hex format
 
 ```
 value: "C:\folder\fileName.png"    //What the user selected
-fullpath: "C:\folder\fileName.png" //How JavaScript understand that
+fullpath: "C:\folder\fileName.png" //How JavaScript understands that
 path: "C:\folder\"                 //Full path to the folder containing the file
 name: "fileName"                   //Name of file without path or extension
 ext: "png"                         //The file extension without a .
