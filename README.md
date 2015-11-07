@@ -4,4 +4,4 @@ The public website for the UGUI project. It consists of Templates, Tutorials, an
 
 * **[UGUI.io](http://ugui.io)**
 
-To run this site locally install [Node.js](http://nodejs.org) and run `node server.js` or just double-click `server.bat` on Windows. Though most of the site can be ran locally without the need for the server to be running.
+To run this site locally install [Node.js](http://nodejs.org) and run `node server.js` or just double-click `server.bat` on Windows. Though most of the site can be ran locally without the need for the server to be running. It is mainly used for testing 404 pages.
