@@ -8,11 +8,14 @@ var desiredURL = window.location.pathname;
 var set = [
     ["/download", "download"], //downloads
     ["/download", "dl"], //dls
-    ["/download", "source"], //sourcecode
     ["/download", "archive"], //archives
     ["/download", "binaries"],
     ["/api", "api"],
-    ["/docs", "doc"] //documentation
+    ["/docs", "doc"], //documentation
+    ["/docs/latest", "anotated"],
+    ["/docs/latest", "annotated"],
+    ["/docs/latest", "source"], //sourcecode
+    ["/docs/latest", "latest"]
 ];
 
 function forward(arr) {
