@@ -184,6 +184,30 @@ Makes sure that the logo and app name in the nav bar are vertically centered. UG
 * [View the source code of this function](/docs/ugui.js-1.3.0.html#d04-navigation-bar-functionality)
 
 ___
+##### ugui.helpers.checkForUpdates()
+
+This is an advanced feature of UGUI useful to those maintaining their projects on GitHub and posting releases on their Repo’s release page. This will check for the version number of the latest release and compare it to the version number in the package.json, then offer a link to the release page if there is a newer release.
+
+![Screenshots of the Check For Updates feature](/_img/docs/check-for-updates.gif "Check For Updates feature in use.")
+
+**To use:**
+
+1. Uncomment this block of code from `index.html`
+```html
+<p id="updateResults"></p>
+<p class="text-center">
+    <button id="updateChecker" class="btn btn-primary">Check for updates</button>
+</p>
+```
+2. You must supply a "Repository URL" in your `package.json` file and it must match the following pattern `git://github.com/USERNAME/REPO.git`.
+3. You must also [publish releases on GitHub](https://help.github.com/articles/creating-releases/) to that same repo listed above.
+4. Make sure all of your release versions follow this pattern `v0.0.0` (*where any of the 0's can be any positive whole number*). If you do something like "v0.0" or "v0.0.0a" or "v0alpha" or "v0.0.0-rc" or "v0.0.0.0" or "0.0.0", etc; This feature will likely not work, as it compares version numbers to see which is newer based on an expected pattern.
+
+Feel free to modify [this part of ugui.js](/docs/ugui.js-1.3.0.html#d06-check-for-updates) to meet the needs of your app.
+
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#d06-check-for-updates)
+
+___
 ##### ugui.helpers.convertCommandArraytoString(cmdArray)
 
 Takes an array of strings starting with an executable name followed by commands. Thn removes empty strings and returns a string ready to be sent out to the command line with [ugui.helpers.runcmd()](#ugui-helpers-runcmd-executableandargs-callback-).
