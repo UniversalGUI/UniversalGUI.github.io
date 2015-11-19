@@ -165,7 +165,7 @@ This function is automatically triggered when clicking a submit button with a cl
 
 If you don't pass in a specific executable as a string, it will default to the first executable mentioned in your `<cmd>` blocks.
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#c02-building-the-command-array)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#c02-building-the-command-array)
 
 ___
 ##### ugui.helpers.buildUGUIArgObject()
@@ -174,14 +174,14 @@ This grabs all the data about the elements on the page that have a `data-argName
 
 For information regarding the data that is stored view the [ugui.args](#ugui-args) section of the API documentation.
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#c03-build-ugui-arg-object)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#c03-build-ugui-arg-object)
 
 ___
 ##### ugui.helpers.centerNavLogo()
 
 Makes sure that the logo and app name in the nav bar are vertically centered. UGUI runs this anytime the BootSwatch theme is changed.
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#d04-navigation-bar-functionality)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#d04-navigation-bar-functionality)
 
 ___
 ##### ugui.helpers.convertCommandArraytoString(cmdArray)
@@ -195,7 +195,7 @@ ugui.helpers.convertCommandArraytoString(cmdArray);
 
 The above example would return the following string `myexe -Q 25-75 --import 'C:\file.txt' --ouput 'C:\file.new.txt'`.
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#c07-convert-command-array-to-string)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#c07-convert-command-array-to-string)
 
 ___
 ##### ugui.helpers.createAFolder(file, callback)
@@ -216,7 +216,7 @@ ugui.helpers.createAFolder("C:/Taco", function(){
 
 In this example we are using a callback to create a subfolder. This ensures that the "Taco" folder will exist before we attempt to create the "Cheese" folder.
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#b06-create-a-folder)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#b06-create-a-folder)
 
 ___
 ##### ugui.helpers.deleteAFile(file, callback)
@@ -231,7 +231,7 @@ ugui.helpers.deleteAFile("C:/folder/delete_me.htm", function(){
 });
 ```
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#b07-delete-a-file)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#b07-delete-a-file)
 
 ___
 ##### ugui.helpers.deleteAFolder(file, callback)
@@ -246,7 +246,7 @@ ugui.helpers.deleteAFolder("C:/path/to/folder", function(){
 });
 ```
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#b08-delete-a-folder)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#b08-delete-a-folder)
 
 ___
 ##### ugui.helpers.findKeyValue(obj, arr)
@@ -267,7 +267,29 @@ console.log( findKeyValue(a,ab) );  //dog
 console.log( findKeyValue(a,acd) ); //cat
 ```
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#c04-find-key-value)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#c04-find-key-value)
+
+___
+##### ugui.helpers.getFileSize(filePath, callback)
+
+Quick and easy way to get the file size for a file. This will return an object containing the size stored as bytes, kilobytes, and megabytes. You can also pass in a callback that takes the file size object as an argument and an `err` argument for errors.
+
+```javascript
+ugui.helpers.getFileSize("C:/folder/pizza.jpg");           // { "bytes": 1048576, "kilobytes": 1024, "megabytes": 1 }
+ugui.helpers.getFileSize("C:/folder/pizza.jpg").bytes;     // 1048576
+ugui.helpers.getFileSize("C:/folder/pizza.jpg").kilobytes; // 1024
+ugui.helpers.getFileSize("C:/folder/pizza.jpg").megabytes; // 1
+
+ugui.helpers.getFileSize("C:/folder/pizza.jpg", function(fileSize, err) {
+    if (err) {
+        $("body").prepend('<div id="alert">Error Accessing File</div>');
+    } else {
+        $("#output").html("Input file is " + fileSize.kilobytes + "KB");
+    }
+});
+```
+
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#b09-get-a-file-s-size)
 
 ___
 ##### ugui.helpers.loadSettings(optionalFile, callback)
@@ -304,7 +326,7 @@ ugui.helpers.loadSettings("~/my-app-settings.json", function(){
 });
 ```
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#h02-load-settings)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#h02-load-settings)
 
 ___
 ##### ugui.helpers.openDefaultBrowser()
@@ -313,7 +335,7 @@ Detects all links on the page with a class of `external-link` and sets them to o
 
 This should be treated like an initialize function. If you have dynamically added new links to the page with a class of `external-link` you'll need to re-run this function.
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#d05-launch-links-in-default-browser)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#d05-launch-links-in-default-browser)
 
 ___
 ##### ugui.helpers.parseArgument(argumentText)
@@ -325,14 +347,14 @@ ugui.helpers.parseArgument("--import ((fileToProcess))");
 //Returns something like: "--import C:\file.txt"
 ```
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#c05-parse-argument)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#c05-parse-argument)
 
 ___
 ##### ugui.helpers.patternMatchingDefinitionEngine()
 
 This loops through all `<def>`'s and processes the value of them to create the correct key value pairs on the UGUI Args Object. [Custom Definitions](#custom-definitions) are an advanced feature of UGUI, read more about them in the [Concepts](#concepts) section.
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#c06-process-all-cmd-definitions)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#c06-process-all-cmd-definitions)
 
 ___
 ##### ugui.helpers.readAFile(file)
@@ -343,7 +365,7 @@ This returns the contents of a file, allowing you to store them in a variable. T
 var devToolsHTML = ugui.helpers.readAFile("../_markup/ugui-devtools.htm");
 ```
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#b03-read-a-file)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#b03-read-a-file)
 
 ___
 ##### ugui.helpers.readAFolder(file, callback)
@@ -356,14 +378,14 @@ var mediaContents = ugui.helpers.readAFolder("C:\pictures\cats", function(conten
 });
 ```
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#b04-read-contents-of-a-folder)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#b04-read-contents-of-a-folder)
 
 ___
 ##### ugui.helpers.removeTypedQuotes()
 
 In all input text fields and textareas, remove both single and double quotes as they are typed, on page load, and when the form is submitted.
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#c10-prevent-user-from-entering-quotes-in-forms)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#c10-prevent-user-from-entering-quotes-in-forms)
 
 ___
 ##### ugui.helpers.runcmd(executableAndArgs, callback)
@@ -382,7 +404,7 @@ ugui.helpers.runcmd('node --version', function(data) {
 });
 ```
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#b01-run-cmd)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#b01-run-cmd)
 
 ___
 ##### ugui.helpers.runcmdAdvanced(parameters)
@@ -408,7 +430,7 @@ var parameters = {
 ugui.helpers.runcmdAdvanced(parameters);
 ```
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#b02-run-cmd-advanced-)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#b02-run-cmd-advanced-)
 
 ___
 ##### ugui.helpers.saveSettings(optionalFile, callback)
@@ -429,7 +451,7 @@ ugui.helpers.saveSettings("~/folder/settings.json");
 
 The "[UGUI Args Object](#ugui-args)" is what gets saved. Add a `data-argName` attribute to an element in your HTML to ensure it gets saved automatically. Add a class of `do-not-save` for items you don’t want to be updated during [ugui.helpers.loadSettings(optionalFile)](#ugui-helpers-loadsettings-optionalfile-callback-).
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#h01-save-settings)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#h01-save-settings)
 
 ___
 ##### ugui.helpers.sliderHandleColor()
@@ -440,7 +462,7 @@ Since bootstrap-slider is a plugin and not officially a part of Bootstrap, Boots
 
 However you can pass in any color or gradient you want by using [ugui.helpers.sliderHandleGradient()](#ugui-helpers-sliderhandlegradient-gradient-) or [ugui.helpers.sliderHandleSolid(color)](#ugui-helpers-sliderhandlesolid-color-).
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#g02-range-slider)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#g02-range-slider)
 
 ___
 ##### ugui.helpers.sliderHandleGradient(gradient)
@@ -455,7 +477,7 @@ The above code would produce:
 
 ![Example of a Range Slider with a gradient on its handle](/_img/docs/slider-grad.png "Range Slider with gradient handles.")
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#g02-range-slider)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#g02-range-slider)
 
 ___
 ##### ugui.helpers.sliderHandleSolid(color)
@@ -470,14 +492,14 @@ The above code would produce:
 
 ![Example of a Range Slider with a solid color handle](/_img/docs/slider-solid.png "Range Slider with solid color handles.")
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#g02-range-slider)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#g02-range-slider)
 
 ___
 ##### ugui.helpers.updateUGUIDevCommandLine()
 
 While in [developer mode](#developer-vs-production-mode), this updates the contents the UGUI Developer Toolbar’s "CMD Output" section whenever the user interacts with any form elements.
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#f03-real-time-updating-dev-tool-command-output)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#f03-real-time-updating-dev-tool-command-output)
 
 ___
 ##### ugui.helpers.writeToFile(file, data, callback)
@@ -502,7 +524,7 @@ functionToRunUponCompletion() {
 ugui.helpers.writeToFile(yourFile, randomNumber, functionToRunUponCompletion);
 ```
 
-* [View the source code of this function](/docs/ugui.js-1.1.3.html#b05-write-to-file)
+* [View the source code of this function](/docs/ugui.js-1.3.0.html#b05-write-to-file)
 
 
 
@@ -518,7 +540,7 @@ This is controlled by changing the class of `<body>` from between `dev` and `pro
 
 **Developer Mode** displays the UGUI Developer Toolbar at the bottom of your app. It supplies you helpful information and enables common shortcut keys such as refreshing the page and opening Developer Tools. Any time a form element with a `data-argName` is interacted with, an inventory of all items on the page with `data-argName`'s is performed and the "CMD Output" section of the UGUI Developer Toolbar is updated.
 
-While in **Production Mode** we don't activate any keyboard shortcuts (you can add in your own in `_scripts/app.js`, use [this](/docs/ugui.js-1.1.3.html#f07-custom-keyboard-shortcuts) as a reference). We turn off developer warnings and skip loading the UGUI Developer Toolbar. We only take inventory of contents of the page when the user clicks the submit button for a form.
+While in **Production Mode** we don't activate any keyboard shortcuts (you can add in your own in `_scripts/app.js`, use [this](/docs/ugui.js-1.3.0.html#f07-custom-keyboard-shortcuts) as a reference). We turn off developer warnings and skip loading the UGUI Developer Toolbar. We only take inventory of contents of the page when the user clicks the submit button for a form.
 
 ___
 
