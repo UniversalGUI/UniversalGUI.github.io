@@ -95,7 +95,7 @@ ___
 ##### ugui.platform
 Returns what OS you are currently on, such as `darwin`, `freebsd`, `linux`, `sunos`, or `win32`. Note that these results are not related to your OS Architecture being 32 or 64-Bit. A 64-Bit copy of Windows will still have it's platform set as `win32`. To get the archetecture use `process.arch`.
 
-![A screenshot of running ugui.platform in the console](/_img/docs/ugui.platform.png "Running ugui.platform in the NW.js developer tools console.")
+<img class="img-border" src="/_img/docs/ugui.platform.png" title="Running ugui.platform in the NW.js developer tools console." alt="A screenshot of running ugui.platform in the console" />
 
 ___
 ##### ugui.textFields
@@ -477,7 +477,7 @@ ugui.helpers.sliderHandleGradient("linear-gradient(#ED8C2B, #911146 40%, #2B2728
 
 The above code would produce:
 
-![Example of a Range Slider with a gradient on its handle](/_img/docs/slider-grad.png "Range Slider with gradient handles.")
+<img class="img-border" src="/_img/docs/slider-grad.png" title="Range Slider with gradient handles." alt="Example of a Range Slider with a gradient on its handle" />
 
 * [View the source code of this function](/docs/ugui.js-1.3.0.html#g02-range-slider)
 
@@ -492,7 +492,7 @@ ugui.helpers.sliderHandleSolid("#ED8C2B");
 
 The above code would produce:
 
-![Example of a Range Slider with a solid color handle](/_img/docs/slider-solid.png "Range Slider with solid color handles.")
+<img class="img-border" src="/_img/docs/slider-solid.png" title="Range Slider with solid color handles." alt="Example of a Range Slider with a solid color handle" />
 
 * [View the source code of this function](/docs/ugui.js-1.3.0.html#g02-range-slider)
 
@@ -549,7 +549,7 @@ ___
 
 This is an advanced feature of UGUI useful to those maintaining their projects on GitHub and posting releases on their Repo’s release page. This will check for the version number of the latest release and compare it to the version number in the package.json, then offer a link to the release page if there is a newer release.
 
-![Screenshots of the Check For Updates feature](/_img/docs/check-for-updates.gif "Check For Updates feature in use.")
+<img class="img-border" src="/_img/docs/check-for-updates.gif" title="Check For Updates feature in use." alt="Screenshots of the Check For Updates feature" />
 
 **To use:**
 

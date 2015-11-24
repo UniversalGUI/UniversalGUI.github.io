@@ -33,9 +33,7 @@ img {
     -ms-interpolation-mode: bicubic;
 }
 
-img[src*="slider-"],
-img[src*="check-for-updates"],
-img[src*="ugui.platform"] {
+.img-border {
     border: 2px solid rgba(43, 39, 40, 0.1);
     padding: 9px;
     border-radius: 5px;
