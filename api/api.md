@@ -499,7 +499,9 @@ The above code would produce:
 ___
 ##### ugui.helpers.updateUGUIDevCommandLine()
 
-While in [developer mode](#developer-vs-production-mode), this updates the contents the UGUI Developer Toolbar’s "CMD Output" section whenever the user interacts with any form elements.
+While in [developer mode](#developer-vs-production-mode), this updates the contents the UGUI Developer Toolbar’s "CMD Output" section (seen below) whenever the user interacts with any form elements or when manually ran in your code.
+
+<img src="/_img/docs/cmd-output.png" title="CMD Output section of the UGUI Developer Toolbar" alt="Screenshot of the CMD Output section of the UGUI Developer Toolbar." />
 
 * [View the source code of this function](/docs/ugui.js-1.3.0.html#f03-real-time-updating-dev-tool-command-output)
 
