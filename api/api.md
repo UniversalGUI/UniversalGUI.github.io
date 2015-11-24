@@ -95,6 +95,8 @@ ___
 ##### ugui.platform
 Returns what OS you are currently on, such as `darwin`, `freebsd`, `linux`, `sunos`, or `win32`. Note that these results are not related to your OS Architecture being 32 or 64-Bit. A 64-Bit copy of Windows will still have it's platform set as `win32`. To get the archetecture use `process.arch`.
 
+![A screenshot of running ugui.platform in the console](/_img/docs/ugui.platform.png "Running ugui.platform in the NW.js developer tools console.")
+
 ___
 ##### ugui.textFields
 Returns a jQuery object of all `<textarea>` and `<input type="text">` that occur on the page and bear a `data-argName`. This is primarily used by [ugui.helpers.removeTypedQuotes()](#ugui-helpers-removetypedquotes-)</a>.
