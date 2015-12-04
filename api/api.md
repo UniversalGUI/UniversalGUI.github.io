@@ -144,19 +144,19 @@ ___
 ##### ugui.app.packageJSON
 Returns the contents of your package.json file. Such as `keywords`, `node-main`, your app settings, and more.
 
-<img class="img-border" src="/_img/docs/ugui.app.packageJSON.png" title="Running ugui.app.packageJSON in the NW.js developer tools console." alt="A screenshot of running ugui.app.packageJSON in the console" />
+<img class="img-border" src="/_img/docs/ugui.app.packagejson.png" title="Running ugui.app.packageJSON in the NW.js developer tools console." alt="A screenshot of running ugui.app.packageJSON in the console" />
 
 ___
 ##### ugui.app.pathToProject
 Returns the file path to the folder that contains your project.
 
-<img class="img-border" src="/_img/docs/ugui.app.pathToProject.png" title="Running ugui.app.pathToProject in the NW.js developer tools console." alt="A screenshot of running ugui.app.pathToProject in the console" />
+<img class="img-border" src="/_img/docs/ugui.app.pathtoproject.png" title="Running ugui.app.pathToProject in the NW.js developer tools console." alt="A screenshot of running ugui.app.pathToProject in the console" />
 
 ___
 ##### ugui.app.startPage
 Returns the value from the `main` field in your package.json file. This is the first page your app loads when launched.
 
-<img class="img-border" src="/_img/docs/ugui.app.startPage.png" title="Running ugui.app.startPage in the NW.js developer tools console." alt="A screenshot of running ugui.app.startPage in the console" />
+<img class="img-border" src="/_img/docs/ugui.app.startpage.png" title="Running ugui.app.startPage in the NW.js developer tools console." alt="A screenshot of running ugui.app.startPage in the console" />
 
 ___
 ##### ugui.app.title
