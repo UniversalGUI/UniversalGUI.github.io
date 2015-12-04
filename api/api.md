@@ -101,11 +101,13 @@ ___
 ##### ugui.textFields
 Returns a jQuery object of all `<textarea>` and `<input type="text">` that occur on the page and bear a `data-argName`. This is primarily used by [ugui.helpers.removeTypedQuotes()](#ugui-helpers-removetypedquotes-)</a>.
 
+<img class="img-border" src="/_img/docs/ugui.textfields.png" title="Running ugui.textFields in the NW.js developer tools console." alt="A screenshot of running ugui.textFields in the console" />
+
 ___
 ##### ugui.version
 Returns what version of UGUI is in use.
 
-![A screenshot of the About section of UGUI displaying both the App and UGUI versions.](/_img/docs/ugui.app.version.png "App and UGUI versions on display")
+<img src="/_img/docs/ugui.app.version.png" title="App and UGUI versions on display" alt="A screenshot of the About section of UGUI displaying both the App and UGUI versions." />
 
 
 
