@@ -4,7 +4,8 @@ The "**ugui Object**" contains many useful items for developers. This section wi
 
 Titles on this page <span class="blue">in blue</span> can be typed into the Webkit Developer Tools Console, like so:
 
-![An animation demonstrating typing in ugui.args into the console.](/_img/docs/ugui.args_console.gif "Typing ugui.args in the console.")
+<img src="/_img/docs/ugui.args_console.gif" title="An animation demonstrating typing in ugui.args into the console." alt="Typing ugui.args in the console." />
+
 
 
 ## General Information
@@ -119,39 +120,55 @@ ___
 ##### ugui.app
 This returns an object of useful information specific to the app you make using UGUI.
 
+<img class="img-border" src="/_img/docs/ugui.app.png" title="Running ugui.app in the NW.js developer tools console." alt="A screenshot of running ugui.app in the console" />
+
 ___
 ##### ugui.app.author
 Returns the value from the `author` field in your package.json file. This is the creator(s) of your app.
+
+<img class="img-border" src="/_img/docs/ugui.app.author.png" title="Running ugui.app.author in the NW.js developer tools console." alt="A screenshot of running ugui.app.author in the console" />
 
 ___
 ##### ugui.app.description
 Returns the value from the `description` field in your package.json file. This is a short description or tagline for you app.
 
+<img class="img-border" src="/_img/docs/ugui.app.description.png" title="Running ugui.app.description in the NW.js developer tools console." alt="A screenshot of running ugui.app.description in the console" />
+
 ___
 ##### ugui.app.name
 Returns the value from the `name` field in your package.json file. This is a URL safe name for your app.
+
+<img class="img-border" src="/_img/docs/ugui.app.name.png" title="Running ugui.app.name in the NW.js developer tools console." alt="A screenshot of running ugui.app.name in the console" />
 
 ___
 ##### ugui.app.packageJSON
 Returns the contents of your package.json file. Such as `keywords`, `node-main`, your app settings, and more.
 
+<img class="img-border" src="/_img/docs/ugui.app.packageJSON.png" title="Running ugui.app.packageJSON in the NW.js developer tools console." alt="A screenshot of running ugui.app.packageJSON in the console" />
+
 ___
 ##### ugui.app.pathToProject
 Returns the file path to the folder that contains your project.
+
+<img class="img-border" src="/_img/docs/ugui.app.pathToProject.png" title="Running ugui.app.pathToProject in the NW.js developer tools console." alt="A screenshot of running ugui.app.pathToProject in the console" />
 
 ___
 ##### ugui.app.startPage
 Returns the value from the `main` field in your package.json file. This is the first page your app loads when launched.
 
+<img class="img-border" src="/_img/docs/ugui.app.startPage.png" title="Running ugui.app.startPage in the NW.js developer tools console." alt="A screenshot of running ugui.app.startPage in the console" />
+
 ___
 ##### ugui.app.title
 Returns the value from the `window.title` field in your package.json file. This is the plain text/human readable title for your app. It does not need to be URL safe.
+
+<img class="img-border" src="/_img/docs/ugui.app.title.png" title="Running ugui.app.title in the NW.js developer tools console." alt="A screenshot of running ugui.app.title in the console" />
 
 ___
 ##### ugui.app.version
 Returns the value from the `version` field in your package.json file. This is the version number for you app. Do not confuse `ugui.app.version` with `ugui.version` which is the version of UGUI your app is using, not the version of your app.
 
-![A screenshot of the About section of UGUI displaying both the App and UGUI versions.](/_img/docs/ugui.app.version.png "App and UGUI versions on display")
+<img src="/_img/docs/ugui.app.version.png" title="A screenshot of the About section of UGUI displaying both the App and UGUI versions." alt="App and UGUI versions on display" />
 
 
 
