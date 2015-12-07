@@ -92,6 +92,8 @@ ___
 ##### ugui.executable
 Returns an array of all executables used by this app. It is populated by, and in the same order as, the `<cmd>` blocks at the top of your `index.html` file.
 
+<img class="img-border" src="/_img/docs/ugui.executable.png" title="Running ugui.executable in the NW.js developer tools console." alt="A screenshot of running ugui.executable in the console" />
+
 ___
 ##### ugui.platform
 Returns what OS you are currently on, such as `darwin`, `freebsd`, `linux`, `sunos`, or `win32`. Note that these results are not related to your OS Architecture being 32 or 64-Bit. A 64-Bit copy of Windows will still have it's platform set as `win32`. To get the archetecture use `process.arch`.
