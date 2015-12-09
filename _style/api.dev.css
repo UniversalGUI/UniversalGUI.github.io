@@ -40,10 +40,12 @@ img {
 }
 
 hr {
-    height: 2px;
-    border: none;
-    color: #911146;
     background-color: #911146;
+    height: 7px;
+    border: none;
+    border-radius: 10px;
+    margin: 100px 0px;
+    color: #911146;
 }
 
 h2 + hr {
