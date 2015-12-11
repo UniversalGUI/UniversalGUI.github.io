@@ -452,6 +452,7 @@ var parameters = {
 };
 ugui.helpers.runcmdAdvanced(parameters);
 ```
+<img class="img-border" src="/_img/docs/ugui.helpers.runcmdadvanced.png" alt="Screenshot of the above code ran in the NW.js developer tools console." />
 
 * [View the source code of this function](/docs/ugui.js-1.3.0.html#b02-run-cmd-advanced-)
 
