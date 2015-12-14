@@ -15,7 +15,8 @@ var set = [
     ["/docs/latest", "anotated"],
     ["/docs/latest", "annotated"],
     ["/docs/latest", "source"], //sourcecode
-    ["/docs/latest", "latest"]
+    ["/docs/latest", "latest"],
+    ["/docs/packagejson.htm", "package"] //packagejson
 ];
 
 function forward(arr) {
