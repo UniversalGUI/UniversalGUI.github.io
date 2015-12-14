@@ -175,3 +175,22 @@ ol {
         animation: octocat-wave 560ms ease-in-out;
     }
 }
+
+.instructions {
+    display: inline-block;
+    margin-top: 25px;
+    text-align: left;
+    vertical-align: top;
+}
+.instructions code {
+    background: rgba(126, 42, 77, 0.5);
+    border-radius: 3px;
+    padding: 0px 2px;
+    color: #D5A8A3;
+}
+.instructions ol {
+    max-width: 560px;
+}
+.instructions li {
+    line-height: 1.2em;
+}
