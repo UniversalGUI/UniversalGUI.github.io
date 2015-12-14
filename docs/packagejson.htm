@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />        <!-- Must be first item in <head> -->
+    <title>UGUI: Package.json Documentation</title>
+    <meta charset="UTF-8"                                                                                      />
+    <meta name="description"                     content="UGUI gives a face to the command line, and that face is HTML, CSS, and JavaScript" />
+    <meta name="keywords"                        content="UGUI, Universal GUI, Universal Graphical User Interface, Command Line Interface, framework, nw.js, CLI, terminal, command prompt, dos prompt, node-webkit, nwjs, desktop application, web technology, easy, fast, development, dev tools, cross-platform" />
+    <meta http-equiv="Expires"                   content="0"                                                   />
+    <meta name="viewport"                        content="width=device-width, initial-scale=1.0"               />
+    <meta name="subject"                         content="Software Development"                                />
+    <meta name="copyright"                       content="Jared Wilcurt"                                       />
+    <meta name="language"                        content="EN"                                                  />
+    <meta name="robots"                          content="index,follow"                                        />
+    <meta name="rating"                          content="General"                                             />
+    <meta name="HandheldFriendly"                content="True"                                                />
+    <meta http-equiv="cleartype"                 content="on"                                                  />
+    <meta name="application-name"                content="UGUI"                                                />
+    <meta name="msapplication-navbutton-color"   content="#FFFFFF"                                             />
+    <meta name="msapplication-TileColor"         content="#FFFFFF"                                             />
+    <meta name="msapplication-square70x70logo"   content="/_img/meta/mstile01sm.png"                           />
+    <meta name="msapplication-square150x150logo" content="/_img/meta/mstile02md.png"                           />
+    <meta name="msapplication-wide310x150logo"   content="/_img/meta/mstile03wd.png"                           />
+    <meta name="msapplication-square310x310logo" content="/_img/meta/mstile04lg.png"                           />
+    <meta name="apple-mobile-web-app-title"      content="UGUI"                                                />
+    <meta name="apple-mobile-web-app-capable"    content="no"        /> <!-- "yes" hides Safari navbar in iOS -->
+    <meta name="apple-touch-fullscreen"          content="no"                                                  />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"                                         />
+    <link rel="apple-touch-icon"             href="/_img/meta/apl-57.png"     type="image/png" sizes="57x57"   />
+    <link rel="apple-touch-icon-precomposed" href="/_img/meta/apl-57.png"     type="image/png" sizes="57x57"   />
+    <link rel="apple-touch-icon"             href="/_img/meta/apl-72.png"     type="image/png" sizes="72x72"   />
+    <link rel="apple-touch-icon-precomposed" href="/_img/meta/apl-72.png"     type="image/png" sizes="72x72"   />
+    <link rel="apple-touch-icon"             href="/_img/meta/apl-114.png"    type="image/png" sizes="114x114" />
+    <link rel="apple-touch-icon-precomposed" href="/_img/meta/apl-114.png"    type="image/png" sizes="114x114" />
+    <link rel="apple-touch-icon"             href="/_img/meta/apl-144.png"    type="image/png" sizes="144x144" />
+    <link rel="apple-touch-icon-precomposed" href="/_img/meta/apl-144.png"    type="image/png" sizes="144x144" />
+    <link rel="apple-touch-startup-image"    href="/_img/meta/apl-str.png"    type="image/png"                 />
+    <link rel="fluid-icon"                   href="/_img/meta/fluid.png"      type="image/png"                 />
+    <link rel="icon"                         href="/favicon.ico"              type="image/x-icon"              />
+    <link rel="shortcut icon"                href="/favicon.ico"              type="image/ico"                 />
+    <link rel="stylesheet"                   href="/_style/ven.normalize.css" type="text/css"                  />
+    <link rel="stylesheet"                   href="/_style/api.css"           type="text/css"                  />
+    <link rel="stylesheet"                   href="/_style/ven.zenburn.css"   type="text/css"                  />
+    <style>
+        #wrapper,
+        .packagecode {
+            max-width: 1203px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        #wrapper.wrapper {
+            padding: 0;
+        }
+        .packagecode {
+            position: relative;
+            min-height: 1251px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+        .academic,
+        .practical {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .academic {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .practical code {
+            background: none;
+        }
+        pre {
+            height: 1233px;
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/_scripts/jquery-2.1.3.min.js"><\/script>')</script>
+    <script>
+        $(document).ready(function(){
+            $.get("/_markup/nav.html", function(y){
+                $("body").prepend(y);
+                $("#ugui-nav").css("text-align","center");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper" class="wrapper">
+    	<h1>UGUI Package JSON demo</h1>
+        <p>Based on Version 1.3.0 of UGUI. Download <a href="https://raw.githubusercontent.com/UniversalGUI/UGUI/master/package.json">package.json</a> here.</p>
+    </div>
+	<div class="packagecode">
+		<div class="academic"><pre>
+<code class="lang-javascript hljs">{
+    <span class="hljs-comment">//PROJECT AND AUTHOR INFORMATION</span>
+                                                       <span class="hljs-comment">// "birds_with_arms" Make this URL and Filepath safe</span>
+                                                       <span class="hljs-comment">// Website for your application. Google "GitHub Pages" for free hosting.</span>
+                                                       <span class="hljs-comment">// MAJOR.MINOR.PATCH more info: semver.org</span>
+                                                       <span class="hljs-comment">// Put your name or your team's name here, this is dynamically placed in the About section of your app</span>
+                                                       <span class="hljs-comment">// "Put human arms on pictures of birds!"</span>
+                                                       <span class="hljs-comment">// "birds", "arms", "novelty", "humor", "serious internet business"</span>
+                                                       <span class="hljs-comment">// This section is optional, but encouraged</span>
+
+                                                       <span class="hljs-comment">// You can use any email address you want, or this anonymized one based on your GitHub username</span>
+
+
+                                                       <span class="hljs-comment">// If your project has an online repo</span>
+
+
+
+                                                       <span class="hljs-comment">// The URL for users to send in bug reports</span>
+                                                       <span class="hljs-comment">// There are many software licenses freely available. MIT is the most common. opensource.org/licenses</span>
+
+    <span class="hljs-comment">//YOUR APP SETTINGS</span>
+                                                       <span class="hljs-comment">// The default page that is displayed on launch</span>
+                                                       <span class="hljs-comment">// The main settings for your app</span>
+                                                       <span class="hljs-comment">// "Birds with Arms!" This is dynamically used throughout your app.</span>
+                                                       <span class="hljs-comment">// Your logo</span>
+                                                       <span class="hljs-comment">// Most set this to false for distribution & true when in development</span>
+                                                       <span class="hljs-comment">// Window can be resized by user</span>
+                                                       <span class="hljs-comment">// False for tray icon apps, this requires setting up and linking to the tray.js file (advanced)</span>
+                                                       <span class="hljs-comment">// If no background colors are set your app will be transparent, see NW.js wiki for details</span>
+                                                       <span class="hljs-comment">// Starting width of application</span>
+                                                       <span class="hljs-comment">// Starting height of application</span>
+
+
+
+
+                                                       <span class="hljs-comment">// null or center or mouse, controls where window will be placed on launch</span>
+                                                       <span class="hljs-comment">// Whether the window should always stay on top of other windows</span>
+                                                       <span class="hljs-comment">// Whether the window is shown in taskbar or dock</span>
+                                                       <span class="hljs-comment">// Whether window is fullscreen</span>
+                                                       <span class="hljs-comment">// false to make the window frameless, however you'll need to add in an exit button and window dragging (advanced)</span>
+                                                       <span class="hljs-comment">// Show as desktop background window under X11 environment</span>
+
+                                                       <span class="hljs-comment">// UGUI requies Node support in WebKit, so this must stay set to true</span>
+                                                       <span class="hljs-comment">// This prevents the user from opening multiple windows of your application</span>
+                                                       <span class="hljs-comment">// This is the first thing loaded. Everything in this file is ran in the Node context</span>
+                                                       <span class="hljs-comment">// Controls what features of WebKit should be on/off</span>
+                                                       <span class="hljs-comment">// Whether to enable page cache</span>
+                                                       <span class="hljs-comment">// Whether to load Java applets</span>
+                                                       <span class="hljs-comment">// Whether to load external browser plugins like Flash</span>
+
+
+    <span class="hljs-comment">//NODE.JS SETTINGS</span>
+                                                       <span class="hljs-comment">// Any NPM installable modules required by your app</span>
+
+                                                       <span class="hljs-comment">// Any NPM installable modules required to work on your app</span>
+                                                       <span class="hljs-comment">// This will download a copy of NW.js inside your project so you can easily run it</span>
+
+                                                       <span class="hljs-comment">// Any scripts you want to define shortcuts for</span>
+                                                       <span class="hljs-comment">// Running "npm start" will launch your app after you've done an "npm install" once</span>
+
+
+</code>
+</pre></div>
+		<div class="practical"><pre>
+<code class="lang-javascript hljs">{
+
+    <span class="hljs-string">"name"</span>: <span class="hljs-value">"your_application_name"</span>,
+    <span class="hljs-string">"homepage"</span>: <span class="hljs-value">"https://USERNAME.github.io/REPO"</span>,
+    <span class="hljs-string">"version"</span>: <span class="hljs-value">"0.1.0"</span>,
+    <span class="hljs-string">"author"</span>: <span class="hljs-value">"Your Name"</span>,
+    <span class="hljs-string">"description"</span>: <span class="hljs-value">"Short description or tagline"</span>,
+    <span class="hljs-string">"keywords"</span>: [ <span class="hljs-value">"A collection"</span>, <span class="hljs-value">"of"</span>, <span class="hljs-value">"keywords"</span> ],
+    <span class="hljs-string">"maintainers"</span>:[{
+        <span class="hljs-string">"name"</span>: <span class="hljs-value">"Your Name"</span>,
+        <span class="hljs-string">"email"</span>: <span class="hljs-value">"username@users.noreply.github.com"</span>,
+        <span class="hljs-string">"web"</span>: <span class="hljs-value">"http://yoursite.com"</span>
+    }],
+    <span class="hljs-string">"repository"</span>: [{
+        <span class="hljs-string">"type"</span>: <span class="hljs-value">"git"</span>,
+        <span class="hljs-string">"url"</span>: <span class="hljs-value">"git://github.com/USERNAME/REPO.git"</span>
+    }],
+    <span class="hljs-string">"bugs"</span>: <span class="hljs-value">"https://github.com/USERNAME/REPO/issues"</span>,
+    <span class="hljs-string">"license"</span>: <span class="hljs-value">"MIT"</span>,
+
+
+    <span class="hljs-string">"main"</span>: <span class="hljs-value">"index.htm"</span>,
+    <span class="hljs-string">"window"</span>: {
+        <span class="hljs-string">"title"</span>: <span class="hljs-value">"Your Application Name"</span>,
+        <span class="hljs-string">"icon"</span>: <span class="hljs-value">"_img/icon32.png"</span>,
+        <span class="hljs-string">"toolbar"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-string">"resizable"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-string">"visible"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-string">"transparent"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-string">"width"</span>: <span class="hljs-number">900</span>,
+        <span class="hljs-string">"height"</span>: <span class="hljs-number">550</span>,
+        <span class="hljs-string">"min_width"</span>: <span class="hljs-number">400</span>,
+        <span class="hljs-string">"min_height"</span>: <span class="hljs-number">200</span>,
+        <span class="hljs-string">"max_width"</span>: <span class="hljs-number">8000</span>,
+        <span class="hljs-string">"max_height"</span>: <span class="hljs-number">8000</span>,
+        <span class="hljs-string">"position"</span>: <span class="hljs-value">"center"</span>,
+        <span class="hljs-string">"always-on-top"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-string">"show_in_taskbar"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-string">"fullscreen"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-string">"frame"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-string">"as_desktop"</span>: <span class="hljs-literal">false</span>
+    },
+    <span class="hljs-string">"nodejs"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"single-instance"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"node-main"</span>: <span class="hljs-value">"_scripts/node.js"</span>,
+    <span class="hljs-string">"webkit"</span>: {
+        <span class="hljs-string">"page-cache"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-string">"java"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-string">"plugin"</span>: <span class="hljs-literal">true</span>
+    },
+
+
+    <span class="hljs-string">"dependencies"</span>: {
+    },
+    <span class="hljs-string">"devDependencies"</span>: {
+        <span class="hljs-string">"nw"</span>: <span class="hljs-value">"^0.12.3"</span>
+    },
+    <span class="hljs-string">"scripts"</span>: {
+        <span class="hljs-string">"start"</span>: <span class="hljs-value">"nw ."</span>
+    }
+}</code>
+</pre></div>
+	</div>
+</body>
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-67786036-1','auto');ga('send','pageview');</script>
+</html>
