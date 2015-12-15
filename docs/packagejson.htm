@@ -53,15 +53,18 @@
         }
         .packagecode {
             position: relative;
-            min-height: 1251px;
+            max-height: 1251px;
             overflow-x: auto;
+            overflow-y: hidden;
             margin-bottom: 20px;
+            text-align: center;
         }
         .academic,
         .practical {
-            position: absolute;
-            top: 0;
-            left: 0;
+            display: inline-block;
+            margin-top: 0 auto;
+            text-align: left;
+            width: 1147px;
         }
         .academic {
             -webkit-touch-callout: none;
@@ -70,6 +73,10 @@
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
+        }
+        .practical {
+            position: relative;
+            top: -1237px;
         }
         .practical code {
             background: none;
@@ -98,17 +105,17 @@
     </div>
 	<div class="packagecode">
 		<div class="academic"><pre>
-<code class="lang-javascript hljs">{
+<code class="lang-javascript hljs">
     <span class="hljs-comment">//PROJECT AND AUTHOR INFORMATION</span>
                                                        <span class="hljs-comment">// "birds_with_arms" Make this URL and Filepath safe</span>
-                                                       <span class="hljs-comment">// Website for your application. Google "GitHub Pages" for free hosting.</span>
-                                                       <span class="hljs-comment">// MAJOR.MINOR.PATCH more info: semver.org</span>
+                                                       <span class="hljs-comment">// Website for your application. Use <a href="http://pages.github.com" target="_blank">GitHub Pages</a> for free hosting.</span>
+                                                       <span class="hljs-comment">// MAJOR.MINOR.PATCH more info: <a href="http://semver.org" target="_blank">semver.org</a></span>
                                                        <span class="hljs-comment">// Put your name or your team's name here, this is dynamically placed in the About section of your app</span>
                                                        <span class="hljs-comment">// "Put human arms on pictures of birds!"</span>
                                                        <span class="hljs-comment">// "birds", "arms", "novelty", "humor", "serious internet business"</span>
                                                        <span class="hljs-comment">// This section is optional, but encouraged</span>
 
-                                                       <span class="hljs-comment">// You can use any email address you want, or this anonymized one based on your GitHub username</span>
+                                                       <span class="hljs-comment">// You can use any email address you want, or this anonymized one based on your <a href="https://help.github.com/articles/keeping-your-email-address-private" target="_blank">GitHub username</a></span>
 
 
                                                        <span class="hljs-comment">// If your project has an online repo</span>
@@ -116,17 +123,17 @@
 
 
                                                        <span class="hljs-comment">// The URL for users to send in bug reports</span>
-                                                       <span class="hljs-comment">// There are many software licenses freely available. MIT is the most common. opensource.org/licenses</span>
+                                                       <span class="hljs-comment">// There are many software licenses freely available. MIT is the most common. <a href="http://opensource.org/licenses" target="_blank">opensource.org/licenses</a></span>
 
     <span class="hljs-comment">//YOUR APP SETTINGS</span>
                                                        <span class="hljs-comment">// The default page that is displayed on launch</span>
                                                        <span class="hljs-comment">// The main settings for your app</span>
                                                        <span class="hljs-comment">// "Birds with Arms!" This is dynamically used throughout your app.</span>
                                                        <span class="hljs-comment">// Your logo</span>
-                                                       <span class="hljs-comment">// Most set this to false for distribution & true when in development</span>
+                                                       <span class="hljs-comment">// Most set this to false for distribution &amp; true when in development</span>
                                                        <span class="hljs-comment">// Window can be resized by user</span>
                                                        <span class="hljs-comment">// False for tray icon apps, this requires setting up and linking to the tray.js file (advanced)</span>
-                                                       <span class="hljs-comment">// If no background colors are set your app will be transparent, see NW.js wiki for details</span>
+                                                       <span class="hljs-comment">// If no background colors are set your app will be transparent, see <a href="https://github.com/nwjs/nw.js/wiki/Transparency" target="_blank">NW.js wiki</a> for details</span>
                                                        <span class="hljs-comment">// Starting width of application</span>
                                                        <span class="hljs-comment">// Starting height of application</span>
 
@@ -137,7 +144,7 @@
                                                        <span class="hljs-comment">// Whether the window should always stay on top of other windows</span>
                                                        <span class="hljs-comment">// Whether the window is shown in taskbar or dock</span>
                                                        <span class="hljs-comment">// Whether window is fullscreen</span>
-                                                       <span class="hljs-comment">// false to make the window frameless, however you'll need to add in an exit button and window dragging (advanced)</span>
+                                                       <span class="hljs-comment">// false for a frameless window, however you'll need to add in an exit button &amp; window dragging (advanced)</span>
                                                        <span class="hljs-comment">// Show as desktop background window under X11 environment</span>
 
                                                        <span class="hljs-comment">// UGUI requies Node support in WebKit, so this must stay set to true</span>
@@ -150,7 +157,7 @@
 
 
     <span class="hljs-comment">//NODE.JS SETTINGS</span>
-                                                       <span class="hljs-comment">// Any NPM installable modules required by your app</span>
+                                                       <span class="hljs-comment">// Any NPM installable modules required to run your app</span>
 
                                                        <span class="hljs-comment">// Any NPM installable modules required to work on your app</span>
                                                        <span class="hljs-comment">// This will download a copy of NW.js inside your project so you can easily run it</span>
