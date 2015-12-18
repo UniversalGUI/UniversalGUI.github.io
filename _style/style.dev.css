@@ -149,6 +149,10 @@ ol {
     color: #F5C8C3;
 }
 
+.github-corner {
+    transition: 1s ease all;
+}
+
 .github-corner:hover .octo-arm {
     animation: octocat-wave 560ms ease-in-out;
 }
@@ -167,9 +171,9 @@ ol {
     }
 }
 
-@media (max-width:550px){
+@media (max-width:600px){
     .github-corner {
-        display: none;
+        opacity: 0;
     }
 /*
     .github-corner:hover .octo-arm {
