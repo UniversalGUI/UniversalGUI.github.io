@@ -1,0 +1,79 @@
+@import url(https://fonts.googleapis.com/css?family=Teko:300);
+
+body {
+	font-family: sans-serif;
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+}
+
+/* NAVIGATION*/
+
+nav {
+	padding: 15px;
+}
+
+nav a {
+	color: #1F2C33;
+}
+
+/* .get also works on the bottom div. */
+
+.get {
+	margin-left: 50px;
+	background-color: #911146;
+	color: #ffffff;
+}
+
+/*DIVS*/
+
+.os, .middle, .screenshots {
+	display: inline-block;
+}
+
+.banner {
+	background-color: purple;
+	border-top: 2px solid #cfcfcf;
+	color: #9b9ba8;
+}
+
+.banner h3 {
+	font-family: Teko;
+	font-size: 32px;
+	color: #ffbc92;
+	text-shadow: 2px 2px #;
+}
+
+.banner a {
+	color: #f2b08c;
+	font-weight: bold;
+}
+
+.banner p {
+	width: 45%;
+	margin: auto;
+}
+
+.middle {
+	padding: 20px 0px 30px 0px;
+	vertical-align: top;
+	font-weight: bold;
+}
+
+.caption {
+	display: block;
+}
+
+.bottom {
+	background-color: #F8F9FA;
+}
+
+#get-started {
+	background-color: #fff;
+}
+
+#get-started .start {
+
+}
