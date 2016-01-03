@@ -19,9 +19,9 @@ nav a {
 	color: #1F2C33;
 }
 
-/* .get also works on the bottom div. */
+/* .start also works on the bottom div. */
 
-.get {
+.start {
 	margin-left: 50px;
 	background-color: #911146;
 	color: #ffffff;
@@ -72,8 +72,4 @@ nav a {
 
 #get-started {
 	background-color: #fff;
-}
-
-#get-started .start {
-
 }
