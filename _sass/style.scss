@@ -5,12 +5,13 @@
 @import "_meyer.sass";        // Resets browser defaults so browsers render pages the same
 @import "_normalize.sass";    // Removes inconsistencies in the way different browsers render items by default
 
-//Stuff that effects every page
+//Stuff that affects every page
 @import "_main.sass";         // Main CSS for the site
 @import "_header.sass";       // CSS for the header and navigation at the top of each page
 @import "_footer.sass";       // CSS for the footer at the bottom of every page
 
-//Stuff that effects specific pages
+//Stuff that affects specific pages
+@import "_homepage.scss";
 
 //Stuff that goes at the end
 @import "_mediaqueries.sass"; // Adjusts the CSS of elements depending on browser or device resolution. Adaptive Web Design.
