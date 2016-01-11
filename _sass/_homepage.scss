@@ -108,9 +108,12 @@ nav img {
 .os {
     height: 290px;
     width: 240px;
-    background-color: red;
+    background-color: #F0F1F2;
     font-size: 0px;
     vertical-align: top;
+    header {
+        border-bottom: 1px solid #DBE0E6;
+    }
     header div {
         display: inline-block;
         width: 80px;
@@ -130,12 +133,12 @@ nav img {
     .active {
         background-color: #EFDDCA;
         border-bottom: 1px solid #ED8C2B;
+        border-right: 1px solid #DFCFC1;
     }
 }
 
 .lower-os {
-    border-top: 1px solid #DBE0E6;
-    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
     img {
         width: 67px;
         margin: 10px;
@@ -148,7 +151,7 @@ nav img {
 }
 
 .screenshots {
-    background-color: orange;     /**********  FIX THIS COLOR!!!!  **********/
+    background-color: #FFFFFF;
     color: #1F2C33;
     height: 290px;
     width: 660px;
