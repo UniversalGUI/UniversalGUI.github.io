@@ -1,4 +1,3 @@
-
 body.homepage {
     font-family: "Open Sans", sans-serif;
     text-align: center;
@@ -29,15 +28,13 @@ body.homepage {
         margin: 0px auto;
         text-align: left;
         line-height: 40px;
-    }
-
-    nav a,
-    footer a {
-        font-weight: 700;
-        font-size: 12px;
-        color: #1F2C33;
-        padding: 0px 5px 0px;
-        display: inline-block;
+        a {
+            font-weight: 700;
+            font-size: 12px;
+            color: #1F2C33;
+            padding: 0px 5px 0px;
+            display: inline-block;
+        }
     }
 
     nav img {
@@ -61,113 +58,113 @@ body.homepage {
 
     /*DIVS*/
 
-    .os,
-    .middle,
-    .screenshots {
+    .os, .middle, .screenshots {
         display: inline-block;
+    }
+
+    .os, .screenshots {
+        margin: 30px 0px 30px 0px;
     }
 
     .banner {
         background-color: purple;
         border-top: 2px solid #cfcfcf;
         color: #9b9ba8;
-    }
-
-    .banner h3 {
-        font-family: Teko, sans-serif;
-        font-size: 32px;
-        color: #ffbc92;
-    }
-
-    .banner a {
-        color: #f2b08c;
-        font-weight: bold;
-    }
-
-    .banner p {
-        width: 45%;
-        margin: auto;
+        h3 {
+            font-family: Teko, sans-serif;
+            font-size: 32px;
+            color: #ffbc92;
+        }
+        a {
+            color: #f2b08c;
+            font-weight: bold;
+        }
+        p {
+            width: 45%;
+            margin: auto;
+        }
     }
 
     .middle {
-        padding: 20px 0px 30px 0px;
+        padding: 20px 0px 60px 0px;
         vertical-align: top;
         margin: 0px 15px;
+        img {
+            width: 110px;
+        }
     }
 
     .caption {
         display: block;
         font-weight: 700;
-        font-size: 15px;
+        font-size: 16px;
         margin-top: 5px;
     }
 
     .os {
         height: 290px;
         width: 240px;
-        background-color: red;
+        background-color: #F0F1F2;
         font-size: 0px;
         vertical-align: top;
-    }
-
-    .os header div {
-        display: inline-block;
-        width: 80px;
-        height: 40px;
-        font-size: 15px;
-        background-color: pink;
-    }
-
-    .os header div:first-of-type {
-        border-right:  1px solid #fff;
-    }
-
-    .os header div:last-of-type {
-        border-left: 1px solid #fff;
-    }
-
-    .os header svg {
-        height: 29px;
+        header {
+            border-bottom: 1px solid #DBE0E6;
+        }
+        header div {
+            display: inline-block;
+            width: 80px;
+            height: 40px;
+            font-size: 15px;
+            background-color: #F0F1F2;
+            &:first-of-type {
+                border-right:  1px solid #fff;
+            }
+            &:last-of-type {
+                border-left: 1px solid #fff;
+            }
+        }
+        header svg {
+            height: 29px;
+        }
+        .active {
+            background-color: #EFDDCA;
+            border-bottom: 1px solid #ED8C2B;
+            border-right: 1px solid #DFCFC1;
+        }
     }
 
     .lower-os {
-        height: 2px;
-        border-top: 1px solid #DBE0E6;
-        border-bottom: 1px solid #fff;
+        border-top: 1px solid #fff;
+        img {
+            width: 67px;
+            margin: 10px;
+        }
     }
 
-    .lower-os img {
-        width: 67px;
-        margin: 10px;
+    .windows.tab:hover, .osx.tab:hover, .linux.tab:hover {
+        background-color: #EFDDCA;
+        border-bottom: 1px solid #ED8C2B;
     }
 
     .screenshots {
-        background-color: orange;     /**********  FIX THIS COLOR!!!!  **********/
+        background-color: #FFFFFF;
         color: #1F2C33;
         height: 290px;
         width: 660px;
         vertical-align: top;
-    }
-
-    .os,
-    .screenshots {
-        margin: 30px 0px 30px 0px;
-    }
-
-    .screenshots div {
-        margin: 20px 0px 0px 60px;
-    }
-
-    .screenshots img {
-        height: 165px;
-        text-align: left;
-        float: left;
-        margin: 15px 15px 0px 0px;
-    }
-
-    .screenshots p {
-        font-size: 12px;
-        text-align: left;
+        div {
+            margin: 20px 0px 0px 60px;
+        }
+        img {
+            height: 165px;
+            text-align: left;
+            float: left;
+            margin: 15px 15px 0px 0px;
+        }
+        p {
+            font-size: 12px;
+            text-align: left;
+        }
     }
 
     .screenshots-text {
@@ -182,12 +179,11 @@ body.homepage {
     .get-started {
         background-color: #fff;
         padding: 120px 0px 68px 0px;
-    }
-
-    .get-started a {
-        padding: 5px 10px;
-        font-size: 30px;
-        font-weight: 700;
+        a {
+            padding: 5px 10px;
+            font-size: 30px;
+            font-weight: 700;
+        }
     }
 
     /* FOOTER */
@@ -196,10 +192,10 @@ body.homepage {
         line-height: 20px;
         font-size: 12px;
         padding: 10px 0px;
+        p {
+            color: #898989;
+            padding: 0px 5px 0px;
+        }
     }
 
-    footer p {
-        color: #898989;
-        padding: 0px 5px 0px;
-    }
 }
