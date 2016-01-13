@@ -8,6 +8,11 @@ Titles on this page <span class="blue">in blue</span> can be typed into the Webk
 
 
 
+
+
+
+
+***
 ## General Information
 
 ___
@@ -115,6 +120,9 @@ Returns what version of UGUI is in use.
 
 
 
+
+
+
 ***
 ## App Information
 
@@ -171,6 +179,8 @@ ___
 Returns the value from the `version` field in your package.json file. This is the version number for you app. Do not confuse `ugui.app.version` with `ugui.version` which is the version of UGUI your app is using, not the version of your app.
 
 <img src="/_img/docs/ugui.app.version.png" title="A screenshot of the About section of UGUI displaying both the App and UGUI versions." alt="App and UGUI versions on display" />
+
+
 
 
 
@@ -555,12 +565,13 @@ ugui.helpers.writeToFile(yourFile, randomNumber, functionToRunUponCompletion);
 
 
 
-***
 
+
+
+***
 ## Concepts
 
-***
-
+___
 ##### Developer vs Production Mode
 This is controlled by changing the class of `<body>` from between `dev` and `prod`.
 
