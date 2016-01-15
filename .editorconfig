@@ -1,0 +1,22 @@
+# EditorConfig is awesome: http://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Newlines ending on every file
+[*]
+insert_final_newline = true
+
+# Set default charset
+[*.{js,css,sass,scss,htm,html}]
+charset = utf-8
+
+# 4 space indentation
+[*.{js,json,sass,scss,css}]
+indent_style = space
+indent_size = 4
+
+# Indentation override for all JS under lib directory
+[*.{html,htm}]
+indent_style = space
+indent_size = 2
