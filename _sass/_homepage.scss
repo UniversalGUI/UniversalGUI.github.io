@@ -118,6 +118,10 @@ body.homepage {
         }
     }
 
+    .tab {
+        cursor: pointer;
+    }
+
     .lower-os {
         border-top: 1px solid #fff;
         img {
@@ -152,9 +156,11 @@ body.homepage {
         }
     }
 
-    .screenshots-text {
-        overflow: auto;
-    }
+/**********UNCOMMENT THE BELOW IF NEEDED**********/
+
+    // .screenshots-text {
+    //     overflow: auto;
+    // }
 
     .bottom {
         background-color: #F8F9FA;
