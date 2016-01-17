@@ -58,7 +58,7 @@ body.homepage {
 
     /*DIVS*/
 
-    .os, .middle, .screenshots {
+    .os, .screenshots {
         display: inline-block;
     }
 
@@ -85,22 +85,6 @@ body.homepage {
         }
     }
 
-    .middle {
-        padding: 20px 0px 60px 0px;
-        vertical-align: top;
-        margin: 0px 15px;
-        img {
-            width: 110px;
-        }
-    }
-
-    .caption {
-        display: block;
-        font-weight: 700;
-        font-size: 16px;
-        margin-top: 5px;
-    }
-
     .os {
         height: 290px;
         width: 240px;
@@ -125,6 +109,7 @@ body.homepage {
         }
         header svg {
             height: 29px;
+            margin-top: 5px;
         }
         .active {
             background-color: #EFDDCA;
@@ -195,5 +180,23 @@ body.homepage {
             color: #898989;
             padding: 0px 5px 0px;
         }
+    }
+}
+
+#features {
+    figure {
+        display: inline-block;
+        padding: 20px 0px 60px 0px;
+        vertical-align: top;
+        margin: 0px 15px;
+    }
+    img {
+        width: 110px;
+    }
+    figcaption {
+        display: block;
+        font-weight: 700;
+        font-size: 16px;
+        margin-top: 5px;
     }
 }
