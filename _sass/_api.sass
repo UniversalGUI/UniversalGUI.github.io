@@ -1,0 +1,180 @@
+body.api
+    background: #FFF
+    padding: 20px
+    color: #333
+    font-family: sans-serif
+    img
+        display: block
+        max-width: 100%
+        margin: 0px auto
+        -ms-interpolation-mode: bicubic
+    .img-border
+        border: 2px solid rgba(43, 39, 40, 0.1)
+        padding: 9px
+        border-radius: 5px
+    hr
+        background-color: #911146
+        height: 7px
+        border: none
+        border-radius: 10px
+        margin: 70px 0px
+        color: #911146
+    h2 + hr
+        height: 7px
+        border-radius: 2px
+    blockquote
+        background: #911146
+        border: 2px solid #ED8C2B
+        border-radius: 11px
+        margin: 0px
+        padding: 5px
+        color: #F9B88F
+        font-size: 1.2em
+        text-align: center
+        letter-spacing: 0.2px
+        p
+            margin: 0px
+        strong
+            color: #E3CEAB
+    p
+        margin: 13px 0px
+    p,
+    .api-wrapper li
+        font-size: 0.85em
+        line-height: 1.2em
+    .api-wrapper ol li
+        margin-top: 8px
+        list-style-type: decimal
+    tr,
+    th,
+    td
+        margin: 0px
+    th
+        border-bottom: 1px solid #2B2728
+    td,
+    th
+        border-left: 1px solid #2B2728
+        border-right: 1px solid #2B2728
+        padding: 5px 10px
+        &:first-of-type,
+        &:first-of-type
+            border-left: 0px
+        &:last-of-type,
+        &:last-of-type
+            border-right: 0px
+    a
+        color: #911146
+    code
+        display: inline-block
+        background: #F9B88F
+        border-radius: 4px
+        padding: 1px 4px 2px
+        margin: 0px 1px 1px 0px
+        color: #911146
+        font-size: 0.85em
+    pre code
+        display: block
+        background: #2B2728
+        background-image: url('/_img/noise.png')
+        background-position: 110px 40px
+        margin-bottom: 12px
+        padding: 10px
+        color: #A6A5BA
+        font-size: 0.8em
+        line-height: 1.64em
+    footer
+        height: 1200px
+    .api-wrapper
+        padding-left: 0px
+        h1
+            margin-bottom: 0px
+            color: #911146
+            font-family: "Teko", sans-serif
+            font-size: 4em
+            font-weight: bold
+            line-height: 0.9em
+        h2
+            margin: 52px 0px 0px 0px
+            color: #ED8C2B
+            font-family: "Teko", sans-serif
+            font-size: 2em
+            letter-spacing: 2px
+            text-transform: lowercase
+        h5
+            margin-bottom: 12px
+            color: #264AA5
+            font-size: 1.1em
+            font-weight: bold
+            line-height: 3em
+            word-wrap: break-word
+        li
+            color: #911146
+            list-style-type: square
+    .blue
+        color: #264AA5
+        font-size: 1.2em
+        font-weight: bold
+    #toc
+        display: none
+        position: fixed
+        top: 0px
+        left: 0px
+        height: 100%
+        width: 280px
+        background: #2B2728
+        background-image: url('/_img/noise.png')
+        padding-top: 5px
+        color: #A6A5BA
+        overflow-y: auto
+        overflow-x: hidden
+        ul
+            margin: 0px
+            padding: 0px
+            list-style: none
+        li
+            padding: 0px 10px
+        a
+            display: block
+            padding: 3px 0px
+            color: #A6A5BA
+            text-decoration: none
+        .h1,
+        .h2,
+        .h3,
+        .h4,
+        .h5
+            margin: 0px 0px 7px 0px
+        .h1,
+        .h2
+            a
+                color: #F9B88F
+                font-family: "Teko", sans-serif
+                font-weight: bold
+                letter-spacing: 2px
+        .h1
+            font-size: 27px
+            margin-top: 14px
+            padding-top: 4px
+            padding-bottom: 4px
+            text-shadow: 0px 3px 19px rgba(202, 76, 128, 0.73)
+        .h2
+            font-size: 19px
+            margin-top: 20px
+        .h3
+            font-size: 17px
+        .h4
+            font-size: 15px
+        .h5
+            margin: 3px 0px
+            font-size: 13px
+            &:last-of-type
+                margin-bottom: 53px
+        .toc-active
+            background: #911146
+
+@media screen and (min-width: 875px)
+    body.api
+        #toc
+            display: block
+        .api-wrapper
+            padding-left: 300px
