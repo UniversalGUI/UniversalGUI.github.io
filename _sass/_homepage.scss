@@ -29,7 +29,7 @@ h3 {
 nav,
 footer {
     max-width: 800px;
-    margin: 0px auto;
+    margin: 0 auto;
     text-align: left;
     line-height: 40px;
     a {
@@ -147,7 +147,6 @@ nav img {
 
 .windows.tab:hover, .osx.tab:hover, .linux.tab:hover {
     background-color: #EFDDCA;
-    border-bottom: 1px solid #ED8C2B;
 }
 
 .screenshots {
@@ -157,7 +156,7 @@ nav img {
     width: 660px;
     vertical-align: top;
     div {
-        margin: 20px 0px 0px 60px;
+        margin: 12px 0px 0px 60px;
     }
     img {
         height: 165px;
