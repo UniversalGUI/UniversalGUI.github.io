@@ -1,7 +1,7 @@
-@-webkit-keyframes d {
+@-webkit-keyframes dawn {
   0% {   background-size: 1000px 0px;   }
   100% { background-size: 1000px 400px; } }
-@keyframes d {
+@keyframes dawn {
   0% {   background-size: 1000px 0px;   }
   100% { background-size: 1000px 400px; } }
 
@@ -15,6 +15,7 @@ body.dawn {
     background-size: 1000px 400px;
     background-position: center -65px;
     background-repeat: no-repeat;
+    margin-top: 50px;
     font-family: sans-serif;
     overflow: auto;
     color: #A6A5BA;
@@ -22,8 +23,8 @@ body.dawn {
             animation-duration: 8s;
     -webkit-animation-fill-mode: both;
             animation-fill-mode: both;
-    -webkit-animation-name: d;
-            animation-name: d;
+    -webkit-animation-name: dawn;
+            animation-name: dawn;
     a {
         color: #D5A8A3;
         font-weight: bold;
@@ -47,13 +48,18 @@ body.dawn {
     .t {
         padding: 20px;
         background-image: url('../_img/noise.png');
-    }
-    .t td {
-        vertical-align: middle;
+        td {
+            vertical-align: middle;
+        }
     }
     img {
         max-width: 100%;
         margin-top: 90px;
+    }
+    h1 {
+        font-family: "Teko", sans-serif;
+        font-size: 52px;
+        font-weight: bold;
     }
     h3 {
         font-family: "Teko", sans-serif;
@@ -103,7 +109,7 @@ body.dawn {
 
     #ugui-nav {
         position: absolute;
-        top: 0px;
+        top: -50px;
         left: 0px;
         right: 0px;
         background: linear-gradient(rgba(145, 17, 70, 0.2), rgba(43, 39, 40, 0.2));
