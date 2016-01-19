@@ -551,9 +551,9 @@ With a callback and variables:
 
 ```javascript
 var yourFile = "../random-number.txt";
-var randomNumber = Math.random();
+var randomNumber = Math.random().toString();
 
-functionToRunUponCompletion() {
+function functionToRunUponCompletion() {
     console.log("Finished writing to file.");
 }
 
