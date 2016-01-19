@@ -1,4 +1,4 @@
-body.homepage {
+.homepage {
     color: #3B3F42;
     font-family: "Open Sans", sans-serif;
     text-align: center;
@@ -45,6 +45,8 @@ body.homepage {
         background-color: #911146;
         margin-left: 50px;
         color: #FFF;
+        line-height: 42px;
+        vertical-align: top;
     }
     /*DIVS*/
     .os,
@@ -54,24 +56,6 @@ body.homepage {
     .os,
     .screenshots {
         margin: 30px 0px 30px 0px;
-    }
-    .banner {
-        background-color: purple;
-        border-top: 2px solid #CFCFCF;
-        color: #9B9BA8;
-        h3 {
-            font-family: Teko, sans-serif;
-            font-size: 32px;
-            color: #FFBC92;
-        }
-        a {
-            color: #F2B08C;
-            font-weight: bold;
-        }
-        p {
-            width: 45%;
-            margin: auto;
-        }
     }
     .os {
         width: 240px;
@@ -101,7 +85,6 @@ body.homepage {
         }
         .active {
             background-color: #EFDDCA;
-            border-right: 1px solid #DFCFC1;
             border-bottom: 1px solid #ED8C2B;
         }
     }
@@ -173,7 +156,7 @@ body.homepage {
 #features {
     figure {
         display: inline-block;
-        margin: 0px 15px;
+        margin: 15px 35px 0px;
         padding: 20px 0px 60px 0px;
         vertical-align: top;
     }
@@ -185,5 +168,101 @@ body.homepage {
         margin-top: 5px;
         font-size: 16px;
         font-weight: 700;
+    }
+}
+
+@-webkit-keyframes dawn {
+    0%   { background-size: 1000px 0px;   }
+    100% { background-size: 1000px 400px; } }
+@keyframes dawn {
+    0%   { background-size: 1000px 0px;   }
+    100% { background-size: 1000px 400px; } }
+
+#jumbotron {
+    background-attachment: fixed;
+    background: -webkit-radial-gradient(center top, farthest-side, #ED8C2B, #911146 40%, #2B2728 95%, #2B2728), #2B2728;
+       background: -moz-radial-gradient(center top, farthest-side, #ED8C2B, #911146 40%, #2B2728 95%, #2B2728), #2B2728;
+        background: -ms-radial-gradient(center top, farthest-side, #ED8C2B, #911146 40%, #2B2728 95%, #2B2728), #2B2728;
+            background: radial-gradient(center top, farthest-side, #ED8C2B, #911146 40%, #2B2728 95%, #2B2728), #2B2728;
+    position: relative;
+    background-size: 1000px 400px;
+    background-position: center -65px;
+    background-repeat: no-repeat;
+    padding-bottom: 15px;
+    color: #A6A5BA;
+    font-family: sans-serif;
+    overflow: auto;
+    -webkit-animation-duration: 8s;
+            animation-duration: 8s;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+    -webkit-animation-name: dawn;
+            animation-name: dawn;
+    .tv {
+        width: 100%;
+        height: 100%;
+        background-image: url('../_img/noise.png');
+        border: 0px;
+        margin: 0px;
+        padding: 20px;
+        text-align: center;
+        line-height: 1.1em;
+    }
+    p {
+        line-height: 1.3em;
+    }
+    a {
+        color: #D5A8A3;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #F5C8C3;
+        text-shadow: 0px 3px 10px rgba(255,255,255,0.35);
+    }
+    img {
+        max-width: 100%;
+        margin-top: 90px;
+    }
+    h3 {
+        margin: 14px 0px 0px 0px;
+        color: #F9B88F;
+        font-family: "Teko", sans-serif;
+        font-size: 27px;
+        font-weight: bold;
+        line-height: 1.4em;
+        letter-spacing: 2px;
+        text-align: center;
+    }
+    .download-btn {
+        position: relative;
+        display: inline-block;
+        background-color: #911146;
+        border-radius: 5px;
+        margin: 20px;
+        padding: 15px 25px;
+        color: #F9B88F;
+        font-family: 'Teko', Sans-Serif;
+        font-size: 22px;
+        text-decoration: none;
+        box-shadow: 0px 5px 0px 0px #5D0A2C, 0px 0px 33px rgba(145, 17, 70, 0.69);
+    }
+    .download-btn:active {
+        transform: translate(0px, 5px);
+        -webkit-transform: translate(0px, 5px);
+        box-shadow: 0px 1px 0px 0px #5D0A2C, 0px 0px 33px rgba(145, 17, 70, 0.69);
+    }
+    .download-btn:hover {
+        background-color: #AF1052;
+        color: #F5C8C3;
+    }
+    .download-btn svg {
+        position: relative;
+        top: 2px;
+        right: 4px;
+        fill: #F9B88F;
+    }
+    .download-btn:hover svg {
+        fill: #F5C8C3;
     }
 }

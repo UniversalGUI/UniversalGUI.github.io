@@ -19,7 +19,7 @@ $(document).ready(function() {
 
     //Shows/hide the screenshot thumbnails depending on which OS icon has been clicked
     $('.linux').click(function() {          //when Linux icon is clicked
-        hideIcons();                     //call the function that hides all of the OS elements
+        hideIcons();                        //call the function that hides all of the OS elements
         $('#linux').show();                 //show the Linux screenshot thumbnails
         removeOSActiveClasses();            //remove the Active class from all of the OS icons (takes away orange highlight from everything)
         $('.linux').addClass('active');     //add class "active" to Linux so that that one becomes highlighted
