@@ -39,44 +39,132 @@
     <link rel="icon"                         href="favicon.ico"           type="image/x-icon"               />
     <link rel="shortcut icon"                href="favicon.ico"           type="image/ico"                  />
     <link rel="stylesheet"                   href="_style/style.css"      type="text/css"                   />
+
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/_scripts/jquery-2.1.3.min.js"><\/script>');</script>
     <script>
-        window.jQuery || document.write('<script src="/_scripts/jquery-2.1.3.min.js"><\/script>');
         $(document).ready(function(){
-            $.get("https://api.github.com/repos/UniversalGUI/UGUI/releases", function(x){
-                for (var i = 0; i < x.length; i++) {
-                    var d = x[i].assets[0],
-                        n = 1024,
-                        r = 100;
-                    if (d) {
-                        $(".b").attr("href", d.browser_download_url).attr("title", d.name + " (" + (Math.round(d.size/n/n*r)/r) +" MB)");
-                        $(".v").html(x[i].tag_name);
-                        return;
+            $.get("https://api.github.com/repos/UniversalGUI/UGUI/releases", function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    var download = data[i].assets[0];
+
+                    if (download) {
+                      var sizeInMB = Math.round(download.size / 1024 / 1024 * 100) / 100;
+
+                      $(".download-btn").attr("href", download.browser_download_url);
+                      $(".download-btn").attr("title", download.name + " (" + sizeInMB + " MB)");
+                      $(".download-btn .version").html(data[i].tag_name);
+                      return;
                     }
                 }
             });
-            $.get("/_markup/nav.html", function(y){
-                $("body").prepend(y);
-            });
         });
     </script>
+    <script src="_scripts/crossbrowser.min.js"></script>
   </head>
-  <body class="d">
-    <table class="t">
-      <tr>
-        <td>
-          <a href="http://github.com/UniversalGUI/UGUI"><img src="_img/logo.png" alt="UGUI Logo" /></a>
-          <h3>Universal Graphical User Interface</h3>
-          <p>UGUI gives a face to command line applications using HTML, CSS, &amp; JavaScript.</p>
-          <p>More specifically UGUI is a <em>library</em> and <strong>framework</strong> for <a href="http://thejaredwilcurt.github.io/website">NW.js</a>.</p>
-          <p>This site is <strong>under construction</strong>, but you can checkout the <a href="http://github.com/UniversalGUI/UGUI">UGUI project on Github</a></p>
-          <p>or be an early member to our new <a href="http://reddit.com/r/UGUI">community forum</a> on Reddit.</p>
-          <a href="https://github.com/UniversalGUI/UGUI/releases" class="b"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32"><path d="M21.354 7.26v9.501h6.646l-11.783 14.213-11.783-14.213h6.646v-9.501zM11.08 1.208h10.275v4.222h-10.275z"/></svg>Download UGUI <span class="v">v1.0.0</span></a>
-          <p>Watch <a href="tutorials/getting-started.htm">"Getting Started with UGUI"</a>.</p>
-        </td>
-      </tr>
-    </table>
-    <a href="http://github.com/UniversalGUI/UGUI" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250" style="position:absolute;top:0;border:0;right:0" fill="#911146" color="#ED8C2B"><path d="M0 0l115 115h15l12 27 108 108v-250z"/><path d="M128.3 109c-14.5-9.3-9.3-19.4-9.3-19.4 3-6.9 1.5-11 1.5-11-1.3-6.6 2.9-2.3 2.9-2.3 3.9 4.6 2.1 11 2.1 11-2.6 10.3 5.1 14.6 8.9 15.9" fill="#ED8C2B" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115c-.1.1 3.7 1.5 4.8.4l13.9-13.8c3.2-2.4 6.2-3.2 8.5-3-8.4-10.6-14.7-24.2 1.6-40.6 4.7-4.6 10.2-6.8 15.9-7 .6-1.6 3.5-7.4 11.7-10.9 0 0 4.7 2.4 7.4 16.1 4.3 2.4 8.4 5.6 12.1 9.2 3.6 3.6 6.8 7.8 9.2 12.2 13.7 2.6 16.2 7.3 16.2 7.3-3.6 8.2-9.4 11.1-10.9 11.7-.3 5.8-2.4 11.2-7.1 15.9-16.4 16.4-30 10-40.6 1.6.2 2.8-1 6.8-5 10.8l-11.7 11.6c-1.2 1.2.6 5.4.8 5.3z" fill="#ED8C2B" class="octo-body"/></svg></a>
+  <body class="homepage">
+    <nav>
+        <img src="_img/meta/apl-57.png" alt="UGUI Icon" />
+        <a href="/index.html" title="UGUI.io">Home</a>
+<!--    <a href="#">Templates</a> -->
+        <a href="/api" title="API Documentation">Documentation</a>
+        <a href="/tutorials/index.html" title="Getting started with UGUI">Tutorials</a>
+<!--    <a href="/spotlight" title="Showcase of apps made with UGUI">Showcase</a> -->
+        <a href="/source" title="The most well commented code in the history of ever!">Annotated Source</a>
+        <div class="nav-right">
+            <a href="/download" class="start" title="Download Archive">Get UGUI</a>
+            <a href="http://github.com/UniversalGUI/UGUI" title="View Source Code for UGUI on GitHub">GitHub</a>
+        </div>
+    </nav>
+
+    <section id="jumbotron">
+      <div class="tv">
+        <img src="_img/logo.png" alt="UGUI Logo" />
+        <h3>Universal Graphical User Interface</h3>
+        <p>UGUI gives a face to command line applications using HTML, CSS, &amp; JavaScript.</p>
+
+        <a href="https://github.com/UniversalGUI/UGUI/releases" class="download-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32"><path d="M21.354 7.26v9.501h6.646l-11.783 14.213-11.783-14.213h6.646v-9.501zM11.08 1.208h10.275v4.222h-10.275z"/></svg>
+          Download UGUI <span class="version">v1.0.0</span>
+        </a>
+
+        <p>Watch <a href="tutorials/getting-started.htm">"Getting Started with UGUI"</a>.</p>
+      </div>
+    </section>
+    <section id="features">
+        <figure>
+            <img src="_img/fast.svg" alt="Icon of a speedometer with the dial pointed to the right to indicate high speeds." />
+            <figcaption>Fast</figcaption>
+        </figure>
+        <figure>
+            <img src="_img/free.svg" alt="Icon of dollar sign with a slash through it." />
+            <figcaption>Free</figcaption>
+        </figure>
+         <figure>
+            <img src="_img/opensource.svg" alt="Icon containing the symbol for open source software." />
+            <figcaption>Open Source</figcaption>
+        </figure>
+         <figure>
+            <img src="_img/crossplatform.svg" alt="Icon containing logos for Windows, Apple, and Ubuntu." />
+            <figcaption>Cross-Platform</figcaption>
+        </figure>
+    </section>
+    <div class="bottom">
+        <div class="os">
+            <header>
+                <div class="windows tab">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.56 24.05"><path d="M21.83 23a.19.19 0 0 0 .07-.07l2.51-8.53a.15.15 0 0 0 0-.15l-.21-.16a.16.16 0 0 0-.14 0c-.64.21-1.27.38-1.85.52a15.22 15.22 0 0 1-1.62.3 10 10 0 0 1-2.68 0 8 8 0 0 1-2.12-.6 12 12 0 0 1-1.81-1 .26.26 0 0 0-.37.1l-2.61 8.67a.18.18 0 0 0 .09.21 11.84 11.84 0 0 0 1.92 1 9.6 9.6 0 0 0 1.13.4 9.42 9.42 0 0 0 1.25.26 9.82 9.82 0 0 0 1.38.09 11 11 0 0 0 1.48 0 13.06 13.06 0 0 0 1.75-.39 16.65 16.65 0 0 0 1.83-.65zM10.05 21.31a.13.13 0 0 0 .06-.07l2.55-8.52a1.23 1.23 0 0 0 .09-.36 9 9 0 0 0-3.92-1.62 8.17 8.17 0 0 0-1.29-.1 10.36 10.36 0 0 0-1.44.14 14.07 14.07 0 0 0-1.63.38c-.57.17-1.17.4-1.83.64l-2.64 8.81v.11l.21.14a.14.14 0 0 0 .1 0 18.42 18.42 0 0 1 2.62-.8 9.93 9.93 0 0 1 2.16-.24 7.59 7.59 0 0 1 1.6.18 7.73 7.73 0 0 1 1.4.45 13.44 13.44 0 0 1 1.71.94.14.14 0 0 0 .1 0zM27.12 3.25q-.9.36-1.83.63a13.71 13.71 0 0 1-1.63.37 10.06 10.06 0 0 1-1.37.13 8.3 8.3 0 0 1-1.29-.08 7.76 7.76 0 0 1-2.14-.62 13.27 13.27 0 0 1-1.81-1h-.05v-.05h-.15a.51.51 0 0 0-.16.15l-2.63 8.78c-.05.17.09.24.72.58a9.56 9.56 0 0 0 3 1.22 9.08 9.08 0 0 0 1.83.2 10.63 10.63 0 0 0 2.08-.19 12.76 12.76 0 0 0 3.2-1 .19.19 0 0 0 .11-.07l2.59-8.74a.4.4 0 0 0-.47-.31zM3 10a.14.14 0 0 0 0 .1.42.42 0 0 0 .38.17 11.79 11.79 0 0 1 5.62-1.02 7.64 7.64 0 0 1 2 .55 12.3 12.3 0 0 1 1.76.93h.09l.15-.06a.15.15 0 0 0 .11-.11l2.5-8.41a.68.68 0 0 0 .06-.41 14.49 14.49 0 0 0-1.29-.74 7.73 7.73 0 0 0-3.54-1 10.31 10.31 0 0 0-2.33.24 17.42 17.42 0 0 0-2.86.89l-.16.52z" transform="translate(-.01)"/></svg>
+                </div>
+                <div class="osx tab">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.34 27.42"><path d="M18.66 14.57a6.2 6.2 0 0 1 3-5.22 6.41 6.41 0 0 0-5-2.72c-2.13-.22-4.17 1.26-5.25 1.26s-2.75-1.23-4.52-1.19a6.71 6.71 0 0 0-5.67 3.44c-2.42 4.19-.62 10.41 1.78 13.81 1.15 1.66 2.52 3.54 4.33 3.47s2.39-1.12 4.49-1.12 2.69 1.12 4.53 1.09 3-1.7 4.2-3.37a15.08 15.08 0 0 0 1.9-3.9 6.06 6.06 0 0 1-3.75-5.55" transform="translate(-.07)"/><path d="M11.21 6.32a6 6 0 0 1 5.45-6.32c.09 2.77-1.66 6.42-5.45 6.32z" transform="translate(-.07)"/></svg>
+                </div>
+                <div class="linux tab">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.42 27.42"><path d="M14.5.79a13.71 13.71 0 1 0 13.71 13.71 13.71 13.71 0 0 0-13.71-13.71zm3.08 4.72a1.83 1.83 0 1 1 .67 2.49 1.83 1.83 0 0 1-.67-2.49zm-12.4 10.82a1.83 1.83 0 1 1 1.82-1.83 1.83 1.83 0 0 1-1.82 1.83zm1.62.17a2.57 2.57 0 0 0 0-4 8 8 0 0 1 3.29-4.62l1.34 2.24a5.35 5.35 0 0 0 0 8.75l-1.34 2.24a8 8 0 0 1-3.29-4.61zm13.28 7.67a1.83 1.83 0 1 1 .67-2.5 1.83 1.83 0 0 1-.67 2.49zm0-4a2.57 2.57 0 0 0-3.45 2 8 8 0 0 1-5.63-.54l1.27-2.28a5.35 5.35 0 0 0 7.56-4.35h2.61a7.93 7.93 0 0 1-2.37 5.17zm-.25-6.17a5.35 5.35 0 0 0-7.58-4.38l-1.25-2.25a8 8 0 0 1 5.65-.53 2.57 2.57 0 0 0 3.45 2 7.93 7.93 0 0 1 2.34 5.16z" transform="translate(-.79 -.79)"/></svg>
+                </div>
+            </header>
+            <div class="lower-os" id="windows">
+                <img id="win-thumb" src="_img/screenshot/ugui-win-th.png" alt="Thumbnail of a screenshot of UGUI running on Windows" />
+            </div>
+            <div class="lower-os" id="osx">
+                <img id="osx-thumb" src="_img/screenshot/ugui-osx-th.png" alt="Thumbnail of a screenshot of UGUI running on OSX" />
+            </div>
+            <div class="lower-os" id="linux">
+                <img id="lin-thumb" src="_img/screenshot/ugui-ubuntu-th.png" alt="Thumbnail of a screenshot of UGUI running on Ubuntu" />
+            </div>
+        </div>
+        <div class="screenshots">
+            <div>
+                <h2>Screenshots</h2>
+                <img class="win-screenshot-lg"   src="_img/screenshot/ugui-win.png"    alt="Screenshot of UGUI running on Windows" />
+                <img class="osx-screenshot-lg"   src="_img/screenshot/ugui-osx.png"    alt="Screenshot of UGUI running on OSX"     />
+                <img class="linux-screenshot-lg" src="_img/screenshot/ugui-ubuntu.png" alt="Screenshot of UGUI running on Ubuntu"  />
+                <div class="screenshots-text">
+                    <h3 class="win-screenshot-lg">Windows Iorem</h3>
+                    <p class="win-screenshot-lg">Windows lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <h3 class="osx-screenshot-lg">OSX Iorem</h3>
+                    <p class="osx-screenshot-lg">OSX ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <h3 class="linux-screenshot-lg">Linux Iorem</h3>
+                    <p class="linux-screenshot-lg">Linux ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+        </div>
+        <div class="get-started">
+            <a href="tutorials/getting-started.htm" class="start">Get Started!</a>
+        </div>
+        <footer>
+            <a href="/index.html">Home</a>
+ <!--       <a href="#">Templates</a> -->
+            <a href="/api">API Documentation</a>
+            <a href="/tutorials/index.html">Tutorials</a>
+<!--        <a href="#">Showcase</a> -->
+            <a href="/source" title="View the fully commented source code for the UGUI library">Annotated Source</a>
+            <a href="http://reddit.com/r/UGUI" title="Subreddit">Community Forum</a>
+            <a href="http://gitter.im/UniversalGUI/UGUI" title="Gitter">Chatroom</a>
+<!--        <a href="#">About</a> -->
+            <p>&copy; Copyright Jared Wilcurt 2015</p>
+        </footer>
+    </div>
+    <script src="_scripts/shannon.js"></script>
+  <script>!function(U,g,u,i,j,s){U.GoogleAnalyticsObject=u;U[u]||(U[u]=function(){(U[u].q=U[u].q||[]).push(arguments)});U[u].u=+new Date;j=g.createElement(i);s=g.getElementsByTagName(i)[0];j.src='//www.google-analytics.com/analytics.js';s.parentNode.insertBefore(j,s)}(window,document,'ga','script');ga('create','UA-67786036-1','auto');ga('send','pageview');</script>
   </body>
-  <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-67786036-1','auto');ga('send','pageview');</script>
 </html>

@@ -27,7 +27,9 @@ http.createServer(function (request, response) {
     var contentTypesByExtension = {
         '.html': "text/html",
         '.css':  "text/css",
-        '.js':   "text/javascript"
+        '.js':   "text/javascript",
+        '.json': "text/json",
+        '.svg':  "image/svg+xml"
     };
 
     //Check if the requested file exists
