@@ -62,7 +62,7 @@ $(document).ready(function() {
         $('#lin-thumb').click();
     }
     else {
-        $('.mac').click();
+        $('.osx').click();
         $('#osx-thumb').click();
     }
 });
