@@ -84,10 +84,6 @@
             height: 29px;
             margin-top: 5px;
         }
-        .active {
-            background-color: #EFDDCA;
-            border-bottom: 1px solid #ED8C2B;
-        }
     }
     .thumbnails {
         border-top: 1px solid #FFF;
@@ -95,29 +91,14 @@
             width: 67px;
             margin: 10px;
             cursor: pointer;
+            &.active {
+                border: 2px solid #EDA964;
+                border-radius: 2px;
+                box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+            }
         }
     }
 
-    .screenshots {
-        width: 660px;
-        height: 290px;
-        background-color: #FFF;
-        color: #1F2C33;
-        vertical-align: top;
-        div {
-            margin: 12px 0px 0px 60px;
-        }
-        img {
-            height: 165px;
-            margin: 15px 15px 0px 0px;
-            text-align: left;
-            float: left;
-        }
-        p {
-            font-size: 12px;
-            text-align: left;
-        }
-    }
     /**********UNCOMMENT IF NEEDED**********/
     // .screenshots-text {
     //     overflow: auto;
@@ -128,8 +109,50 @@
         header div {
             cursor: pointer;
             &:hover {
-                background-color: #EFDDCA;
+                background-color: #F2EBE3;
             }
+            &.active {
+                background-color: #EFDDCA;
+                border-bottom: 1px solid #ED8C2B;
+                &:hover {
+                    background-color: #F5E4D1;
+                }
+            }
+        }
+        .screenshots {
+            width: 660px;
+            height: 290px;
+            background-color: #FFF;
+            color: #1F2C33;
+            vertical-align: top;
+            div {
+                margin: 12px 0px 0px 60px;
+            }
+            img {
+                max-width: 255px;
+                margin: 15px 15px 0px 0px;
+                text-align: left;
+                float: left;
+            }
+            p {
+                height: 194px;
+                font-size: 12px;
+                text-align: left;
+                overflow: auto;
+            }
+            span {
+                float: left;
+            }
+            .screenshots-text {
+                display: inline-block;
+                width: 309px;
+                margin: 0px;
+                line-height: 1.3em;
+                text-align: left;
+            }
+        }
+        h3 {
+            margin: 16px 0px 10px 0px;
         }
     }
     .get-started {

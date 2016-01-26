@@ -48,6 +48,34 @@ $(document).ready(function() {
     });
 
 
+/*
+
+        SHANNON TO DO:
+        Add a class of "active" to the thumbnail that is clicked.
+        When you change to a different OS, auto click the first thumbnail for that OS.
+
+        Rewrite the following as nice, clean, easily readible jQuery.
+        Hint: You won't have any for loops when done.
+        Pro-tip: console.log is your friend.
+
+*/
+
+    var thumbs = document.querySelectorAll('.thumbnails img');
+    for (var i = 0; i < thumbs.length; i++) {
+        thumbs[i].onclick = function () {
+            var file = this.getAttribute('src').split('_img/screenshot/')[1].split('-th')[0];
+            var elements = document.querySelectorAll('#screenshots h3, #screenshots span, #screenshots p');
+            for (var j = 0; j < elements.length; j++) {
+                elements[j].style.display = 'none';
+            }
+            var shown = document.getElementsByClassName(file);
+            for (var j = 0; j < shown.length; j++) {
+                shown[j].style.display = 'inline-block';
+            }
+        }
+    }
+
+
     //Determine which browser user is on and display screenshot thumbnails & default screenshot on page load accordingly.
     if ($('html').hasClass('win')) {
         $('#screenshots header .win').click();
@@ -58,8 +86,7 @@ $(document).ready(function() {
                 return;
             }
         }
-    }
-    else if ($('html').hasClass('linux')) {
+    } else if ($('html').hasClass('linux')) {
         $('#screenshots header .ubuntu').click();
         for (var i = 0; i < screenshotData.length; i++) {
             var os = screenshotData[i].os;
@@ -68,8 +95,7 @@ $(document).ready(function() {
                 return;
             }
         }
-    }
-    else {
+    } else {
         $('#screenshots header .osx').click();
         for (var i = 0; i < screenshotData.length; i++) {
             var os = screenshotData[i].os;
