@@ -19,8 +19,9 @@
 
 //Stuff that affects specific pages
 @import "_temp.scss";          // This needs to be implemented into another file, Dawn styles for coming soon page
-@import "_homepage.scss";
+@import "_homepage.scss";      //
 @import "_api.sass";           // Styles specific to the API docs
+@import "_package.sass";       // For the Package.json demo page
 
 //Stuff that goes at the end
 @import "_mediaqueries.sass";  // Adjusts the CSS of elements depending on browser or device resolution. Adaptive Web Design.
