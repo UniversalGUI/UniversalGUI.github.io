@@ -60,20 +60,32 @@ $(document).ready(function() {
 
 */
 
-    var thumbs = document.querySelectorAll('.thumbnails img');
+/*
+    var thumbs = $('.thumbnails img');
+        //var thumbs = document.querySelectorAll('.thumbnails img');  ... select everything in the document that meets this & set it to var thumbs; returns an array
     for (var i = 0; i < thumbs.length; i++) {
-        thumbs[i].onclick = function () {
-            var file = this.getAttribute('src').split('_img/screenshot/')[1].split('-th')[0];
+        thumbs[i].onclick = function () {                                   //Attach the click event to the current thumbnail (in the future, it will look at what is clicked)
+            var className = this.getAttribute('src')                             //get the "src" attribute from img src="sdgjdskljg.jpg"
+                .split('_img/screenshot/')[1]                               //"_img/screenshot/ugui-ubuntu-th.png"
+                .split('-th')[0];                                           //splits the above into ["ugui-ubuntu", "-th.png"] & returns index 0 of array: ugui-ubuntu
             var elements = document.querySelectorAll('#screenshots h3, #screenshots span, #screenshots p');
             for (var j = 0; j < elements.length; j++) {
-                elements[j].style.display = 'none';
+                elements[j].style.display = 'none';                         //setting all of these to "display: none" in the CSS
             }
-            var shown = document.getElementsByClassName(file);
-            for (var j = 0; j < shown.length; j++) {
-                shown[j].style.display = 'inline-block';
+            var elementsToBeShown = document.getElementsByClassName(className);              //class name is ugui-win, ugui-osx etc as determined by file string above
+            for (var j = 0; j < elementsToBeShown.length; j++) {
+                elementsToBeShown[j].style.display = 'inline-block';                    //now it's showing the class name that was clicked
             }
         }
     }
+    */
+    $('.thumbnails img').click(function () {                                                           //get the piece of the image src that contains the class name in HTML
+        var src = $(this).attr('src');
+        var className = src.split('_img/screenshot/')[1].split('-th')[0];                   //jQuery will attach the click event to all thumbnail images
+        $('#screenshots h3, #screenshots span, #screenshots p').hide();
+        $('.' + className).show();
+    });
+        //show the elements in #screenshots section that match the class name that was clicked
 
 
     //Determine which browser user is on and display screenshot thumbnails & default screenshot on page load accordingly.
