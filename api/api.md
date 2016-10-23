@@ -690,7 +690,7 @@ ___
 * All `<def>`'s are processed before any `<arg>`'s; so they can be placed anywhere in the `<cmd>` block. They could be before or after an `<arg>` that uses them.
 * You can have as many keywords in your definition as you want:
 ```html
-<def name="example">The ((first), ((second)), then the ((third)), finally ((fourth)) is last.</def>
+<def name="example">The ((first)) and ((second)), then the ((third)), finally ((fourth)) is last.</def>
 ```
 * You can **not** have two values next to each other without a separator:
 ```html
