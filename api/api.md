@@ -1,6 +1,6 @@
 # UGUI API Documentation
 
-The "**ugui Object**" contains many useful items for developers. This section will outline everything it contains. Items in each section of displayed alphabetically.
+The "**ugui Object**" contains many useful items for developers. This section will outline everything it contains.
 
 Titles on this page <span class="blue">in blue</span> can be typed into the Webkit Developer Tools Console, like so:
 
